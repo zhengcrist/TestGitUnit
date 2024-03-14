@@ -5,12 +5,13 @@ using UnityEngine;
 public class Player_Script : MonoBehaviour
 {
 
-    [SerializeField] Animator Player_animator;
+    // [SerializeField] Animator Player_animator;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] float speed = 0.7f;
-    [SerializeField] Rigidbody2D rigidbody;
+    [SerializeField] new Rigidbody2D rigidbody;
 
     [SerializeField] Transform FireballSpawnPoint;
+    // [SerializeField] float FireballSpawnPointX;
 
     [SerializeField] private GameObject[] potions; // array of potions
     [SerializeField] private GameObject potion;
@@ -35,6 +36,15 @@ public class Player_Script : MonoBehaviour
     void Update()
     {
         Move();
+        /*if (spriteRenderer.flipX == true)
+        {
+            FireballSpawnPointX = - (FireballSpawnPoint.position.x);
+        }
+        else
+        {
+            FireballSpawnPointX = FireballSpawnPoint.position.x;
+        }
+        FireballSpawnPoint.position = new Vector3(FireballSpawnPointX, FireballSpawnPoint.position.y, 0);*/
         potion = SwitchPotion();
         Throw();
     }
@@ -46,23 +56,23 @@ public class Player_Script : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow)) // when right arrow
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);  // movement to the right
-            Player_animator.SetBool("BoolMove", true); // run animation
-            spriteRenderer.flipX = false; // sprite not flipped
+            // Player_animator.SetBool("BoolMove", true); // run animation
+            spriteRenderer.flipX = true; // sprite not flipped
         }
         else if (Input.GetKeyUp(KeyCode.RightArrow))
         {
-            Player_animator.SetBool("BoolMove", false); // stop run animation
+            // Player_animator.SetBool("BoolMove", false); // stop run animation
         }
 
         if (Input.GetKey(KeyCode.LeftArrow)) // when left arrow
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);  // movement to the left
-            Player_animator.SetBool("BoolMove", true); // run animation
-            spriteRenderer.flipX = true; // sprite flip
+            // Player_animator.SetBool("BoolMove", true); // run animation
+            spriteRenderer.flipX = false; // sprite flip
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
-            Player_animator.SetBool("BoolMove", false); // stop run animation
+            // Player_animator.SetBool("BoolMove", false); // stop run animation
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow)) // when up arrow
@@ -91,7 +101,7 @@ public class Player_Script : MonoBehaviour
         {
             if (currentPotion != 0)
             {
-                Player_animator.SetTrigger("TriggerAttack"); // attack animation
+                // Player_animator.SetTrigger("TriggerAttack"); // attack animation
                 var fireball = Instantiate(potion, FireballSpawnPoint.position, FireballSpawnPoint.rotation);
             }
            else if (life < 4)

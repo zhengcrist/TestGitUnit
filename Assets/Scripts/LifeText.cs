@@ -11,7 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player_Dino").GetComponent<Player_Script>();
+        player = GameObject.Find("P1").GetComponent<Player_Script>();
         // mob = GameObject.Find("Mob_1").Transform.Find("Mob1").GetComponent<Movement_Mob1>();
 
     }

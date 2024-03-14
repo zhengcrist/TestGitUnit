@@ -11,7 +11,7 @@ public class FireballPrefab_Script : MonoBehaviour
 
     [SerializeField] Animator Fireball_animator;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] Rigidbody2D rigidbody;
+    [SerializeField] new Rigidbody2D rigidbody;
 
     [SerializeField] SpriteRenderer sr;
 
@@ -19,9 +19,9 @@ public class FireballPrefab_Script : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        sr = GameObject.Find("Player_Dino").GetComponent<SpriteRenderer>();
+        sr = GameObject.Find("P1").GetComponent<SpriteRenderer>();
 
-        if (sr.flipX == true)
+        if (sr.flipX == false)
         {
             moveSpeed = -moveSpeed;
             spriteRenderer.flipX = true; // sprite flip
@@ -46,7 +46,7 @@ public class FireballPrefab_Script : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name != "Player_Dino")
+        if (col.gameObject.name != "P1")
         {
             Destroy(gameObject);
         }
