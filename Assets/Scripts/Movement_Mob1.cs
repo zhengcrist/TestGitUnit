@@ -7,31 +7,35 @@ using TMPro;
 public class Movement_Mob1 : MonoBehaviour
 {
     [SerializeField] private Transform[] _waypoints; // start the waypoints array
-    [SerializeField] private float _speed; // speed of the platforms
-    [SerializeField] private float _checkDistance = 0.1f; // current distance waypoint-platform
+    
+    private float _speed;
+    [SerializeField] private float speed1, speed2; // speed of the platforms
+
+    private float _checkDistance = 0.1f; // current distance waypoint-platform
     Vector3 startPosition = Vector3.zero;
 
     private Transform _targetWaypoint; // which waypoint to move to
     private int _currentWaypointIndex = 0; // to start the index of the waypoint array
 
-    [SerializeField] Rigidbody2D rigidbody;
+    // [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Player_Script player;
 
-    [SerializeField] private float BurnTime = 2f;
-    [SerializeField] private float FreezeTime = 5f;
-    [SerializeField] private float PauseTime = 10f;
+    [SerializeField] List<int> BurnTimes = new List<int>();
+    [SerializeField] private int ticks;
+    [SerializeField] private float FreezeTime;
+    [SerializeField] private float PauseTime;
     [SerializeField] public int mobLife;
-    [SerializeField] public int mobMaxLife = 10;
-    [SerializeField] private bool isFrozen = false;
-    [SerializeField] private bool isDead = false;
-    [SerializeField] private float timer = 0;
+    [SerializeField] public int mobMaxLife;
+    [SerializeField] public bool isFrozen = false;
+    [SerializeField] public bool isDead = false;
+    private float timer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player_Dino").GetComponent<Player_Script>();
+        // rigidbody = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script>();
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
         mobLife = mobMaxLife;
@@ -40,8 +44,7 @@ public class Movement_Mob1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // freeze movement if dead
-        if (isDead)
+        if (isDead) // freeze movement if dead
         {
             Debug.Log("deadead");
 
@@ -51,12 +54,13 @@ public class Movement_Mob1 : MonoBehaviour
             {
                 isDead = false;
                 timer = 0;
+                mobLife = mobMaxLife; // reset life
+                spriteRenderer.color = new Color(1, 1, 1, 1); // change color
             }
             return; // exit so it doesn't do the rest
         }
 
-        // freeze movement if frozen
-        if (isFrozen)
+        if (isFrozen) // freeze movement if frozen
         {
             Debug.Log("frozen");
 
@@ -66,28 +70,35 @@ public class Movement_Mob1 : MonoBehaviour
             {
                 isFrozen = false;
                 timer = 0;
+                spriteRenderer.color = new Color(1, 1, 1, 1); // change color
             }
             return; // exit so it doesn't do the rest
         }
+       
+        MovingFonct();
+        
 
+    }
+
+
+    private void MovingFonct()
+    {
         // dead condition
         if (mobLife <= 0)
         {
-            spriteRenderer.color = new Color(0, 1, 0, 1); // change color
-            isDead = true; // to freeze movement
-            mobLife = mobMaxLife; // reset life
             spriteRenderer.color = new Color(1, 0, 0, 1); // change color
+            isDead = true; // to freeze movement
         }
         else
         {
             // different speed between waypoints
             if (_currentWaypointIndex <= 1)
             {
-                _speed = 1f;
+                _speed = speed1;
             }
             else
             {
-                _speed = 0.5f;
+                _speed = speed2;
             }
 
             // movement
@@ -113,39 +124,61 @@ public class Movement_Mob1 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if collision with player, player gets damage
-        if (collision.gameObject.name == "Player_Dino")
+        if (!isDead)
         {
-            player.life--;
-        }
-
-        // if collision with fireball, mob gets burnt
-        if (collision.gameObject.name == "Fireball(Clone)")
-        {
-            while (BurnTime >= 0f)
+            // if collision with player, player gets damage
+            if (collision.gameObject.tag == "Player")
             {
-                BurnTime--;
-                mobLife--;
-
-                Debug.Log("BurnTime : " + BurnTime + "mobLife : " + mobLife);
-                StartCoroutine(WaitCoroutine(2));
-
+                player.life--;
             }
-            Debug.Log("OnCollision fire");
-            BurnTime = 2f;
-        }
 
-        // if collision with iceball, mob gets 1 dmg and freeze
-        if (collision.gameObject.name == "Iceball(Clone)")
+            // if collision with fireball, mob gets burnt
+            if (collision.gameObject.name == "Fireball(Clone)")
+            {
+                ApplyBurn();
+                Debug.Log("OnCollision fire");
+            }
+
+            // if collision with iceball, mob gets 1 dmg and freeze
+            if (collision.gameObject.name == "Iceball(Clone)")
+            {
+                mobLife--;
+                spriteRenderer.color = new Color(0, 0, 1, 1); // change color
+                isFrozen = true;
+                Debug.Log("OnCollision ice");
+            }
+        }
+        
+    }
+
+    private void ApplyBurn()
+    {
+        if (BurnTimes.Count > 0)
         {
-            mobLife--;
-            isFrozen = true;
-            Debug.Log("OnCollision ice");
+            StartCoroutine(BurnCoroutine(2f));
+            spriteRenderer.color = new Color(1, 1, 1, 1); // change color
+        }
+        else
+        {
+            while(BurnTimes.Count < ticks)
+            {
+                BurnTimes.Add(ticks);
+            }
         }
     }
 
-    IEnumerator WaitCoroutine(int sec)
+    IEnumerator BurnCoroutine(float sec)
     {
+        while(BurnTimes.Count > 0)
+        {
+            for (int i = 0; i < BurnTimes.Count; i++)
+            {
+                BurnTimes[i]--;
+            }
+        }
+        mobLife--;
+        BurnTimes.RemoveAll(i => i == 0);
+        spriteRenderer.color = new Color(0, 1, 0, 1); // change color
         yield return new WaitForSeconds(sec);
 
     }

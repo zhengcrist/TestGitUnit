@@ -7,7 +7,7 @@ public class Player_Script : MonoBehaviour
 
     // [SerializeField] Animator Player_animator;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] float speed = 0.7f;
+    [SerializeField] float speed;
     [SerializeField] new Rigidbody2D rigidbody;
 
     [SerializeField] Transform FireballSpawnPoint;
@@ -17,15 +17,14 @@ public class Player_Script : MonoBehaviour
     [SerializeField] private GameObject potion;
     [SerializeField] private int currentPotion = 0;
 
-    private bool Player_Run;
-    private float jump = 3f;
-    public int life;
+    // private bool Player_Run;
+    [SerializeField] private float jump;
+    [SerializeField] public int life;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        life = 4;
         potion = potions[currentPotion];
 
         rigidbody = GetComponent<Rigidbody2D>();

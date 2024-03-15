@@ -19,7 +19,7 @@ public class FireballPrefab_Script : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        sr = GameObject.Find("P1").GetComponent<SpriteRenderer>();
+        sr = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
         if (sr.flipX == false)
         {
@@ -46,9 +46,9 @@ public class FireballPrefab_Script : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name != "P1")
+        if (col.gameObject.tag != "Player")
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         Debug.Log("OnCollisionEnter2D");
     }
