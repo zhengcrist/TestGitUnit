@@ -20,11 +20,15 @@ public class Player_Script : MonoBehaviour
     // private bool Player_Run;
     [SerializeField] private float jump;
     [SerializeField] public int life;
+    [SerializeField] public int maxlife;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        life = maxlife;
+
         potion = potions[currentPotion];
 
         rigidbody = GetComponent<Rigidbody2D>();
@@ -103,7 +107,7 @@ public class Player_Script : MonoBehaviour
                 // Player_animator.SetTrigger("TriggerAttack"); // attack animation
                 var fireball = Instantiate(potion, FireballSpawnPoint.position, FireballSpawnPoint.rotation);
             }
-           else if (life < 4)
+           else if (life <  maxlife)
             {
                 life++;
             }

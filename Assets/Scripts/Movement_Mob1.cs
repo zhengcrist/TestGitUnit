@@ -21,7 +21,7 @@ public class Movement_Mob1 : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Player_Script player;
 
-    [SerializeField] List<int> BurnTimes = new List<int>();
+    [SerializeField] private int BurnTime;
     [SerializeField] private int ticks;
     [SerializeField] private float FreezeTime;
     [SerializeField] private float PauseTime;
@@ -39,6 +39,7 @@ public class Movement_Mob1 : MonoBehaviour
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
         mobLife = mobMaxLife;
+        BurnTime = ticks;
     }
 
     // Update is called once per frame
@@ -153,33 +154,26 @@ public class Movement_Mob1 : MonoBehaviour
 
     private void ApplyBurn()
     {
-        if (BurnTimes.Count > 0)
+        if (BurnTime <= 0)
         {
-            StartCoroutine(BurnCoroutine(2f));
-            spriteRenderer.color = new Color(1, 1, 1, 1); // change color
+            BurnTime = ticks;
         }
-        else
-        {
-            while(BurnTimes.Count < ticks)
-            {
-                BurnTimes.Add(ticks);
-            }
-        }
+        
+        StartCoroutine(BurnCoroutine());
+        
+        spriteRenderer.color = new Color(1, 1, 1, 1); // change color
+        
     }
 
-    IEnumerator BurnCoroutine(float sec)
+    IEnumerator BurnCoroutine()
     {
-        while(BurnTimes.Count > 0)
-        {
-            for (int i = 0; i < BurnTimes.Count; i++)
-            {
-                BurnTimes[i]--;
-            }
-        }
-        mobLife--;
-        BurnTimes.RemoveAll(i => i == 0);
         spriteRenderer.color = new Color(0, 1, 0, 1); // change color
-        yield return new WaitForSeconds(sec);
+        while (BurnTime > 0)
+        {
+            mobLife--;
+            BurnTime--;
+            yield return new WaitForSeconds(2);
+        }
 
     }
 

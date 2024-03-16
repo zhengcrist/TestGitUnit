@@ -14514,6 +14514,7 @@ MonoBehaviour:
   currentPotion: 0
   jump: 6.46
   life: 8
+  maxlife: 8
 --- !u!1 &1083096135
 GameObject:
   m_ObjectHideFlags: 0
@@ -16161,13 +16162,11 @@ MonoBehaviour:
   - {fileID: 888114963}
   - {fileID: 1773501230}
   - {fileID: 1748374630}
-  _speed: 0
   speed1: 2.4
   speed2: 4.29
-  _checkDistance: 0.1
   spriteRenderer: {fileID: 1453286372}
   player: {fileID: 0}
-  BurnTimes: 
+  BurnTime: 0
   ticks: 3
   FreezeTime: 2.46
   PauseTime: 10.32
@@ -16175,7 +16174,6 @@ MonoBehaviour:
   mobMaxLife: 15
   isFrozen: 0
   isDead: 0
-  timer: 0
 --- !u!1 &1703306664
 GameObject:
   m_ObjectHideFlags: 0
