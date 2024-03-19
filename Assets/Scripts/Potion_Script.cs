@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class FireballPrefab_Script : MonoBehaviour
+public class Potion_Script : MonoBehaviour
 {
 
     [SerializeField] private float CurrentTime = 3f;
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float moveSpeedX; 
+    [SerializeField] private float moveSpeedY;
+
 
     [SerializeField] Animator Fireball_animator;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -23,11 +25,11 @@ public class FireballPrefab_Script : MonoBehaviour
 
         if (sr.flipX == false)
         {
-            moveSpeed = -moveSpeed;
+            moveSpeedX = -moveSpeedX;
             spriteRenderer.flipX = true; // sprite flip
         }
 
-        rigidbody.AddForce(new Vector2(moveSpeed, 2), ForceMode2D.Impulse);
+        rigidbody.AddForce(new Vector2(moveSpeedX, moveSpeedY), ForceMode2D.Impulse);
 
         Timer();
 

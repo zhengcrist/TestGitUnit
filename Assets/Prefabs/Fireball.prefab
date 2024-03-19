@@ -122,7 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentTime: 3
-  moveSpeed: 4
+  moveSpeedX: 10.84
+  moveSpeedY: 1.06
   Fireball_animator: {fileID: 2965075596570017941}
   spriteRenderer: {fileID: 4758926663693602466}
   rigidbody: {fileID: 8108581655370925971}

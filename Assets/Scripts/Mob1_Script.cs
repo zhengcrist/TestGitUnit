@@ -4,14 +4,13 @@ using UnityEngine;
 using TMPro;
 
 
-public class Movement_Mob1 : MonoBehaviour
+public class Mob1_Script : MonoBehaviour
 {
     [SerializeField] private Transform[] _waypoints; // start the waypoints array
     
-    private float _speed;
-    [SerializeField] private float speed1, speed2; // speed of the platforms
+    [SerializeField] private float[] speed; // speed of the mob
 
-    private float _checkDistance = 0.1f; // current distance waypoint-platform
+    private float _checkDistance = 0.1f; // current distance waypoint-mob
     Vector3 startPosition = Vector3.zero;
 
     private Transform _targetWaypoint; // which waypoint to move to
@@ -21,7 +20,8 @@ public class Movement_Mob1 : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Player_Script player;
 
-    [SerializeField] private int BurnTime;
+    private int BurnTime;
+    [SerializeField] private float BurnClock;
     [SerializeField] private int ticks;
     [SerializeField] private float FreezeTime;
     [SerializeField] private float PauseTime;
@@ -92,18 +92,8 @@ public class Movement_Mob1 : MonoBehaviour
         }
         else
         {
-            // different speed between waypoints
-            if (_currentWaypointIndex <= 1)
-            {
-                _speed = speed1;
-            }
-            else
-            {
-                _speed = speed2;
-            }
-
             // movement
-            transform.position = Vector2.MoveTowards(transform.position, _targetWaypoint.position, _speed * Time.deltaTime); // transform position to move to the target waypoint at _speed speed (mod deltaTime)
+            transform.position = Vector2.MoveTowards(transform.position, _targetWaypoint.position, speed[_currentWaypointIndex] * Time.deltaTime); // transform position to move to the target waypoint at _speed speed (mod deltaTime)
             if (Vector2.Distance(transform.position, _targetWaypoint.position) < _checkDistance)
             {
                 // if the position hasn't reached the target waypoint yet
@@ -159,20 +149,20 @@ public class Movement_Mob1 : MonoBehaviour
             BurnTime = ticks;
         }
         
-        StartCoroutine(BurnCoroutine());
+        StartCoroutine(BurnCoroutine(BurnClock));
         
         spriteRenderer.color = new Color(1, 1, 1, 1); // change color
         
     }
 
-    IEnumerator BurnCoroutine()
+    IEnumerator BurnCoroutine(float BurnClock)
     {
         spriteRenderer.color = new Color(0, 1, 0, 1); // change color
         while (BurnTime > 0)
         {
             mobLife--;
             BurnTime--;
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(BurnClock);
         }
 
     }
