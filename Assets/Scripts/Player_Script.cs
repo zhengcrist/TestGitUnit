@@ -7,8 +7,9 @@ public class Player_Script : MonoBehaviour
 
     // [SerializeField] Animator Player_animator;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] float speed;
     [SerializeField] new Rigidbody2D rigidbody;
+    // [SerializeField] private float horizontal;
+    [SerializeField] private float speed;
 
     [SerializeField] Transform FireballSpawnPoint;
     // [SerializeField] float FireballSpawnPointX;
@@ -20,7 +21,7 @@ public class Player_Script : MonoBehaviour
     // private bool Player_Run;
     [SerializeField] private float jump;
     [SerializeField] public int life;
-    [SerializeField] public int maxlife;
+    [SerializeField] private int maxlife;
 
 
 
@@ -39,6 +40,7 @@ public class Player_Script : MonoBehaviour
     void Update()
     {
         Move();
+        Jump();
         /*if (spriteRenderer.flipX == true)
         {
             FireballSpawnPointX = - (FireballSpawnPoint.position.x);
@@ -48,11 +50,17 @@ public class Player_Script : MonoBehaviour
             FireballSpawnPointX = FireballSpawnPoint.position.x;
         }
         FireballSpawnPoint.position = new Vector3(FireballSpawnPointX, FireballSpawnPoint.position.y, 0);*/
+       
         potion = SwitchPotion();
         Throw();
     }
 
-    void Move()
+    /* private void FixedUpdate()
+    {
+        rigidbody.velocity = new Vector2(horizontal * speed, rigidbody.velocity.y);
+    } */
+
+    private void Move()
     { // move
 
 
@@ -78,19 +86,23 @@ public class Player_Script : MonoBehaviour
             // Player_animator.SetBool("BoolMove", false); // stop run animation
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) // when up arrow
+
+    } 
+
+    public void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) // when right arrow
         {
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
-
     }
 
-    private GameObject SwitchPotion()
+    public GameObject SwitchPotion()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow)) // when down arrow
         {
             currentPotion++;
-            if(currentPotion >= potions.Length)
+            if (currentPotion >= potions.Length)
             {
                 currentPotion = 0;
             }
@@ -98,16 +110,17 @@ public class Player_Script : MonoBehaviour
         return potions[currentPotion];
     }
 
-    void Throw()
+
+    public void Throw()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // when keypad 1
+        if (Input.GetKeyDown(KeyCode.Space)) // when right arrow
         {
             if (currentPotion != 0)
             {
                 // Player_animator.SetTrigger("TriggerAttack"); // attack animation
                 var fireball = Instantiate(potion, FireballSpawnPoint.position, FireballSpawnPoint.rotation);
             }
-           else if (life <  maxlife)
+            else if (life < maxlife)
             {
                 life++;
             }
