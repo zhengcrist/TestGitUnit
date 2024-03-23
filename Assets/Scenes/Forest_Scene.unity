@@ -267,6 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 57933517}
+  - component: {fileID: 57933518}
   m_Layer: 0
   m_Name: Mob_1
   m_TagString: Untagged
@@ -293,6 +294,20 @@ Transform:
   - {fileID: 1748374630}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &57933518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57933516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58edeecb3ae6b794da006ee944d18dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobLife: 0
+  mobMaxLife: 15
 --- !u!224 &95746765 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8272105802388284190, guid: d03e206af4096d244b03a15d586c5eea,
@@ -12649,6 +12664,37 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 267571409}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &277339715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 277339716}
+  m_Layer: 0
+  m_Name: AttackTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &277339716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277339715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.41, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 976563597}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -16137,6 +16183,7 @@ GameObject:
   - component: {fileID: 976563594}
   - component: {fileID: 976563598}
   - component: {fileID: 976563599}
+  - component: {fileID: 976563600}
   m_Layer: 0
   m_Name: P1
   m_TagString: Player
@@ -16284,6 +16331,7 @@ Transform:
   - {fileID: 967190571}
   - {fileID: 1755666641}
   - {fileID: 1042599074}
+  - {fileID: 277339716}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &976563598
@@ -16326,7 +16374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: ad2ea4931df7b73489803def428e0b35,
     type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -16347,19 +16395,7 @@ MonoBehaviour:
     m_ActionId: 6ad4459a-c643-44eb-adc7-b28dad39ff3f
     m_ActionName: P1/Attack[/Keyboard/z,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 976563598}
-        m_TargetAssemblyTypeName: Player_Script, Assembly-CSharp
-        m_MethodName: SwitchPotion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 3a78b8fa-fbad-42ec-a4ac-8ad8af44b864
     m_ActionName: P1/Change_potion[/DualShock4GamepadHID/buttonSouth,/Keyboard/downArrow,/Keyboard/s]
   - m_PersistentCalls:
@@ -16367,19 +16403,7 @@ MonoBehaviour:
     m_ActionId: e876b74c-c05a-4aaf-96d3-d5d35a719dca
     m_ActionName: P1/Inventory[/Keyboard/x,/DualShock4GamepadHID/buttonWest]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 976563598}
-        m_TargetAssemblyTypeName: Player_Script, Assembly-CSharp
-        m_MethodName: Throw
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 150478b0-c7f4-498f-b4f9-58b411f62501
     m_ActionName: P1/Use_potion[/Keyboard/space,/DualShock4GamepadHID/rightShoulder]
   - m_PersistentCalls:
@@ -16403,19 +16427,7 @@ MonoBehaviour:
     m_ActionId: 0662eed1-917e-44fa-b8ab-31b1862a98bc
     m_ActionName: UI/Select[/Keyboard/downArrow,/Keyboard/anyKey,/Keyboard/s,/Keyboard/w,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/up]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 976563598}
-        m_TargetAssemblyTypeName: Player_Script, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 0d4df0f9-e41a-4a5d-ac42-fdd9746f2ff2
     m_ActionName: P1/Jump[/Keyboard/upArrow,/Keyboard/w,/DualShock4GamepadHID/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
@@ -16423,6 +16435,24 @@ MonoBehaviour:
   m_DefaultActionMap: P1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &976563600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976563593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136c1c4e581619d4dbda3df2d3463625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTransform: {fileID: 277339716}
+  attackRange: 0.7
+  attackableLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  damageAmount: 1
 --- !u!1001 &999426611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19706,7 +19736,7 @@ GameObject:
   - component: {fileID: 1453286375}
   - component: {fileID: 1453286374}
   - component: {fileID: 1453286373}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19722,8 +19752,8 @@ Transform:
   m_GameObject: {fileID: 1453286370}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.00000071526, z: 0}
+  m_LocalScale: {x: 6.9043, y: 6.9043, z: 6.9043}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 57933517}
@@ -19769,8 +19799,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 904197f8728c54243ac72a37dadd27f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -19793,7 +19822,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.62
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -19807,7 +19836,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1453286374
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19840,18 +19869,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0017411113, y: 0.001955334}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.16, y: 0.17}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16374755, y: 0.1453731}
   m_EdgeRadius: 0
 --- !u!114 &1453286375
 MonoBehaviour:
@@ -19879,10 +19908,9 @@ MonoBehaviour:
   ticks: 3
   FreezeTime: 2.46
   PauseTime: 10.32
-  mobLife: 15
-  mobMaxLife: 15
   isFrozen: 0
   isDead: 0
+  Mob_1: {fileID: 57933518}
 --- !u!224 &1468025374 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8272105802388284190, guid: d03e206af4096d244b03a15d586c5eea,
@@ -20689,7 +20717,7 @@ Transform:
   m_GameObject: {fileID: 1773501229}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.59, y: 1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

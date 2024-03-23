@@ -25,11 +25,13 @@ public class Mob1_Script : MonoBehaviour
     [SerializeField] private int ticks;
     [SerializeField] private float FreezeTime;
     [SerializeField] private float PauseTime;
-    [SerializeField] public int mobLife;
-    [SerializeField] public int mobMaxLife;
     [SerializeField] public bool isFrozen = false;
     [SerializeField] public bool isDead = false;
     private float timer = 0;
+
+    //[SerializeField] public int mobLife;
+    //[SerializeField] public int mobMaxLife;
+    [SerializeField] MobLife_Script Mob_1;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +40,7 @@ public class Mob1_Script : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script>();
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
-        mobLife = mobMaxLife;
+        // mobLife = mobMaxLife;
         BurnTime = ticks;
     }
 
@@ -55,7 +57,7 @@ public class Mob1_Script : MonoBehaviour
             {
                 isDead = false;
                 timer = 0;
-                mobLife = mobMaxLife; // reset life
+                Mob_1.mobLife = Mob_1.mobMaxLife; // reset life
                 spriteRenderer.color = new Color(1, 1, 1, 1); // change color
             }
             return; // exit so it doesn't do the rest
@@ -85,7 +87,7 @@ public class Mob1_Script : MonoBehaviour
     private void MovingFonct()
     {
         // dead condition
-        if (mobLife <= 0)
+        if (Mob_1.mobLife <= 0)
         {
             spriteRenderer.color = new Color(1, 0, 0, 1); // change color
             isDead = true; // to freeze movement
@@ -133,7 +135,7 @@ public class Mob1_Script : MonoBehaviour
             // if collision with iceball, mob gets 1 dmg and freeze
             if (collision.gameObject.name == "Iceball(Clone)")
             {
-                mobLife--;
+                Mob_1.mobLife--;
                 spriteRenderer.color = new Color(0, 0, 1, 1); // change color
                 isFrozen = true;
                 Debug.Log("OnCollision ice");
@@ -160,7 +162,7 @@ public class Mob1_Script : MonoBehaviour
         spriteRenderer.color = new Color(0, 1, 0, 1); // change color
         while (BurnTime > 0)
         {
-            mobLife--;
+            Mob_1.mobLife--;
             BurnTime--;
             yield return new WaitForSeconds(BurnClock);
         }
