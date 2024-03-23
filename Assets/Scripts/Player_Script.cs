@@ -10,6 +10,7 @@ public class Player_Script : MonoBehaviour
     [SerializeField] new Rigidbody2D rigidbody;
     // [SerializeField] private float horizontal;
     [SerializeField] private float speed;
+    [SerializeField] GroundCheck_Script GroundCheck;
 
     [SerializeField] Transform FireballSpawnPoint;
     // [SerializeField] float FireballSpawnPointX;
@@ -89,9 +90,10 @@ public class Player_Script : MonoBehaviour
 
     } 
 
+
     public void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) // when right arrow
+        if (Input.GetKeyDown(KeyCode.UpArrow) && GroundCheck.isGrounded) // when right arrow
         {
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
