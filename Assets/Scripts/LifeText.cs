@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour
+public class LifeText : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI lifeCount;
     [SerializeField] Player_Script player;

@@ -13,6 +13,7 @@ public class GroundCheck_Script : MonoBehaviour
             isGrounded = true; // not jumping
         }
 
+
     }
 
     private void OnCollisionExit2D(Collision2D other) //leaving the floor 
@@ -21,5 +22,6 @@ public class GroundCheck_Script : MonoBehaviour
         {
             isGrounded = false; // jumping
         }
+
     }
 }
