@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 
 public class Mob1_Script : MonoBehaviour
@@ -20,7 +21,7 @@ public class Mob1_Script : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Player_Script player;
 
-    private int BurnTime;
+    public int BurnTime = 0;
     [SerializeField] private float BurnClock;
     [SerializeField] private int ticks;
     [SerializeField] private float FreezeTime;
@@ -33,6 +34,15 @@ public class Mob1_Script : MonoBehaviour
     //[SerializeField] public int mobMaxLife;
     [SerializeField] MobLife_Script Mob_1;
 
+    //LIGHT
+    public Light2D myLight;
+    [SerializeField] private float intens = 8;
+    [SerializeField] private float LightClock = 0.1f;
+
+
+    // prefab
+    [SerializeField] private GameObject collectible;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +51,10 @@ public class Mob1_Script : MonoBehaviour
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
         // mobLife = mobMaxLife;
-        BurnTime = ticks;
+
+        // GET LIGHT
+        myLight = GetComponent<Light2D>();
+        // myLight.intensity = 0;
     }
 
     // Update is called once per frame
@@ -89,6 +102,7 @@ public class Mob1_Script : MonoBehaviour
         // dead condition
         if (Mob_1.mobLife <= 0)
         {
+            var Blue = Instantiate(collectible, new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z), transform.rotation);
             spriteRenderer.color = new Color(1, 0, 0, 1); // change color
             isDead = true; // to freeze movement
         }
@@ -146,28 +160,30 @@ public class Mob1_Script : MonoBehaviour
 
     private void ApplyBurn()
     {
+
         if (BurnTime <= 0)
         {
             BurnTime = ticks;
         }
         
         StartCoroutine(BurnCoroutine(BurnClock));
-        
-        spriteRenderer.color = new Color(1, 1, 1, 1); // change color
-        
     }
 
     IEnumerator BurnCoroutine(float BurnClock)
     {
-        spriteRenderer.color = new Color(0, 1, 0, 1); // change color
         while (BurnTime > 0)
         {
             Mob_1.mobLife--;
             BurnTime--;
+
+            // light
+            /* myLight.intensity = intens;
+            yield return new WaitForSeconds(LightClock);
+            myLight.intensity = 0; */
+
             yield return new WaitForSeconds(BurnClock);
         }
 
     }
-
 
 }

@@ -13,8 +13,10 @@ public class Light_flicker : MonoBehaviour
     [SerializeField] private float intens = 8;
 
     // TIMER
-    [SerializeField] float StartTime;
-    [SerializeField] float CurrentTime = 4f;
+    [SerializeField] float StartTime = 3;
+    [SerializeField] float CurrentTime = 0f;
+
+    [SerializeField] Mob1_Script mob;
 
     // Start is called before the first frame update
     void Start()
@@ -22,39 +24,38 @@ public class Light_flicker : MonoBehaviour
         // GET LIGHT
         myLight = GetComponent<Light2D>();
 
-        // START TIMER TIME
-        StartTime = CurrentTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // IF TIMER WENT OUT OF TIME
-        if (CurrentTime <= 0f)
+        if (mob.BurnTime > 0 && CurrentTime < 0)
         {
             // RESTART TIMER
             CurrentTime = StartTime;
         }
-
+        
         Timer();
     }
 
    
-    void Timer()
+    private void Timer()
     {
-        // COUNT DOWN TIMER
-        CurrentTime -= 1 * Time.deltaTime;
-
-        if (CurrentTime <= 2)
-        {
-            // LIGHT OFF
-            myLight.intensity = 0;
-        }
-        else
+        if ((CurrentTime > 0 && CurrentTime < 0.1) || (CurrentTime > 1 && CurrentTime < 1.1) || (CurrentTime > 2 && CurrentTime < 2.1) )
         {
             // LIGHT ON
             myLight.intensity = intens;
         }
+        else
+        {
+            // LIGHT OFF
+            myLight.intensity = 0;
+        }
+
+        // COUNT DOWN TIMER
+        CurrentTime -= 1 * Time.deltaTime;
+
+       
     }
 
     /*IEnumerator Light(float intens)

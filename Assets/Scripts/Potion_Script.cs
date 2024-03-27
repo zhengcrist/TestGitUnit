@@ -48,7 +48,7 @@ public class Potion_Script : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag != "Player")
+        if (col.gameObject.tag != "Player" && col.gameObject.tag != "Green" && col.gameObject.tag != "Red" && col.gameObject.tag != "Blue")
         {
             Destroy(this.gameObject);
         }
