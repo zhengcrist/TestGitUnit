@@ -21,23 +21,19 @@ public class Mob1_Script : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Player_Script player;
 
-    public int BurnTime = 0;
-    [SerializeField] private float BurnClock;
-    [SerializeField] private int ticks;
+    // public int BurnTime = 0;
+    // [SerializeField] private float BurnClock;
+    // [SerializeField] private int ticks;
     [SerializeField] private float FreezeTime;
     [SerializeField] private float PauseTime;
     [SerializeField] public bool isFrozen = false;
+    [SerializeField] public bool isBurnt = false;
     [SerializeField] public bool isDead = false;
     private float timer = 0;
 
     //[SerializeField] public int mobLife;
     //[SerializeField] public int mobMaxLife;
     [SerializeField] MobLife_Script Mob_1;
-
-    //LIGHT
-    public Light2D myLight;
-    [SerializeField] private float intens = 8;
-    [SerializeField] private float LightClock = 0.1f;
 
 
     // prefab
@@ -52,9 +48,6 @@ public class Mob1_Script : MonoBehaviour
         startPosition = transform.position;
         // mobLife = mobMaxLife;
 
-        // GET LIGHT
-        myLight = GetComponent<Light2D>();
-        // myLight.intensity = 0;
     }
 
     // Update is called once per frame
@@ -142,7 +135,8 @@ public class Mob1_Script : MonoBehaviour
             // if collision with fireball, mob gets burnt
             if (collision.gameObject.name == "Fireball(Clone)")
             {
-                ApplyBurn();
+                isBurnt = true;
+                // Burn on light_flicker script
                 Debug.Log("OnCollision fire");
             }
 
@@ -156,34 +150,6 @@ public class Mob1_Script : MonoBehaviour
             }
         }
         
-    }
-
-    private void ApplyBurn()
-    {
-
-        if (BurnTime <= 0)
-        {
-            BurnTime = ticks;
-        }
-        
-        StartCoroutine(BurnCoroutine(BurnClock));
-    }
-
-    IEnumerator BurnCoroutine(float BurnClock)
-    {
-        while (BurnTime > 0)
-        {
-            Mob_1.mobLife--;
-            BurnTime--;
-
-            // light
-            /* myLight.intensity = intens;
-            yield return new WaitForSeconds(LightClock);
-            myLight.intensity = 0; */
-
-            yield return new WaitForSeconds(BurnClock);
-        }
-
     }
 
 }

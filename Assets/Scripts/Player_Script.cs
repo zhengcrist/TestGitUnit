@@ -66,7 +66,7 @@ public class Player_Script : MonoBehaviour
     { // move
 
 
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A)) // when right arrow
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) // when right arrow
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);  // movement to the right
             // Player_animator.SetBool("BoolMove", true); // run animation
@@ -77,7 +77,7 @@ public class Player_Script : MonoBehaviour
             // Player_animator.SetBool("BoolMove", false); // stop run animation
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.D)) // when left arrow
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) // when left arrow
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);  // movement to the left
             // Player_animator.SetBool("BoolMove", true); // run animation

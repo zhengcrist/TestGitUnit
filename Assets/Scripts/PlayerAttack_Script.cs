@@ -15,7 +15,11 @@ public class PlayerAttack_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UserInput.instance.default_Inputs.P1.Attack.WasPressedThisFrame())
+        /*if (UserInput.instance.default_Inputs.P1.Attack.WasPressedThisFrame())
+        {
+            Attack();
+        }*/
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
         }
