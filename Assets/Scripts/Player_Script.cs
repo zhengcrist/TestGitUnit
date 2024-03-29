@@ -43,6 +43,8 @@ public class Player_Script : MonoBehaviour
     {
         Move();
         Jump();
+
+        // CHANGE THROWING SIDE
         /*if (spriteRenderer.flipX == true)
         {
             FireballSpawnPointX = - (FireballSpawnPoint.position.x);
@@ -53,7 +55,8 @@ public class Player_Script : MonoBehaviour
         }
         FireballSpawnPoint.position = new Vector3(FireballSpawnPointX, FireballSpawnPoint.position.y, 0);*/
        
-        potion = SwitchPotion();
+        //potion = SwitchPotion();
+
         Throw();
     }
 
@@ -66,7 +69,7 @@ public class Player_Script : MonoBehaviour
     { // move
 
 
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) // when right arrow
+        if (Input.GetKey(KeyCode.RightArrow)) // when right arrow
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);  // movement to the right
             // Player_animator.SetBool("BoolMove", true); // run animation
@@ -77,7 +80,7 @@ public class Player_Script : MonoBehaviour
             // Player_animator.SetBool("BoolMove", false); // stop run animation
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) // when left arrow
+        if (Input.GetKey(KeyCode.LeftArrow)) // when left arrow
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);  // movement to the left
             // Player_animator.SetBool("BoolMove", true); // run animation
@@ -94,13 +97,49 @@ public class Player_Script : MonoBehaviour
 
     public void Jump()
     {
-        if ((Input.GetKeyDown(KeyCode.UpArrow)|| Input.GetKeyDown(KeyCode.W)) && GroundCheck.isGrounded) // when right arrow
+        if (Input.GetKeyDown(KeyCode.UpArrow) && GroundCheck.isGrounded) // when right arrow
         {
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
     }
 
-    public GameObject SwitchPotion()
+    public void Throw()
+    {
+
+        // healing potion
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (inventory.MedNum >= 1 && inventory.OilNum >= 1 && inventory.ToadNum >= 1 && life < maxlife)
+            {
+                life++;
+                inventory.MedNum--;
+                inventory.OilNum--;
+                inventory.ToadNum--;
+            }
+        }
+
+        // fire potion
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (inventory.OilNum >= 3)
+            {
+                var fireball = Instantiate(potions[1], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
+                inventory.OilNum -= 3;
+            }
+        }
+
+        // ice potion
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (inventory.ToadNum >= 3)
+            {
+                var fireball = Instantiate(potions[2], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
+                inventory.ToadNum -= 3;
+            }
+        }
+    }
+
+    /* public GameObject SwitchPotion()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow)) // when down arrow
         {
@@ -111,12 +150,11 @@ public class Player_Script : MonoBehaviour
             }
         }
         return potions[currentPotion];
-    }
+    } */
 
-
-    public void Throw()
+    /* public void Throw2()
     {
-        /*if (Input.GetKeyDown(KeyCode.Space)) // when right arrow
+        if (Input.GetKeyDown(KeyCode.Space)) // when right arrow
         {
             if (currentPotion != 0)
             {
@@ -127,38 +165,7 @@ public class Player_Script : MonoBehaviour
             {
                 life++;
             }
-        }*/
-
-        // healing potion
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (inventory.MedNum >=1 && inventory.OilNum >= 1 && inventory.ToadNum >= 1 && life < maxlife)
-            {
-                life++;
-                inventory.MedNum--;
-                inventory.OilNum--;
-                inventory.ToadNum--;
-            }
         }
+    } */
 
-        // fire potion
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (inventory.OilNum >= 3)
-            {
-                var fireball = Instantiate(potions[1], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
-                inventory.OilNum -= 3;
-            }
-        }
-
-        // ice potion
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (inventory.ToadNum >= 3)
-            {
-                var fireball = Instantiate(potions[2], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
-                inventory.ToadNum -= 3;
-            }
-        }
-    }
 }

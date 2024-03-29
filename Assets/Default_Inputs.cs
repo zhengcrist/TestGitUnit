@@ -55,39 +55,39 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Change_potion"",
-                    ""type"": ""Button"",
-                    ""id"": ""3a78b8fa-fbad-42ec-a4ac-8ad8af44b864"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Inventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""e876b74c-c05a-4aaf-96d3-d5d35a719dca"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Use_potion"",
-                    ""type"": ""Button"",
-                    ""id"": ""150478b0-c7f4-498f-b4f9-58b411f62501"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interaction"",
                     ""type"": ""Button"",
                     ""id"": ""b8b4247c-3e9f-4c6a-bba1-443d2a0c59a7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Heal potion"",
+                    ""type"": ""Button"",
+                    ""id"": ""ef84bfe3-f5e1-488e-8172-a5a064eb4a2a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire potion"",
+                    ""type"": ""Button"",
+                    ""id"": ""acd1e695-e7d6-4c09-8db8-4a4e975d342d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ice potion"",
+                    ""type"": ""Button"",
+                    ""id"": ""6736c600-08a7-48e0-b8d8-10644303126b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
@@ -214,86 +214,9 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""2D 2 [Keyboard]"",
-                    ""id"": ""dc2f19a7-2f9f-4858-a9e7-e4951dfa0fa8"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""34492860-1524-4d1e-9e78-491decbb1b17"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""9e5fdfe9-6c1e-44cb-9ece-813888c2a4e0"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""f5439030-dcaf-40d9-ad08-4c297eb83ac5"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""aa54c0b6-b8fb-4aef-a339-01e2425b0a95"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0d5ca3b0-b727-42e2-b8d1-d0c9fd1a43a9"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Use_potion"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cf18f838-13d2-412b-b421-43280cce46c1"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Use_potion"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": """",
                     ""id"": ""1b4a6fdc-0019-4f44-8c7d-739dfe21c39d"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -314,63 +237,8 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8b5c9659-a91c-4ffc-ab1f-17bfb39c2533"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Change_potion"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d4b08dc9-9105-4e6d-b0c5-7ea3c10c7342"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Change_potion"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bc9fbc9b-f7b3-46cf-8de1-bcb37529e2a9"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Change_potion"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8c5c9591-760b-430b-8ecc-8d37e9485a8e"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ab3b64c8-6e98-45bc-8499-0833babd5a8d"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""81c09917-3863-4161-9758-fa399078f05d"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -381,7 +249,7 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""90632255-480a-4d7a-a572-508eaf82f51c"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -402,8 +270,8 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""99f0d874-636c-40fa-ad27-778be20b4cb6"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""id"": ""45d46b9a-8889-4c40-97e5-334d933c8fa2"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
@@ -413,12 +281,34 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""45d46b9a-8889-4c40-97e5-334d933c8fa2"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": ""Press"",
+                    ""id"": ""d2322c9b-fb84-4696-a801-8b7764edb0ef"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""Heal potion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40b5d841-5cdf-4f68-a972-3d3fbf9f0f6a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire potion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5cc3d60-9919-47e6-a515-52680dc4ecb3"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ice potion"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -674,10 +564,10 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
         m_P1_Move = m_P1.FindAction("Move", throwIfNotFound: true);
         m_P1_Jump = m_P1.FindAction("Jump", throwIfNotFound: true);
         m_P1_Attack = m_P1.FindAction("Attack", throwIfNotFound: true);
-        m_P1_Change_potion = m_P1.FindAction("Change_potion", throwIfNotFound: true);
-        m_P1_Inventory = m_P1.FindAction("Inventory", throwIfNotFound: true);
-        m_P1_Use_potion = m_P1.FindAction("Use_potion", throwIfNotFound: true);
         m_P1_Interaction = m_P1.FindAction("Interaction", throwIfNotFound: true);
+        m_P1_Healpotion = m_P1.FindAction("Heal potion", throwIfNotFound: true);
+        m_P1_Firepotion = m_P1.FindAction("Fire potion", throwIfNotFound: true);
+        m_P1_Icepotion = m_P1.FindAction("Ice potion", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Options = m_UI.FindAction("Options", throwIfNotFound: true);
@@ -748,10 +638,10 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_P1_Move;
     private readonly InputAction m_P1_Jump;
     private readonly InputAction m_P1_Attack;
-    private readonly InputAction m_P1_Change_potion;
-    private readonly InputAction m_P1_Inventory;
-    private readonly InputAction m_P1_Use_potion;
     private readonly InputAction m_P1_Interaction;
+    private readonly InputAction m_P1_Healpotion;
+    private readonly InputAction m_P1_Firepotion;
+    private readonly InputAction m_P1_Icepotion;
     public struct P1Actions
     {
         private @Default_Inputs m_Wrapper;
@@ -759,10 +649,10 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_P1_Move;
         public InputAction @Jump => m_Wrapper.m_P1_Jump;
         public InputAction @Attack => m_Wrapper.m_P1_Attack;
-        public InputAction @Change_potion => m_Wrapper.m_P1_Change_potion;
-        public InputAction @Inventory => m_Wrapper.m_P1_Inventory;
-        public InputAction @Use_potion => m_Wrapper.m_P1_Use_potion;
         public InputAction @Interaction => m_Wrapper.m_P1_Interaction;
+        public InputAction @Healpotion => m_Wrapper.m_P1_Healpotion;
+        public InputAction @Firepotion => m_Wrapper.m_P1_Firepotion;
+        public InputAction @Icepotion => m_Wrapper.m_P1_Icepotion;
         public InputActionMap Get() { return m_Wrapper.m_P1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -781,18 +671,18 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @Change_potion.started += instance.OnChange_potion;
-            @Change_potion.performed += instance.OnChange_potion;
-            @Change_potion.canceled += instance.OnChange_potion;
-            @Inventory.started += instance.OnInventory;
-            @Inventory.performed += instance.OnInventory;
-            @Inventory.canceled += instance.OnInventory;
-            @Use_potion.started += instance.OnUse_potion;
-            @Use_potion.performed += instance.OnUse_potion;
-            @Use_potion.canceled += instance.OnUse_potion;
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
+            @Healpotion.started += instance.OnHealpotion;
+            @Healpotion.performed += instance.OnHealpotion;
+            @Healpotion.canceled += instance.OnHealpotion;
+            @Firepotion.started += instance.OnFirepotion;
+            @Firepotion.performed += instance.OnFirepotion;
+            @Firepotion.canceled += instance.OnFirepotion;
+            @Icepotion.started += instance.OnIcepotion;
+            @Icepotion.performed += instance.OnIcepotion;
+            @Icepotion.canceled += instance.OnIcepotion;
         }
 
         private void UnregisterCallbacks(IP1Actions instance)
@@ -806,18 +696,18 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @Change_potion.started -= instance.OnChange_potion;
-            @Change_potion.performed -= instance.OnChange_potion;
-            @Change_potion.canceled -= instance.OnChange_potion;
-            @Inventory.started -= instance.OnInventory;
-            @Inventory.performed -= instance.OnInventory;
-            @Inventory.canceled -= instance.OnInventory;
-            @Use_potion.started -= instance.OnUse_potion;
-            @Use_potion.performed -= instance.OnUse_potion;
-            @Use_potion.canceled -= instance.OnUse_potion;
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
+            @Healpotion.started -= instance.OnHealpotion;
+            @Healpotion.performed -= instance.OnHealpotion;
+            @Healpotion.canceled -= instance.OnHealpotion;
+            @Firepotion.started -= instance.OnFirepotion;
+            @Firepotion.performed -= instance.OnFirepotion;
+            @Firepotion.canceled -= instance.OnFirepotion;
+            @Icepotion.started -= instance.OnIcepotion;
+            @Icepotion.performed -= instance.OnIcepotion;
+            @Icepotion.canceled -= instance.OnIcepotion;
         }
 
         public void RemoveCallbacks(IP1Actions instance)
@@ -910,10 +800,10 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnChange_potion(InputAction.CallbackContext context);
-        void OnInventory(InputAction.CallbackContext context);
-        void OnUse_potion(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
+        void OnHealpotion(InputAction.CallbackContext context);
+        void OnFirepotion(InputAction.CallbackContext context);
+        void OnIcepotion(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
