@@ -13,19 +13,19 @@ public class PlayerAttack_Script : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
-        /*if (UserInput.instance.default_Inputs.P1.Attack.WasPressedThisFrame())
-        {
-            Attack();
-        }*/
+        // if (UserInput.instance.default_Inputs.P1.Attack.WasPressedThisFrame())
+        // {
+        //    Attack();
+        // }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
         }
-    }
+    }*/
 
-    private void Attack()
+    public void Attack()
     {
         hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
 

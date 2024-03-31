@@ -15186,8 +15186,9 @@ GameObject:
   - component: {fileID: 976563595}
   - component: {fileID: 976563594}
   - component: {fileID: 976563598}
-  - component: {fileID: 976563599}
+  - component: {fileID: 976563601}
   - component: {fileID: 976563600}
+  - component: {fileID: 976563599}
   m_Layer: 0
   m_Name: P1
   m_TagString: Player
@@ -15344,7 +15345,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976563593}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc6f07af03edd3a47bc1d1cd405afa05, type: 3}
   m_Name: 
@@ -15371,14 +15372,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976563593}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: ad2ea4931df7b73489803def428e0b35,
     type: 3}
-  m_NotificationBehavior: 3
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -15395,21 +15396,21 @@ MonoBehaviour:
     m_ActionId: 93e41774-33b8-43bb-9f40-f548ae1d3f92
     m_ActionName: P1/Move[/DualShock4GamepadHID/leftStick,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/Keyboard/upArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/w,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 976563600}
+        m_TargetAssemblyTypeName: PlayerAttack_Script, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6ad4459a-c643-44eb-adc7-b28dad39ff3f
     m_ActionName: P1/Attack[/Keyboard/z,/DualShock4GamepadHID/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3a78b8fa-fbad-42ec-a4ac-8ad8af44b864
-    m_ActionName: P1/Change_potion[/DualShock4GamepadHID/buttonSouth,/Keyboard/downArrow,/Keyboard/s]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e876b74c-c05a-4aaf-96d3-d5d35a719dca
-    m_ActionName: P1/Inventory[/Keyboard/x,/DualShock4GamepadHID/buttonWest]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 150478b0-c7f4-498f-b4f9-58b411f62501
-    m_ActionName: P1/Use_potion[/Keyboard/space,/DualShock4GamepadHID/rightShoulder]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: b8b4247c-3e9f-4c6a-bba1-443d2a0c59a7
@@ -15431,9 +15432,69 @@ MonoBehaviour:
     m_ActionId: 0662eed1-917e-44fa-b8ab-31b1862a98bc
     m_ActionName: UI/Select[/Keyboard/downArrow,/Keyboard/anyKey,/Keyboard/s,/Keyboard/w,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/up]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 976563601}
+        m_TargetAssemblyTypeName: Player_Script1, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0d4df0f9-e41a-4a5d-ac42-fdd9746f2ff2
     m_ActionName: P1/Jump[/Keyboard/upArrow,/Keyboard/w,/DualShock4GamepadHID/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 976563601}
+        m_TargetAssemblyTypeName: Player_Script1, Assembly-CSharp
+        m_MethodName: Heal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ef84bfe3-f5e1-488e-8172-a5a064eb4a2a
+    m_ActionName: P1/Heal potion[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 976563601}
+        m_TargetAssemblyTypeName: Player_Script1, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: acd1e695-e7d6-4c09-8db8-4a4e975d342d
+    m_ActionName: P1/Fire potion[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 976563601}
+        m_TargetAssemblyTypeName: Player_Script1, Assembly-CSharp
+        m_MethodName: Ice
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6736c600-08a7-48e0-b8d8-10644303126b
+    m_ActionName: P1/Ice potion[/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: P1
@@ -15457,6 +15518,34 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damageAmount: 1
+--- !u!114 &976563601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976563593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfbf9d0e8faa35e45ad0043b42cf97c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 342413518}
+  spriteRenderer: {fileID: 976563596}
+  rigidbody: {fileID: 976563594}
+  speed: 3.78
+  GroundCheck: {fileID: 1042599075}
+  FireballSpawnPoint: {fileID: 967190571}
+  potions:
+  - {fileID: 6414508859303138557, guid: 55a0d341eb800a344a110da6d24b15fb, type: 3}
+  - {fileID: 3325125536636954370, guid: 22e2eafa45b1f574bb16746612249b1e, type: 3}
+  - {fileID: 8968824193169400621, guid: c81cbb1a4ba8a3f41b41c58d2cd243dc, type: 3}
+  potion: {fileID: 6414508859303138557, guid: 55a0d341eb800a344a110da6d24b15fb, type: 3}
+  currentPotion: 0
+  jump: 5.82
+  life: 8
+  maxlife: 8
+  _moveInput: {x: 0, y: 0}
 --- !u!224 &1010176861 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7532033397776034906, guid: ce590fddc08557042b0355e3a85397b6,
@@ -17270,8 +17359,8 @@ MonoBehaviour:
   - {x: 21.494999, y: 3.12, z: 0}
   - {x: 21.494999, y: -6.12, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 1485716084}
-  m_InstanceId: 57972
+  m_Mesh: {fileID: 1670889915}
+  m_InstanceId: 31026
   m_LocalBounds:
     m_Center: {x: -1, y: -1.5, z: 0}
     m_Extent: {x: 22.494999, y: 4.62, z: 0}
@@ -17537,7 +17626,35 @@ MonoBehaviour:
   Mob_1: {fileID: 57933518}
   collectible: {fileID: 1576465973565899918, guid: 2c47ce4ff8a75614a9d07f1c403d0ccb,
     type: 3}
---- !u!43 &1485716084
+--- !u!1 &1597269278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5746524716124355638, guid: ce590fddc08557042b0355e3a85397b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1982858431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1597269283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597269278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c141421602ca4224d99e3a7c31bc7093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Potion: {fileID: 1597269278}
+  inventory: {fileID: 342413518}
+  m_TextureOrigin: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 8f68aecdd97e85d4ba7b38a1772c76b3, type: 3}
+--- !u!4 &1657140236 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3494571918780780949, guid: 648bc5a504acdb94fb4f253a005c9896,
+    type: 3}
+  m_PrefabInstance: {fileID: 4057479941503979998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!43 &1670889915
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17702,34 +17819,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1597269278 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5746524716124355638, guid: ce590fddc08557042b0355e3a85397b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1982858431}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1597269283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597269278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c141421602ca4224d99e3a7c31bc7093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Potion: {fileID: 1597269278}
-  inventory: {fileID: 342413518}
-  m_TextureOrigin: {fileID: 0}
-  m_Texture: {fileID: 2800000, guid: 8f68aecdd97e85d4ba7b38a1772c76b3, type: 3}
---- !u!4 &1657140236 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3494571918780780949, guid: 648bc5a504acdb94fb4f253a005c9896,
-    type: 3}
-  m_PrefabInstance: {fileID: 4057479941503979998}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1703306664
 GameObject:
   m_ObjectHideFlags: 0
