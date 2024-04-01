@@ -19,7 +19,7 @@ public class Mob1_Script : MonoBehaviour
 
     // [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] Player_Script player;
+    [SerializeField] Player_Script1 player;
 
     // public int BurnTime = 0;
     // [SerializeField] private float BurnClock;
@@ -43,7 +43,7 @@ public class Mob1_Script : MonoBehaviour
     void Start()
     {
         // rigidbody = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
         // mobLife = mobMaxLife;

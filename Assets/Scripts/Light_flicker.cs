@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-
-
-
 public class Light_flicker : MonoBehaviour
 {
     // LIGHT
