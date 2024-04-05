@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5275503923558804169}
   m_Layer: 0
   m_Name: Mob_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 8441231410130938627}
   m_Layer: 6
   m_Name: Mob
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,14 +324,15 @@ MonoBehaviour:
   - 3
   - 2
   - 4
-  spriteRenderer: {fileID: 3941882233375536736}
-  player: {fileID: 0}
-  FreezeTime: 2.46
-  PauseTime: 10.32
-  isFrozen: 0
   isBurnt: 0
+  isFrozen: 0
+  FreezeTime: 3.55
   isDead: 0
+  PauseTime: 10.32
+  spriteRenderer: {fileID: 3941882233375536736}
   Mob_1: {fileID: 5275503923558804169}
+  player: {fileID: 0}
+  playerImmuneMax: 1
   collectible: {fileID: 1576465973565899918, guid: 2c47ce4ff8a75614a9d07f1c403d0ccb,
     type: 3}
 --- !u!61 &7977698732864419770

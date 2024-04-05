@@ -7,52 +7,53 @@ using UnityEngine.Rendering.Universal;
 
 public class Mob1_Script : MonoBehaviour
 {
+    // ______________ For mob movement ______________
     [SerializeField] private Transform[] _waypoints; // start the waypoints array
-    
     [SerializeField] private float[] speed; // speed of the mob
-
     private float _checkDistance = 0.1f; // current distance waypoint-mob
     Vector3 startPosition = Vector3.zero;
-
     private Transform _targetWaypoint; // which waypoint to move to
     private int _currentWaypointIndex = 0; // to start the index of the waypoint array
 
-    // [SerializeField] new Rigidbody2D rigidbody;
-    [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] Player_Script1 player;
-
-    // public int BurnTime = 0;
-    // [SerializeField] private float BurnClock;
-    // [SerializeField] private int ticks;
-    [SerializeField] private float FreezeTime;
-    [SerializeField] private float PauseTime;
-    [SerializeField] public bool isFrozen = false;
+    // ______________ For mob effects ______________
+    // BURN
     [SerializeField] public bool isBurnt = false;
+    // FREEZE
+    [SerializeField] public bool isFrozen = false;
+    [SerializeField] private float FreezeTime;
+    // DEAD
     [SerializeField] public bool isDead = false;
-    private float timer = 0;
+    [SerializeField] private float PauseTime;
 
-    //[SerializeField] public int mobLife;
-    //[SerializeField] public int mobMaxLife;
-    [SerializeField] MobLife_Script Mob_1;
+    private float timer = 0; // disabled timer
+    [SerializeField] SpriteRenderer spriteRenderer; // mob sprite renderer
+    [SerializeField] MobLife_Script Mob_1; // for mob life
 
+    // ______________ For player ______________
+    [SerializeField] Player_Script1 player;
+    // Immunity time
+    [SerializeField] private float playerImmuneMax;
+    private float playerImmuneTimer;
 
-    // prefab
-    [SerializeField] private GameObject collectible;
+    // ______________ For drop ______________
+    [SerializeField] private GameObject collectible; //prefab drop
+
 
     // Start is called before the first frame update
     void Start()
     {
-        // rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
-        // mobLife = mobMaxLife;
+        playerImmuneTimer = playerImmuneMax;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ______________ Mob disabled ________________
+
         if (isDead) // freeze movement if dead
         {
             Debug.Log("deadead");
@@ -83,12 +84,21 @@ public class Mob1_Script : MonoBehaviour
             }
             return; // exit so it doesn't do the rest
         }
-       
+
+        // ___________________________________________
+
+
         MovingFonct();
+
+        // Player immunity timer set
+        playerImmuneTimer += Time.deltaTime;
         
 
     }
 
+
+    // ________________________________________________________________________________
+    // ___________________________________ MOVEMENT ___________________________________
 
     private void MovingFonct()
     {
@@ -122,6 +132,12 @@ public class Mob1_Script : MonoBehaviour
         return _waypoints[_currentWaypointIndex];
     }
 
+    // __________________________________ !MOVEMENT ___________________________________
+    // ________________________________________________________________________________
+    
+    // ________________________________________________________________________________
+    // _________________________________ COLLISIONS ___________________________________
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isDead)
@@ -129,7 +145,15 @@ public class Mob1_Script : MonoBehaviour
             // if collision with player, player gets damage
             if (collision.gameObject.tag == "Player")
             {
-                player.life--;
+                // Player receive dmg only when they're out of the immunity time and the mob is not frozen or dead
+                if (!isFrozen && !isDead && (playerImmuneTimer >= playerImmuneMax))
+                {
+                    // Immunity timer reset
+                    playerImmuneTimer = 0;
+                    // Player dmg
+                    player.life--;
+                   
+                }
             }
 
             // if collision with fireball, mob gets burnt
@@ -143,7 +167,7 @@ public class Mob1_Script : MonoBehaviour
             // if collision with iceball, mob gets 1 dmg and freeze
             if (collision.gameObject.name == "Iceball(Clone)")
             {
-                Mob_1.mobLife--;
+                Mob_1.mobLife--; // dmg received by mob
                 spriteRenderer.color = new Color(0, 0, 1, 1); // change color
                 isFrozen = true;
                 Debug.Log("OnCollision ice");
@@ -151,5 +175,8 @@ public class Mob1_Script : MonoBehaviour
         }
         
     }
+
+    // ________________________________ !COLLISIONS ___________________________________
+    // ________________________________________________________________________________
 
 }

@@ -227,7 +227,7 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""959f7440-6011-48ce-b7a4-7da112d52c3f"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -249,7 +249,7 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""90632255-480a-4d7a-a572-508eaf82f51c"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -271,7 +271,7 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""45d46b9a-8889-4c40-97e5-334d933c8fa2"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
@@ -292,6 +292,17 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b5023ddd-6cf1-46ff-bce7-f3cd69da1fb4"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heal potion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""40b5d841-5cdf-4f68-a972-3d3fbf9f0f6a"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
@@ -303,8 +314,30 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2ce80403-8a11-4f94-90cb-f54b7f693a3a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire potion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e5cc3d60-9919-47e6-a515-52680dc4ecb3"",
                     ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ice potion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9eea13f8-a36c-4e3e-bc25-c5f0fa65ab0c"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
