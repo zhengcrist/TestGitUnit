@@ -77,7 +77,7 @@ public class Mob1_Script : MonoBehaviour
         if (isFrozen) // freeze movement if frozen
         {
             Debug.Log("frozen");
-
+            
             timer += Time.deltaTime;
 
             if (timer > FreezeTime)
@@ -146,6 +146,8 @@ public class Mob1_Script : MonoBehaviour
     {
         if (!isDead)
         {
+            _targetWaypoint = GetNextWaypoint();
+
             // if collision with player, player gets damage
             if (collision.gameObject.tag == "Player")
             {
