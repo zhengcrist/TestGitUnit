@@ -31,6 +31,7 @@ public class Mob1_Script : MonoBehaviour
 
     // ______________ For player ______________
     [SerializeField] Player_Script1 player;
+    [SerializeField] SpriteRenderer playerSR; // player sprite renderer
     // Immunity time
     [SerializeField] private float playerImmuneMax;
     private float playerImmuneTimer;
@@ -42,9 +43,12 @@ public class Mob1_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
+        playerSR = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
+
         playerImmuneTimer = playerImmuneMax;
 
     }
@@ -146,13 +150,14 @@ public class Mob1_Script : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 // Player receive dmg only when they're out of the immunity time and the mob is not frozen or dead
-                if (!isFrozen && !isDead && (playerImmuneTimer >= playerImmuneMax))
+                if (!isFrozen && (playerImmuneTimer >= playerImmuneMax))
                 {
                     // Immunity timer reset
                     playerImmuneTimer = 0;
                     // Player dmg
                     player.life--;
-                   
+                    // Change color feedback
+                    StartCoroutine(playerDMG());                   
                 }
             }
 
@@ -179,4 +184,10 @@ public class Mob1_Script : MonoBehaviour
     // ________________________________ !COLLISIONS ___________________________________
     // ________________________________________________________________________________
 
+    IEnumerator playerDMG()
+    {
+        playerSR.color = new Color(1, 0, 0, 1); // change player to red
+        yield return new WaitForSeconds(0.5f);
+        playerSR.color = new Color(1, 1, 1, 1); // reset color
+    }
 }
