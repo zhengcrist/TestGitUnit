@@ -10,6 +10,8 @@ public class Interaction : MonoBehaviour
     [SerializeField] private Default_Inputs default_Inputs;
     [SerializeField] TextMeshProUGUI interText;
 
+    [SerializeField] string[] text;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,8 +25,8 @@ public class Interaction : MonoBehaviour
         {
             if (default_Inputs.P1.Interaction.WasPressedThisFrame())
             {
-                interText.text = "Hello world";
                 Debug.Log("Pressed");
+
                 StartCoroutine(interCoroutine());
             }
         }
@@ -55,8 +57,13 @@ public class Interaction : MonoBehaviour
 
     IEnumerator interCoroutine()
     {
-       
-        yield return new WaitForSeconds(4f);
+        int i = 0;
+        while (i < text.Length)
+        {
+            interText.text = text[i];
+            yield return new WaitForSeconds(2f);
+            i++;
+        }
         interText.text = "";
     }
 }
