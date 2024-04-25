@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class PlayerAttack_Script : MonoBehaviour
 {
@@ -11,27 +13,15 @@ public class PlayerAttack_Script : MonoBehaviour
 
     private RaycastHit2D[] hits;
 
-
-    // Update is called once per frame
-    /*void Update()
+    public void Attack(InputAction.CallbackContext context)
     {
-        // if (UserInput.instance.default_Inputs.P1.Attack.WasPressedThisFrame())
-        // {
-        //    Attack();
-        // }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack();
-        }
-    }*/
+        if (!context.performed) return;
 
-    public void Attack()
-    {
         hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
 
         for (int i = 0; i < hits.Length; i++)
         {
-            IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable> ();
+            IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
 
             // if an iDamageable is found
             if (iDamageable != null)
@@ -45,5 +35,5 @@ public class PlayerAttack_Script : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
-    }
+    } 
 }
