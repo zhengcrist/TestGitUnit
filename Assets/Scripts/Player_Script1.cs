@@ -1,18 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player_Script1 : MonoBehaviour
 {
+    [SerializeField] private Default_Inputs default_Inputs;
+
+    public int life;
+    [SerializeField] private int maxlife;
     [SerializeField] Inventory_Script inventory;
+    [SerializeField] new Rigidbody2D rigidbody;
+
 
     // [SerializeField] Animator Player_animator;
+    // private bool Player_Run;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] new Rigidbody2D rigidbody;
-    // [SerializeField] private float horizontal;
+
+    [SerializeField] private Vector2 _moveInput;
     [SerializeField] private float speed;
+
     [SerializeField] GroundCheck_Script GroundCheck;
+    [SerializeField] private float jump;
+
 
     [SerializeField] Transform FireballSpawnPoint;
     // [SerializeField] float FireballSpawnPointX;
@@ -20,14 +32,10 @@ public class Player_Script1 : MonoBehaviour
     [SerializeField] private GameObject[] potions; // array of potions
     [SerializeField] private GameObject potion;
     [SerializeField] private int currentPotion = 0;
+    [SerializeField] private float cooldownThrow = 0.3f;
+    [SerializeField] private float cooldownDrink = 1f;
 
-    // private bool Player_Run;
-    [SerializeField] private float jump;
-    [SerializeField] public int life;
-    [SerializeField] private int maxlife;
-
-    [SerializeField] private Default_Inputs default_Inputs;
-    [SerializeField] private Vector2 _moveInput;
+    public PlayerAttack_Script player; // for the inaction bool
 
     void Awake()
     {
@@ -52,13 +60,6 @@ public class Player_Script1 : MonoBehaviour
         default_Inputs.P1.Disable();
     }
 
-    /* void FixedUpdate()
-    {
-        _moveInput = default_Inputs.P1.Move.ReadValue<Vector2>();
-        _moveInput.y = 0f;
-        rigidbody.velocity = _moveInput * speed;
-    } */
-
     void FixedUpdate()
     {
         _moveInput = default_Inputs.P1.Move.ReadValue<Vector2>();
@@ -75,30 +76,6 @@ public class Player_Script1 : MonoBehaviour
         }
     }
 
-
-    /* if (Input.GetKey(KeyCode.RightArrow)) // when right arrow
-    {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);  // movement to the right
-        // Player_animator.SetBool("BoolMove", true); // run animation
-        spriteRenderer.flipX = true; // sprite flipped
-    }
-    else if (Input.GetKeyUp(KeyCode.RightArrow))
-    {
-        // Player_animator.SetBool("BoolMove", false); // stop run animation
-    }
-
-    if (Input.GetKey(KeyCode.LeftArrow)) // when left arrow
-    {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);  // movement to the left
-        // Player_animator.SetBool("BoolMove", true); // run animation
-        spriteRenderer.flipX = false; // sprite not flip
-    }
-    else if (Input.GetKeyUp(KeyCode.LeftArrow))
-    {
-        // Player_animator.SetBool("BoolMove", false); // stop run animation
-    } */
-
-
     public void Jump(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -111,9 +88,13 @@ public class Player_Script1 : MonoBehaviour
     public void Heal(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (inventory.MedNum >= 1 && inventory.OilNum >= 1 && inventory.ToadNum >= 1 && life < maxlife)
+        if (player.inAction == false && inventory.MedNum >= 1 && inventory.OilNum >= 1 && inventory.ToadNum >= 1 && life < maxlife)
         {
+            player.inAction = true;
+            StartCoroutine(Cooldown(cooldownDrink));
+
             life++;
+
             inventory.MedNum--;
             inventory.OilNum--;
             inventory.ToadNum--;
@@ -123,21 +104,32 @@ public class Player_Script1 : MonoBehaviour
     public void Fire(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (inventory.OilNum >= 3)
+        if (player.inAction == false && inventory.OilNum >= 2)
         {
+            player.inAction = true;
+            StartCoroutine(Cooldown(cooldownThrow));
+
             var fireball = Instantiate(potions[1], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
-            inventory.OilNum -= 3;
+            inventory.OilNum -= 2;
         }
     }
 
     public void Ice(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (inventory.ToadNum >= 3)
+        if (player.inAction == false && inventory.ToadNum >= 2)
         {
+            player.inAction = true;
+            StartCoroutine(Cooldown(cooldownThrow));
+
             var fireball = Instantiate(potions[2], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
-            inventory.ToadNum -= 3;
+            inventory.ToadNum -= 2;
         }
     }
 
+    IEnumerator Cooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        player.inAction = false;
+    }
 }
