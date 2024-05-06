@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3010878247852227561}
   - component: {fileID: 4423729375468954877}
   - component: {fileID: 4080386115558532227}
-  - component: {fileID: 4091152136097924248}
   - component: {fileID: 1848082552980747137}
   - component: {fileID: 6611793642231269101}
   - component: {fileID: 6474595091579035375}
@@ -165,33 +164,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4091152136097924248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384374140099025}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc6f07af03edd3a47bc1d1cd405afa05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  spriteRenderer: {fileID: 3010878247852227561}
-  rigidbody: {fileID: 4080386115558532227}
-  speed: 3.92
-  GroundCheck: {fileID: 2825616755767797757}
-  FireballSpawnPoint: {fileID: 3208815536797506274}
-  potions:
-  - {fileID: 6414508859303138557, guid: 55a0d341eb800a344a110da6d24b15fb, type: 3}
-  - {fileID: 3325125536636954370, guid: 22e2eafa45b1f574bb16746612249b1e, type: 3}
-  - {fileID: 8968824193169400621, guid: c81cbb1a4ba8a3f41b41c58d2cd243dc, type: 3}
-  potion: {fileID: 6414508859303138557, guid: 55a0d341eb800a344a110da6d24b15fb, type: 3}
-  currentPotion: 0
-  jump: 6.46
-  life: 8
-  maxlife: 8
 --- !u!114 &1848082552980747137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,11 +176,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbf9d0e8faa35e45ad0043b42cf97c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 8
+  maxlife: 8
   inventory: {fileID: 0}
-  spriteRenderer: {fileID: 3010878247852227561}
   rigidbody: {fileID: 4080386115558532227}
+  spriteRenderer: {fileID: 3010878247852227561}
+  _moveInput: {x: 0, y: 0}
   speed: 3.78
   GroundCheck: {fileID: 2825616755767797757}
+  jump: 5.82
   FireballSpawnPoint: {fileID: 3208815536797506274}
   potions:
   - {fileID: 6414508859303138557, guid: 55a0d341eb800a344a110da6d24b15fb, type: 3}
@@ -216,10 +192,9 @@ MonoBehaviour:
   - {fileID: 8968824193169400621, guid: c81cbb1a4ba8a3f41b41c58d2cd243dc, type: 3}
   potion: {fileID: 6414508859303138557, guid: 55a0d341eb800a344a110da6d24b15fb, type: 3}
   currentPotion: 0
-  jump: 5.82
-  life: 8
-  maxlife: 8
-  _moveInput: {x: 0, y: 0}
+  cooldownThrow: 0.3
+  cooldownDrink: 1
+  player: {fileID: 0}
 --- !u!114 &6611793642231269101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +213,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damageAmount: 1
+  cooldown: 0.5
+  inAction: 0
 --- !u!114 &6474595091579035375
 MonoBehaviour:
   m_ObjectHideFlags: 0
