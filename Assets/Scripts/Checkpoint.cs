@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundCheck_Script : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
-    public bool isGrounded;
-
-
     [SerializeField] Player_Script1 player;
 
     [SerializeField] private Transform LastCheckpoint;
     [SerializeField] private GameObject playerObject;
+
 
     void Update()
     {
@@ -19,32 +17,18 @@ public class GroundCheck_Script : MonoBehaviour
             Die();
             player.life = player.maxlife;
         }
-    }
+    } 
 
-    private void OnCollisionEnter2D(Collision2D other) //hit different game object
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("Ground")) // collide an object with a tag 
+        if (collision.gameObject.CompareTag("Checkpoint"))
         {
-            isGrounded = true; // not jumping
-        }
-
-        if (other.gameObject.CompareTag("Checkpoint"))
-        {
-            Transform CurrentCheckpoint = other.gameObject.transform;
+            Transform CurrentCheckpoint = collision.gameObject.transform;
 
             CheckpointUpdate(CurrentCheckpoint);
 
             // collision.GetComponent<Checkpoint>().CheckpointFeedback();
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D other) //leaving the floor 
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false; // jumping
-        }
-
     }
 
     private void CheckpointUpdate(Transform checkpointTransform)
