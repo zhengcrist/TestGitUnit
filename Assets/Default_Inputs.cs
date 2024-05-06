@@ -304,7 +304,7 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""40b5d841-5cdf-4f68-a972-3d3fbf9f0f6a"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -326,7 +326,7 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e5cc3d60-9919-47e6-a515-52680dc4ecb3"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
