@@ -4,7 +4,22 @@ using UnityEngine;
 
 public class GroundCheck_Script : MonoBehaviour
 {
+    [SerializeField] Player_Script1 player;
+    [SerializeField] GameObject p1;
+    [SerializeField] Transform LastCheckpoint;
+
+
+
     public bool isGrounded;
+
+    void Update()
+    {
+        if (player.life <= 0)
+        {
+            Die();
+            player.life = player.maxlife;
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D other) //hit different game object
     {
@@ -13,6 +28,12 @@ public class GroundCheck_Script : MonoBehaviour
             isGrounded = true; // not jumping
         }
 
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            Transform CurrentCheckPoint = other.gameObject.transform;
+            Checkpoint(CurrentCheckPoint);
+            
+        }
 
     }
 
@@ -23,5 +44,15 @@ public class GroundCheck_Script : MonoBehaviour
             isGrounded = false; // jumping
         }
 
+    }
+
+    private void Checkpoint(Transform checkpointTransform)
+    {
+        LastCheckpoint = checkpointTransform;
+    }
+
+    private void Die()
+    {
+        p1.transform.position = LastCheckpoint.position;
     }
 }

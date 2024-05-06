@@ -10,7 +10,7 @@ public class Player_Script1 : MonoBehaviour
     [SerializeField] private Default_Inputs default_Inputs;
 
     public int life;
-    [SerializeField] private int maxlife;
+    public int maxlife;
     [SerializeField] Inventory_Script inventory;
     [SerializeField] new Rigidbody2D rigidbody;
 
