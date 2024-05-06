@@ -5,9 +5,9 @@ using UnityEngine;
 public class Inventory_Script : MonoBehaviour
 {
 
-    [SerializeField] public int MedNum;
-    [SerializeField] public int OilNum;
-    [SerializeField] public int ToadNum;
+    public int MedNum;
+    public int OilNum;
+    public int ToadNum;
 
     // Start is called before the first frame update
     void Start()
