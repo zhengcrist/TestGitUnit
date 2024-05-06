@@ -13,12 +13,13 @@ public class FireObstacle : MonoBehaviour
         myLight.intensity = 0;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Fire"))
         {
             StartCoroutine(Burn());
         }
+        Destroy(col);
     }
 
     IEnumerator Burn()
