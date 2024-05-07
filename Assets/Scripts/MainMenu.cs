@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
 
     public void ButtonStart()
     {
-        SceneManager.LoadScene("SCN_GameTuto");
+        SceneManager.LoadScene("Proto1");
     }
 
     public void ButtonSettings()
