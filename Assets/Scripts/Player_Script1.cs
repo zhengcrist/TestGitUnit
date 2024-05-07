@@ -78,7 +78,7 @@ public class Player_Script1 : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (GroundCheck.isGrounded) // when right arrow
+        if (GroundCheck.IsGrounded) // when right arrow
         {
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }

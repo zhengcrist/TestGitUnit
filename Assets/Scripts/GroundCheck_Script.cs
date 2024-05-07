@@ -8,9 +8,12 @@ public class GroundCheck_Script : MonoBehaviour
     [SerializeField] GameObject p1;
     [SerializeField] Transform LastCheckpoint;
 
+    public ContactFilter2D ContactFilter;
 
+    [SerializeField] Rigidbody2D m_Rigidbody;
+    public bool IsGrounded => m_Rigidbody.IsTouching(ContactFilter);
 
-    public bool isGrounded;
+    // public bool isGrounded;
 
     void Update()
     {
@@ -23,10 +26,10 @@ public class GroundCheck_Script : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) //hit different game object
     {
-        if (other.gameObject.CompareTag("Ground")) // collide an object with a tag 
+        /* if (other.gameObject.CompareTag("Ground")) // collide an object with a tag 
         {
             isGrounded = true; // not jumping
-        }
+        }*/
 
         if (other.gameObject.CompareTag("Checkpoint"))
         {
@@ -37,14 +40,14 @@ public class GroundCheck_Script : MonoBehaviour
 
     }
 
-    private void OnCollisionExit2D(Collision2D other) //leaving the floor 
+    /* private void OnCollisionExit2D(Collision2D other) //leaving the floor 
     {
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = false; // jumping
         }
 
-    }
+    }*/
 
     private void Checkpoint(Transform checkpointTransform)
     {
