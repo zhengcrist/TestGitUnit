@@ -16,8 +16,7 @@ public class Player_Script1 : MonoBehaviour
 
     // [SerializeField] Animator Player_animator;
     // private bool Player_Run;
-    [SerializeField] SpriteRenderer spriteRenderer;
-
+    public bool flip = false;
     [SerializeField] private Vector2 _moveInput;
     [SerializeField] private float speed;
 
@@ -63,15 +62,21 @@ public class Player_Script1 : MonoBehaviour
     {
         _moveInput = default_Inputs.P1.Move.ReadValue<Vector2>();
         _moveInput.y = 0f;
-        transform.Translate(_moveInput * speed * Time.deltaTime);
+        
 
-        if (_moveInput.x > 0f)
+        if (player.inAction == false)
         {
-            spriteRenderer.flipX = true; // sprite flipped
-        }
-        else if (_moveInput.x < 0f)
-        {
-            spriteRenderer.flipX = false; // sprite not flip
+            transform.Translate(_moveInput * speed * Time.deltaTime); // move
+
+            if ((_moveInput.x > 0f && !flip) || (_moveInput.x < 0f && flip))
+            {
+                Debug.Log("Flip");
+                flip = !flip;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
+                
+            }
         }
     }
 

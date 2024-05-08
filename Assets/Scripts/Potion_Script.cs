@@ -15,15 +15,15 @@ public class Potion_Script : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] new Rigidbody2D rigidbody;
 
-    [SerializeField] SpriteRenderer sr;
+    [SerializeField] Player_Script1 player;
 
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        sr = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
 
-        if (sr.flipX == false)
+        if (player.flip == false)
         {
             moveSpeedX = -moveSpeedX;
             spriteRenderer.flipX = true; // sprite flip
