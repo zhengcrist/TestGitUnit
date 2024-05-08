@@ -14,6 +14,10 @@ public class Mob1_Script : MonoBehaviour
     Vector3 startPosition = Vector3.zero;
     private Transform _targetWaypoint; // which waypoint to move to
     private int _currentWaypointIndex = 0; // to start the index of the waypoint array
+    // Knockback
+    [SerializeField] private float knockbackForceMob = 5f;
+    [SerializeField] private float knockbackForceP = 30f;
+    [SerializeField] private Rigidbody2D rb;
 
     // ______________ For mob effects ______________
     // BURN
@@ -154,12 +158,21 @@ public class Mob1_Script : MonoBehaviour
                 // Player receive dmg only when they're out of the immunity time and the mob is not frozen or dead
                 if (!isFrozen && (playerImmuneTimer >= playerImmuneMax))
                 {
+                    // Knockback
+                    Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
+                    Debug.Log("direction" + direction);
+                    Vector2 knockbackMob = - direction * knockbackForceMob * 10;
+                    Vector2 knockbackP = direction * knockbackForceP * 10;
+                    rb.AddForce(knockbackMob, ForceMode2D.Impulse);
+                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackP, ForceMode2D.Impulse);
+
                     // Immunity timer reset
                     playerImmuneTimer = 0;
                     // Player dmg
                     player.life--;
                     // Change color feedback
-                    StartCoroutine(playerDMG());                   
+                    StartCoroutine(playerDMG());  
+                    
                 }
             }
 
