@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
 
     public void ButtonStart()
     {
-        SceneManager.LoadScene("Proto1");
+        SceneManager.LoadScene("Proto 1");
     }
 
     public void ButtonSettings()
