@@ -13,9 +13,9 @@ public class Player_Script1 : MonoBehaviour
     [SerializeField] Inventory_Script inventory;
     [SerializeField] new Rigidbody2D rigidbody;
 
-
-    // [SerializeField] Animator Player_animator;
-    // private bool Player_Run;
+    [SerializeField] SpriteRenderer sr;
+    [SerializeField] Animator Player_animator;
+    private bool Player_Run;
     public bool flip = false;
     [SerializeField] private Vector2 _moveInput;
     [SerializeField] private float speed;
@@ -25,7 +25,6 @@ public class Player_Script1 : MonoBehaviour
 
 
     [SerializeField] Transform FireballSpawnPoint;
-    // [SerializeField] float FireballSpawnPointX;
 
     [SerializeField] private GameObject[] potions; // array of potions
     [SerializeField] private GameObject potion;
@@ -66,7 +65,17 @@ public class Player_Script1 : MonoBehaviour
 
         if (player.inAction == false)
         {
+            Player_Run = true;
             transform.Translate(_moveInput * speed * Time.deltaTime); // move
+            
+            if(_moveInput.x != 0f)
+            {
+                sr.flipX = true;
+            }
+            else
+            {
+                sr.flipX = false;
+            }
 
             if ((_moveInput.x > 0f && !flip) || (_moveInput.x < 0f && flip))
             {
@@ -77,6 +86,11 @@ public class Player_Script1 : MonoBehaviour
                 transform.localScale = theScale;
                 
             }
+        }
+
+        if (_moveInput.x == 0)
+        {
+            Player_Run = false;
         }
     }
 
