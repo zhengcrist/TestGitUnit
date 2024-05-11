@@ -13,7 +13,7 @@ public class Player_Script1 : MonoBehaviour
     [SerializeField] Inventory_Script inventory;
     [SerializeField] new Rigidbody2D rigidbody;
 
-    [SerializeField] SpriteRenderer sr;
+    // [SerializeField] SpriteRenderer sr;
     [SerializeField] Animator Player_animator;
     private bool Player_Run;
     public bool flip = false;
@@ -68,16 +68,16 @@ public class Player_Script1 : MonoBehaviour
             Player_Run = true;
             transform.Translate(_moveInput * speed * Time.deltaTime); // move
             
-            if(_moveInput.x != 0f)
+            /* if(_moveInput.x != 0f)
             {
                 sr.flipX = true;
             }
             else
             {
                 sr.flipX = false;
-            }
+            } */
 
-            if ((_moveInput.x > 0f && !flip) || (_moveInput.x < 0f && flip))
+            if ((_moveInput.x < 0f && !flip) || (_moveInput.x > 0f && flip))
             {
                 Debug.Log("Flip");
                 flip = !flip;
@@ -99,6 +99,7 @@ public class Player_Script1 : MonoBehaviour
         if (!context.performed) return;
         if (GroundCheck.IsGrounded) // when right arrow
         {
+            Player_animator.SetTrigger("Jump");
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
     }
