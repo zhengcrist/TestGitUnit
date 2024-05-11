@@ -65,18 +65,9 @@ public class Player_Script1 : MonoBehaviour
 
         if (player.inAction == false)
         {
-            // Player_Run = true;
             Player_animator.SetBool("Run", true);
             transform.Translate(_moveInput * speed * Time.deltaTime); // move
             
-            /* if(_moveInput.x != 0f)
-            {
-                sr.flipX = true;
-            }
-            else
-            {
-                sr.flipX = false;
-            } */
 
             if ((_moveInput.x < 0f && !flip) || (_moveInput.x > 0f && flip))
             {
@@ -92,7 +83,6 @@ public class Player_Script1 : MonoBehaviour
         if (_moveInput.x == 0)
         {
             Player_animator.SetBool("Run", false);
-            // Player_Run = false;
         }
     }
 
@@ -101,8 +91,9 @@ public class Player_Script1 : MonoBehaviour
         if (!context.performed) return;
         if (GroundCheck.IsGrounded) // when right arrow
         {
-            Player_animator.SetTrigger("Jump");
+            Player_animator.SetBool("Jump", true);
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
+            StartCoroutine(Jump(0.1f));
         }
     }
 
@@ -152,6 +143,12 @@ public class Player_Script1 : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldown);
         player.inAction = false;
+    }
+
+    IEnumerator Jump(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Player_animator.SetBool("Jump", false);
     }
 
 }

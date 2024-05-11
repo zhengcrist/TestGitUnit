@@ -15,19 +15,19 @@ public class Potion_Script : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] new Rigidbody2D rigidbody;
 
-    [SerializeField] Player_Script1 player;
+    // [SerializeField] Player_Script1 player;
 
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
+        /* player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
 
-        if (player.flip == false)
+        if (player.flip == true)
         {
             moveSpeedX = -moveSpeedX;
             spriteRenderer.flipX = true; // sprite flip
-        }
+        } */
 
         rigidbody.AddForce(new Vector2(moveSpeedX, moveSpeedY), ForceMode2D.Impulse);
 
