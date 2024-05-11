@@ -15,7 +15,7 @@ public class Player_Script1 : MonoBehaviour
 
     // [SerializeField] SpriteRenderer sr;
     [SerializeField] Animator Player_animator;
-    private bool Player_Run;
+    // private bool Player_Run;
     public bool flip = false;
     [SerializeField] private Vector2 _moveInput;
     [SerializeField] private float speed;
@@ -65,7 +65,8 @@ public class Player_Script1 : MonoBehaviour
 
         if (player.inAction == false)
         {
-            Player_Run = true;
+            // Player_Run = true;
+            Player_animator.SetBool("Run", true);
             transform.Translate(_moveInput * speed * Time.deltaTime); // move
             
             /* if(_moveInput.x != 0f)
@@ -90,7 +91,8 @@ public class Player_Script1 : MonoBehaviour
 
         if (_moveInput.x == 0)
         {
-            Player_Run = false;
+            Player_animator.SetBool("Run", false);
+            // Player_Run = false;
         }
     }
 
@@ -151,4 +153,5 @@ public class Player_Script1 : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         player.inAction = false;
     }
+
 }

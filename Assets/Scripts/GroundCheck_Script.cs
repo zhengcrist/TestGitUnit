@@ -13,6 +13,8 @@ public class GroundCheck_Script : MonoBehaviour
     [SerializeField] Rigidbody2D m_Rigidbody;
     public bool IsGrounded => m_Rigidbody.IsTouching(ContactFilter);
 
+    [SerializeField] Animator Player_animator;
+
     // public bool isGrounded;
 
     void Update()
@@ -21,6 +23,15 @@ public class GroundCheck_Script : MonoBehaviour
         {
             Die();
             player.life = player.maxlife;
+        }
+
+        if (!IsGrounded)
+        {
+            Player_animator.SetBool("Falling", true);
+        }
+        else
+        {
+            Player_animator.SetBool("Falling", false);
         }
     }
 
