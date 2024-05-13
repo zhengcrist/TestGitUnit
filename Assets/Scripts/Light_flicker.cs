@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -13,6 +14,8 @@ public class Light_flicker : MonoBehaviour
     [SerializeField] private int ticksMax = 3;
     [SerializeField] private int ticks;
     [SerializeField] private bool attacked = false;
+    // knockback
+    [SerializeField] private float knockback = 1f;
 
     // TIMER
     [SerializeField] float StartTime = 3;
@@ -59,6 +62,10 @@ public class Light_flicker : MonoBehaviour
         {
             // LIGHT ON
             myLight.intensity = intens;
+            // color
+            mob.spriteRenderer.color = new Color(1, 0, 0, 1);
+            // knockback
+            mob.rb.AddForce(new Vector2(0, knockback), ForceMode2D.Impulse);
 
             // if first time on
             if (attacked == false)
@@ -71,6 +78,7 @@ public class Light_flicker : MonoBehaviour
         {
             // LIGHT OFF
             myLight.intensity = 0;
+            mob.spriteRenderer.color = new Color(1, 1, 1, 1);
             attacked = false;
         }
 

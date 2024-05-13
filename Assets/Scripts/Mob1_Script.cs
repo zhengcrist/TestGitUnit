@@ -17,7 +17,7 @@ public class Mob1_Script : MonoBehaviour
     // Knockback
     [SerializeField] private float knockbackForceMob = 5f;
     [SerializeField] private float knockbackForceP = 30f;
-    [SerializeField] private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     // ______________ For mob effects ______________
     // BURN
@@ -30,7 +30,7 @@ public class Mob1_Script : MonoBehaviour
     [SerializeField] private float PauseTime;
 
     private float timer = 0; // disabled timer
-    [SerializeField] SpriteRenderer spriteRenderer; // mob sprite renderer
+    public SpriteRenderer spriteRenderer; // mob sprite renderer
     [SerializeField] Animator anim;
     [SerializeField] MobLife_Script Mob_1; // for mob life
 
