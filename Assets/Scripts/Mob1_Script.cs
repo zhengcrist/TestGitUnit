@@ -31,6 +31,7 @@ public class Mob1_Script : MonoBehaviour
 
     private float timer = 0; // disabled timer
     [SerializeField] SpriteRenderer spriteRenderer; // mob sprite renderer
+    [SerializeField] Animator anim;
     [SerializeField] MobLife_Script Mob_1; // for mob life
 
     // ______________ For player ______________
@@ -71,9 +72,10 @@ public class Mob1_Script : MonoBehaviour
             if (timer > PauseTime)
             {
                 isDead = false;
+                anim.SetBool("KO", false); // reset anim
                 timer = 0;
                 Mob_1.mobLife = Mob_1.mobMaxLife; // reset life
-                spriteRenderer.color = new Color(1, 1, 1, 1); // change color
+                // spriteRenderer.color = new Color(1, 1, 1, 1); // change color
             }
             return; // exit so it doesn't do the rest
         }
@@ -87,6 +89,7 @@ public class Mob1_Script : MonoBehaviour
             if (timer > FreezeTime)
             {
                 isFrozen = false;
+                anim.SetBool("Freeze", false); // reset anim
                 timer = 0;
                 spriteRenderer.color = new Color(1, 1, 1, 1); // change color
             }
@@ -114,7 +117,8 @@ public class Mob1_Script : MonoBehaviour
         if (Mob_1.mobLife <= 0)
         {
             var Blue = Instantiate(collectible, new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z), transform.rotation);
-            spriteRenderer.color = new Color(1, 0, 0, 1); // change color
+            // spriteRenderer.color = new Color(1, 0, 0, 1); // change color
+            anim.SetBool("KO", true);
             isDead = true; // to freeze movement
         }
         else
@@ -125,6 +129,18 @@ public class Mob1_Script : MonoBehaviour
             {
                 // if the position hasn't reached the target waypoint yet
                 _targetWaypoint = GetNextWaypoint();
+            }
+
+            // flip sr
+            Vector2 difference = (_targetWaypoint.position - transform.position).normalized;
+            if (difference.x < 0)
+            {
+                // if the position hasn't reached the target waypoint yet
+                spriteRenderer.flipX = true;
+            }
+            else if (difference.x > 0)
+            {
+                spriteRenderer.flipX = false;
             }
         }
     }
@@ -162,6 +178,16 @@ public class Mob1_Script : MonoBehaviour
                     Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
                     Debug.Log("direction" + direction);
                     Vector2 knockbackMob = - direction * knockbackForceMob * 10;
+
+                    if (knockbackMob.x  < 0)
+                    {
+                        spriteRenderer.flipX = true;
+                    }
+                    else 
+                    { 
+                        spriteRenderer.flipX = false;
+                    }
+
                     Vector2 knockbackP = direction * knockbackForceP * 10;
                     rb.AddForce(knockbackMob, ForceMode2D.Impulse);
                     collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackP, ForceMode2D.Impulse);
@@ -190,6 +216,7 @@ public class Mob1_Script : MonoBehaviour
                 Mob_1.mobLife--; // dmg received by mob
                 spriteRenderer.color = new Color(0, 0, 1, 1); // change color
                 isFrozen = true;
+                anim.SetBool("Freeze", true); // freeze anim
                 Debug.Log("OnCollision ice");
             }
         }
@@ -201,6 +228,12 @@ public class Mob1_Script : MonoBehaviour
 
     IEnumerator playerDMG()
     {
+        // toad atk
+        anim.SetBool("Atk", true);
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("Atk", false);
+
+        // player color
         playerSR.color = new Color(1, 0, 0, 1); // change player to red
         yield return new WaitForSeconds(0.5f);
         playerSR.color = new Color(1, 1, 1, 1); // reset color
