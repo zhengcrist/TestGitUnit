@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.45, y: -1.79, z: 0}
-  m_LocalScale: {x: 0.1227634, y: 0.1227634, z: 0.1227634}
+  m_LocalScale: {x: 0.31590706, y: 0.31590706, z: 0.31590706}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4515330412790126821}
@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Offset: {x: -0.025236221, y: 0.00000037735558}
   serializedVersion: 2
-  m_Radius: 4.485
+  m_Radius: 1.2042531
 --- !u!114 &81426963809518349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,9 +161,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4590277140662495394}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.010609203, w: 0.99994373}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1503, y: 1.1503, z: 1.1503}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8192004643981438588}
@@ -206,8 +206,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.64
-  m_PointLightOuterRadius: 1
+  m_PointLightInnerRadius: 0.31
+  m_PointLightOuterRadius: 0.6093264
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
