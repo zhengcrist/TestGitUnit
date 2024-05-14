@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01016283, y: 0}
+  m_Offset: {x: 0.006496489, y: -0.31493217}
   serializedVersion: 2
-  m_Radius: 0.5671432
+  m_Radius: 0.8064935
 --- !u!50 &8793449940833764855
 Rigidbody2D:
   serializedVersion: 4
@@ -167,4 +167,4 @@ MonoBehaviour:
   Fireball_animator: {fileID: 0}
   spriteRenderer: {fileID: 4669694285417682633}
   rigidbody: {fileID: 8793449940833764855}
-  sr: {fileID: 0}
+  player: {fileID: 0}

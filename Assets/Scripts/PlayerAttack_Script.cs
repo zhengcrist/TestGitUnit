@@ -11,6 +11,7 @@ public class PlayerAttack_Script : MonoBehaviour
     [SerializeField] private LayerMask attackableLayer;
     [SerializeField] private int damageAmount = 1;
     [SerializeField] private float cooldown = 0.5f;
+    [SerializeField] private float knockbackForceMob = 5f;
 
     public bool inAction;
 
@@ -39,6 +40,15 @@ public class PlayerAttack_Script : MonoBehaviour
             for (int i = 0; i < hits.Length; i++)
             {
                 IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                // knockback
+                if (hits[i].collider.gameObject.GetComponent<Rigidbody2D>() != null )
+                {
+                    Vector2 direction = (hits[i].collider.gameObject.transform.position - transform.position).normalized;
+                    Vector2 knockbackMob = direction * knockbackForceMob * 10;
+                    hits[i].collider.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackMob, ForceMode2D.Impulse);
+                }
+                
 
                 // if an iDamageable is found
                 if (iDamageable != null)

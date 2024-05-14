@@ -105,7 +105,7 @@ MonoBehaviour:
   Fireball_animator: {fileID: 0}
   spriteRenderer: {fileID: 4758926663693602466}
   rigidbody: {fileID: 8108581655370925971}
-  sr: {fileID: 0}
+  player: {fileID: 0}
 --- !u!58 &1364579889930215150
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -138,9 +138,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0017001331, y: 0.0012405515}
+  m_Offset: {x: -0.006893635, y: -0.34833035}
   serializedVersion: 2
-  m_Radius: 0.4484459
+  m_Radius: 0.8232782
 --- !u!50 &8108581655370925971
 Rigidbody2D:
   serializedVersion: 4

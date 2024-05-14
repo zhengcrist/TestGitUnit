@@ -15,7 +15,8 @@ public class Light_flicker : MonoBehaviour
     [SerializeField] private int ticks;
     [SerializeField] private bool attacked = false;
     // knockback
-    [SerializeField] private float knockback = 1f;
+    [SerializeField] private float knockback;
+    [SerializeField] private float knockbackx;
 
     // TIMER
     [SerializeField] float StartTime = 3;
@@ -64,12 +65,21 @@ public class Light_flicker : MonoBehaviour
             myLight.intensity = intens;
             // color
             mob.spriteRenderer.color = new Color(1, 0, 0, 1);
-            // knockback
-            mob.rb.AddForce(new Vector2(0, knockback), ForceMode2D.Impulse);
+            
 
             // if first time on
             if (attacked == false)
             {
+                // knockback
+                if (mob.spriteRenderer.flipX == true)
+                {
+                    mob.rb.AddForce(new Vector2(-knockbackx, knockback), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    mob.rb.AddForce(new Vector2(knockbackx, knockback), ForceMode2D.Impulse);
+                }
+               
                 attacked = true;
                 Mob_1.mobLife--;
             }
