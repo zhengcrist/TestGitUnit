@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -98,11 +97,5 @@ public class Light_flicker : MonoBehaviour
        
     }
 
-    /*IEnumerator Light(float intens)
-   {
-       myLight.intensity = intens;
-       yield return new WaitForSeconds(2);
-
-   }*/
 
 }
