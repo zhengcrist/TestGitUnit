@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IcePlatform : MonoBehaviour
 {
-    [SerializeField] public Rigidbody2D rigidbody;
+    public Rigidbody2D rigidbody;
     [SerializeField] Player_Script1 player;
 
     [SerializeField] SpriteRenderer sr;
@@ -17,7 +17,7 @@ public class IcePlatform : MonoBehaviour
         rigidbody.simulated = false;
         // rigidbody.detectCollisions = false;
 
-        m_NewColor = new Color(0, 128, 255);
+        m_NewColor = new Color(0f, 0.5f, 1f, 0.5f);
         sr.color = m_NewColor;
     }
 
@@ -27,7 +27,7 @@ public class IcePlatform : MonoBehaviour
         {
             rigidbody.isKinematic = false;
             rigidbody.simulated = true;
-            sr.color = new Color(255, 255, 255);
+            sr.color = new Color(1, 1, 1);
 
             Debug.Log("Simulated");
             // rigidbody.detectCollisions = true;
