@@ -179,14 +179,7 @@ public class Mob1_Script : MonoBehaviour
                     Debug.Log("direction" + direction);
                     Vector2 knockbackMob = - direction * knockbackForceMob * 10;
 
-                    if (knockbackMob.x  < 0)
-                    {
-                        spriteRenderer.flipX = true;
-                    }
-                    else 
-                    { 
-                        spriteRenderer.flipX = false;
-                    }
+                   
 
                     Vector2 knockbackP = direction * knockbackForceP * 10;
                     rb.AddForce(knockbackMob, ForceMode2D.Impulse);
@@ -197,7 +190,7 @@ public class Mob1_Script : MonoBehaviour
                     // Player dmg
                     player.life--;
                     // Change color feedback
-                    StartCoroutine(playerDMG());  
+                    StartCoroutine(playerDMG(knockbackMob));  
                     
                 }
             }
@@ -226,11 +219,22 @@ public class Mob1_Script : MonoBehaviour
     // ________________________________ !COLLISIONS ___________________________________
     // ________________________________________________________________________________
 
-    IEnumerator playerDMG()
+    IEnumerator playerDMG(Vector2 knockbackMob)
     {
         // toad atk
         anim.SetBool("Atk", true);
-        yield return new WaitForSeconds(0.1f);
+
+        if (knockbackMob.x < 0)
+        {
+            spriteRenderer.flipX = true;
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+            yield return new WaitForSeconds(0.5f);
+        }
+
         anim.SetBool("Atk", false);
 
         // player color
@@ -238,4 +242,5 @@ public class Mob1_Script : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         playerSR.color = new Color(1, 1, 1, 1); // reset color
     }
+
 }
