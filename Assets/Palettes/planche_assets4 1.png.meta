@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5cbbd667e8821cb41acfe9713d795cf4
+guid: ebd1d7d41a6f6d0419ed08dfab1354bd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: planche_assets4_0
+      name: planche_assets4 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 1524
-        width: 3033
+        width: 1308
         height: 548
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f93ac3a2789016c4698a5293acfde564
-      internalID: 532778656
+      spriteID: ed83a1e1e39c6f14a9e51230a99183f1
+      internalID: -1758212352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_1
+      name: planche_assets4 1_1
       rect:
         serializedVersion: 2
         x: 3400
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5c6f9d49155b084799838dfa8cfb2fd
-      internalID: -922619470
+      spriteID: 7e4e687cf229e594f82dcf454583137a
+      internalID: 349810907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_2
+      name: planche_assets4 1_2
       rect:
         serializedVersion: 2
         x: 4043
@@ -166,18 +166,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39df9db7955cb5f43b83e340ddaacacc
-      internalID: -337726340
+      spriteID: 59f99f6309641ed42ac3576b6b2bea43
+      internalID: -1386125867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_3
+      name: planche_assets4 1_3
       rect:
         serializedVersion: 2
         x: 1376
-        y: 1493
+        y: 1505
         width: 1646
         height: 368
       alignment: 0
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6153150c4cdba4f43a3b9f56a52a6a44
-      internalID: -1706028249
+      spriteID: 8bd2be456953afb4797c3355ea5b6f48
+      internalID: -1604490173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_4
+      name: planche_assets4 1_4
       rect:
         serializedVersion: 2
         x: 3152
@@ -208,18 +208,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee43224a0609bd944b1b7f7ba83a087e
-      internalID: -1016880312
+      spriteID: 866675108b2c6fe4ea7708d3c1855333
+      internalID: 90607386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_5
+      name: planche_assets4 1_5
       rect:
         serializedVersion: 2
         x: 4152
-        y: 1522
+        y: 1686
         width: 77
         height: 50
       alignment: 0
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6da8415dcbd178b43b5feac8e933f095
-      internalID: 860006571
+      spriteID: 1be89dbd29a4d104f94cdeee4393afcf
+      internalID: 1178090552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_6
+      name: planche_assets4 1_6
       rect:
         serializedVersion: 2
         x: 29
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb9606352a18ef64a923edd8b0823d47
-      internalID: 1607449036
+      spriteID: 3b3d07f7b1a48584f9b29bf1be4999b6
+      internalID: 1704195020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_7
+      name: planche_assets4 1_7
       rect:
         serializedVersion: 2
         x: 175
@@ -271,18 +271,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43464a5b1d16b9f489a77d8e2a0c754a
-      internalID: 1053083127
+      spriteID: 323667fb630cb9b45824cc64715cfa4d
+      internalID: 1695259215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_8
+      name: planche_assets4 1_8
       rect:
         serializedVersion: 2
         x: 4129
-        y: 1292
+        y: 1455
         width: 109
         height: 98
       alignment: 0
@@ -292,19 +292,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a09b03c9610c9f24bae678c6813acdc1
-      internalID: -1822875397
+      spriteID: b6945491fb233c8449eb6156704f0937
+      internalID: 63670963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_9
+      name: planche_assets4 1_9
       rect:
         serializedVersion: 2
-        x: 1097
+        x: 1300
         y: 345
-        width: 2909
+        width: 2910
         height: 938
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b086ca6a8c9093041b1d69f2fc8ae3b7
-      internalID: -1778582803
+      spriteID: 416e467cb9280d046b09b5fc557dc8e4
+      internalID: -1838327500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_10
+      name: planche_assets4 1_10
       rect:
         serializedVersion: 2
         x: 0
@@ -334,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06348362cfb75ef499427391044bddd1
-      internalID: 506137265
+      spriteID: d011bc61a5025c9488152b2b8fc61ee4
+      internalID: -847858901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_11
+      name: planche_assets4 1_11
       rect:
         serializedVersion: 2
         x: 3087
-        y: 0
+        y: 140
         width: 1204
-        height: 322
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 834c8ec63ba39e04da1472ab21146407
-      internalID: -451073208
+      spriteID: 17340eba556331d4ba962ce365f8b70b
+      internalID: 296576849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: planche_assets4_12
+      name: planche_assets4 1_12
       rect:
         serializedVersion: 2
         x: 3141
@@ -376,8 +376,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ccf16de4b6d74141adadcc42d8158af
-      internalID: -1850820677
+      spriteID: 339f13424528afc4b89783cfe8f2cde1
+      internalID: -1172521742
       vertices: []
       indices: 
       edges: []
@@ -385,7 +385,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 10d060778e3fc6a40b73ae11345f5261
+    spriteID: b4261e86b6515fc42839ef87abe9635b
     internalID: 0
     vertices: []
     indices: 
@@ -393,19 +393,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      planche_assets4_0: 532778656
-      planche_assets4_1: -922619470
-      planche_assets4_10: 506137265
-      planche_assets4_11: -451073208
-      planche_assets4_12: -1850820677
-      planche_assets4_2: -337726340
-      planche_assets4_3: -1706028249
-      planche_assets4_4: -1016880312
-      planche_assets4_5: 860006571
-      planche_assets4_6: 1607449036
-      planche_assets4_7: 1053083127
-      planche_assets4_8: -1822875397
-      planche_assets4_9: -1778582803
+      planche_assets4 1_0: -1758212352
+      planche_assets4 1_1: 349810907
+      planche_assets4 1_10: -847858901
+      planche_assets4 1_11: 296576849
+      planche_assets4 1_12: -1172521742
+      planche_assets4 1_13: 725432828
+      planche_assets4 1_2: -1386125867
+      planche_assets4 1_3: -1604490173
+      planche_assets4 1_4: 90607386
+      planche_assets4 1_5: 1178090552
+      planche_assets4 1_6: 1704195020
+      planche_assets4 1_7: 1695259215
+      planche_assets4 1_8: 63670963
+      planche_assets4 1_9: -1838327500
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
