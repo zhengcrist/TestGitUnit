@@ -17,12 +17,12 @@ public class PlayerAttack_Script : MonoBehaviour
 
     private RaycastHit2D[] hits;
 
-    //private Animator anim;
+    [SerializeField] Animator Player_animator;
 
     private void Start()
     {
         inAction = false;
-        // anim = GetComponent<Animator>();
+        Player_animator = GetComponent<Animator>();
     }
 
     public void Attack(InputAction.CallbackContext context)
@@ -31,6 +31,7 @@ public class PlayerAttack_Script : MonoBehaviour
         if (!inAction) 
         {
             inAction = true;
+            StartCoroutine(Atk(0.1f));
             StartCoroutine(Cooldown(cooldown));
 
             //Animator.SetTrigger("AttackTrigger");
@@ -65,7 +66,14 @@ public class PlayerAttack_Script : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
     }
-    
+
+    IEnumerator Atk(float cooldown)
+    {
+        Player_animator.SetBool("Atk", true);
+        yield return new WaitForSeconds(cooldown);
+        Player_animator.SetBool("Atk", false);
+    }
+
     IEnumerator Cooldown(float cooldown)
     {
         yield return new WaitForSeconds(cooldown);
