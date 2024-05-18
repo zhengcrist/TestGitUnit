@@ -31,6 +31,7 @@ public class Player_Script1 : MonoBehaviour
     [SerializeField] private int currentPotion = 0;
     [SerializeField] private float cooldownThrow = 0.3f;
     [SerializeField] private float cooldownDrink = 1f;
+    [SerializeField] private float cooldownNoDrink = 0.5f;
 
     public PlayerAttack_Script player; // for the inaction bool
 
@@ -89,7 +90,7 @@ public class Player_Script1 : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (GroundCheck.IsGrounded) // when right arrow
+        if (player.inAction == false && GroundCheck.IsGrounded) // when right arrow
         {
             Player_animator.SetBool("Jump", true);
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
@@ -100,8 +101,11 @@ public class Player_Script1 : MonoBehaviour
     public void Heal(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (player.inAction == false && inventory.MedNum >= 1 && inventory.OilNum >= 1 && inventory.ToadNum >= 1 && life < maxlife)
+        if (player.inAction == false && GroundCheck.IsGrounded && inventory.MedNum >= 1 && inventory.OilNum >= 1 && inventory.ToadNum >= 1 && life < maxlife)
         {
+            Player_animator.SetBool("Drink", true);
+            StartCoroutine(Drink(0.1f));
+
             player.inAction = true;
             StartCoroutine(Cooldown(cooldownDrink));
 
@@ -110,6 +114,14 @@ public class Player_Script1 : MonoBehaviour
             inventory.MedNum--;
             inventory.OilNum--;
             inventory.ToadNum--;
+        }
+        else if (player.inAction == false && GroundCheck.IsGrounded)
+        {
+            Player_animator.SetBool("No_Drink", true);
+            StartCoroutine(No_Drink(0.1f));
+
+            player.inAction = true;
+            StartCoroutine(Cooldown(cooldownNoDrink));
         }
     }
 
@@ -149,6 +161,18 @@ public class Player_Script1 : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Player_animator.SetBool("Jump", false);
+    }
+
+    IEnumerator Drink(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Player_animator.SetBool("Drink", false);
+    }
+
+    IEnumerator No_Drink(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Player_animator.SetBool("No_Drink", false);
     }
 
 }
