@@ -12,7 +12,8 @@ public class Light_flicker : MonoBehaviour
     // number of burn
     [SerializeField] private int ticksMax = 3;
     [SerializeField] private int ticks;
-    [SerializeField] private bool attacked = false;
+    private bool attacked = false;
+    private bool lighton = false;
     // knockback
     [SerializeField] private float knockback;
     [SerializeField] private float knockbackx;
@@ -61,6 +62,7 @@ public class Light_flicker : MonoBehaviour
         if ((CurrentTime > StartTime/2))
         {
             // LIGHT ON
+            lighton = true;
             myLight.intensity = intens;
             // color
             mob.spriteRenderer.color = new Color(1, 0, 0, 1);
@@ -86,9 +88,14 @@ public class Light_flicker : MonoBehaviour
         else
         {
             // LIGHT OFF
-            myLight.intensity = 0;
-            mob.spriteRenderer.color = new Color(1, 1, 1, 1);
-            attacked = false;
+            if(lighton)
+            {
+                myLight.intensity = 0;
+                mob.spriteRenderer.color = new Color(1, 1, 1, 1);
+                attacked = false;
+                lighton = false;
+            }
+            
         }
 
         // COUNT DOWN TIMER
