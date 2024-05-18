@@ -37,9 +37,7 @@ public class Mob1_Script : MonoBehaviour
     // ______________ For player ______________
     [SerializeField] Player_Script1 player;
     [SerializeField] SpriteRenderer playerSR; // player sprite renderer
-    // Immunity time
-    [SerializeField] private float playerImmuneMax;
-    private float playerImmuneTimer;
+    
 
     // ______________ For drop ______________
     [SerializeField] private GameObject collectible; //prefab drop
@@ -54,7 +52,7 @@ public class Mob1_Script : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
         playerSR = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
-        playerImmuneTimer = playerImmuneMax;
+        
 
     }
 
@@ -101,8 +99,7 @@ public class Mob1_Script : MonoBehaviour
 
         MovingFonct();
 
-        // Player immunity timer set
-        playerImmuneTimer += Time.deltaTime;
+        
         
 
     }
@@ -172,7 +169,7 @@ public class Mob1_Script : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 // Player receive dmg only when they're out of the immunity time and the mob is not frozen or dead
-                if (!isFrozen && (playerImmuneTimer >= playerImmuneMax))
+                if (!isFrozen && (player.playerImmuneTimer >= player.playerImmuneMax))
                 {
                     // Knockback
                     Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
@@ -186,7 +183,7 @@ public class Mob1_Script : MonoBehaviour
                     collision.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackP, ForceMode2D.Impulse);
 
                     // Immunity timer reset
-                    playerImmuneTimer = 0;
+                    player.playerImmuneTimer = 0;
                     // Player dmg
                     player.life--;
                     // Change color feedback

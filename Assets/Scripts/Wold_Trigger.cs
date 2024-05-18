@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Wold_Trigger : MonoBehaviour
 {
-    [SerializeField] private float cooldown = 8f;
+    public float cooldown = 20f;
     [SerializeField] private bool wolfTrigger = true;
     [SerializeField] private GameObject wolf;
 
@@ -21,16 +21,16 @@ public class Wold_Trigger : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag != "Player" && wolfTrigger)
+        if (col.tag == "Player" && wolfTrigger)
         {
             StartCoroutine(Cooldown(cooldown));
             Vector3 vectPlayer = col.transform.position;
-            Vector3 vectPos = new Vector3(vectPlayer.x + 25f, vectPlayer.y, 0f);
+            Vector3 vectPos = new Vector3(vectPlayer.x + 25f, vectPlayer.y - 0.5f, 0f);
             var wolfSpawn = Instantiate(wolf, vectPos, transform.localRotation);
         }
-        Debug.Log("OnCollisionEnter2D");
+        Debug.Log("OnTriggerEnter2D");
     }
 
 

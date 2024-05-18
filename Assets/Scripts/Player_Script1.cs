@@ -10,6 +10,10 @@ public class Player_Script1 : MonoBehaviour
 
     public int life;
     public int maxlife;
+    // Immunity time
+    public float playerImmuneMax;
+    public float playerImmuneTimer;
+
     [SerializeField] Inventory_Script inventory;
     [SerializeField] new Rigidbody2D rigidbody;
 
@@ -37,6 +41,8 @@ public class Player_Script1 : MonoBehaviour
 
     void Awake()
     {
+        playerImmuneTimer = playerImmuneMax;
+
         default_Inputs = new Default_Inputs();
 
         rigidbody = GetComponent<Rigidbody2D>();
@@ -60,6 +66,14 @@ public class Player_Script1 : MonoBehaviour
 
     void FixedUpdate()
     {
+        // immunity
+        if(playerImmuneTimer < playerImmuneMax)
+        {
+            // Player immunity timer set
+            playerImmuneTimer += Time.deltaTime;
+        }
+
+        //movement
         _moveInput = default_Inputs.P1.Move.ReadValue<Vector2>();
         _moveInput.y = 0f;
         
