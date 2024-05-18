@@ -179,6 +179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 8
   maxlife: 8
+  playerImmuneMax: 3
+  playerImmuneTimer: 0
   inventory: {fileID: 0}
   rigidbody: {fileID: 4080386115558532227}
   Player_animator: {fileID: 1875842146221246012}
@@ -196,6 +198,7 @@ MonoBehaviour:
   currentPotion: 0
   cooldownThrow: 0.7
   cooldownDrink: 1.2
+  cooldownNoDrink: 0.5
   player: {fileID: 6611793642231269101}
 --- !u!114 &6611793642231269101
 MonoBehaviour:
@@ -218,6 +221,7 @@ MonoBehaviour:
   cooldown: 1
   knockbackForceMob: 5
   inAction: 0
+  Player_animator: {fileID: 0}
 --- !u!114 &6474595091579035375
 MonoBehaviour:
   m_ObjectHideFlags: 0
