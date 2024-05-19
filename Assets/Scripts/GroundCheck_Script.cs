@@ -11,7 +11,9 @@ public class GroundCheck_Script : MonoBehaviour
     public ContactFilter2D ContactFilter;
 
     [SerializeField] Rigidbody2D m_Rigidbody;
-    public bool IsGrounded => m_Rigidbody.IsTouching(ContactFilter);
+    public bool IsGrounded1 => m_Rigidbody.IsTouching(ContactFilter);
+    private bool first = true;
+    public bool IsGrounded;
 
     [SerializeField] Animator Player_animator;
 
@@ -23,6 +25,17 @@ public class GroundCheck_Script : MonoBehaviour
         {
             Die();
             player.life = player.maxlife;
+        }
+
+        if (IsGrounded1) { IsGrounded = true; }
+        
+        if (!IsGrounded1 && first) // For more forgiving jump
+        {
+            StartCoroutine(GroundDelay());
+        }
+        else if (IsGrounded1 &&  !first)
+        {
+            first = true;
         }
 
         if (!IsGrounded)
@@ -68,5 +81,12 @@ public class GroundCheck_Script : MonoBehaviour
     private void Die()
     {
         p1.transform.position = LastCheckpoint.position;
+    }
+
+    IEnumerator GroundDelay()
+    {
+        first = false;
+        yield return new WaitForSeconds(0.3f);
+        IsGrounded = false;
     }
 }
