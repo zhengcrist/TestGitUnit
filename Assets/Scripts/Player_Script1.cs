@@ -147,8 +147,10 @@ public class Player_Script1 : MonoBehaviour
             player.inAction = true;
             StartCoroutine(Cooldown(cooldownThrow));
 
-            var fireball = Instantiate(potions[1], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
             inventory.OilNum -= 2;
+
+            Player_animator.SetBool("Throw_red", true);
+            StartCoroutine(Throw(1));
         }
     }
 
@@ -160,8 +162,10 @@ public class Player_Script1 : MonoBehaviour
             player.inAction = true;
             StartCoroutine(Cooldown(cooldownThrow));
 
-            var fireball = Instantiate(potions[2], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
             inventory.ToadNum -= 2;
+
+            Player_animator.SetBool("Throw_blue", true);
+            StartCoroutine(Throw(2));
         }
     }
 
@@ -189,4 +193,19 @@ public class Player_Script1 : MonoBehaviour
         Player_animator.SetBool("No_Drink", false);
     }
 
+    IEnumerator Throw(int potion)
+    {
+        if (potion == 1)
+        {
+            yield return new WaitForSeconds(0.2f);
+            Player_animator.SetBool("Throw_red", false);
+            var fireball = Instantiate(potions[1], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
+        }
+        else if (potion == 2)
+        {
+            yield return new WaitForSeconds(0.2f);
+            Player_animator.SetBool("Throw_blue", false);
+            var fireball = Instantiate(potions[2], FireballSpawnPoint.position, FireballSpawnPoint.rotation);
+        }
+    }
 }
