@@ -22,6 +22,11 @@ public class Wolf_Script : MonoBehaviour
     // Knockback
     [SerializeField] private float knockbackForceP = 30f;
 
+    // Movement to the right or to the left
+    private float currentX = 0;
+    private float previousX = 0;
+    private float positionX;
+
 
 
     // Start is called before the first frame update
@@ -31,6 +36,7 @@ public class Wolf_Script : MonoBehaviour
         playerSR = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
         StartCoroutine(Timer(cooldown));
+        
     }
 
     // Update is called once per frame
@@ -39,6 +45,18 @@ public class Wolf_Script : MonoBehaviour
         if (!isFrozen)
             transform.Translate(Vector3.left * moveSpeedX * Time.deltaTime); // move
 
+        currentX = transform.position.x;
+        StartCoroutine(posCalculate(currentX));
+
+        if((currentX - previousX) > 0)
+        {
+            Debug.Log("wolf flip");
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -103,4 +121,11 @@ public class Wolf_Script : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         Destroy(this.gameObject);
     }
+
+    IEnumerator posCalculate(float currentX)
+    {
+        yield return new WaitForSeconds(0.1f);
+        previousX = currentX;
+    }
+
 }

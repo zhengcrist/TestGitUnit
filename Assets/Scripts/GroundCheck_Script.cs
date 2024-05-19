@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GroundCheck_Script : MonoBehaviour
 {
+    public CinemachineVirtualCamera[] virtualCameras;
+    private int defaultPriority = 10;
+    private int activeCameraIndex = 0; // keeps track of wich camera is currently active 
+
     [SerializeField] Player_Script1 player;
     [SerializeField] GameObject p1;
     [SerializeField] Transform LastCheckpoint;
@@ -18,6 +23,20 @@ public class GroundCheck_Script : MonoBehaviour
     [SerializeField] Animator Player_animator;
 
     // public bool isGrounded;
+    void Awake()
+    {
+        // reset cam
+        foreach (var cam in virtualCameras)
+        {
+            cam.Priority = defaultPriority;
+        }
+
+        // Set the first camera as the active camera
+        if (virtualCameras.Length > 0)
+        {
+            virtualCameras[0].Priority = defaultPriority + 2;
+        }
+    }
 
     void Update()
     {
@@ -25,6 +44,19 @@ public class GroundCheck_Script : MonoBehaviour
         {
             Die();
             player.life = player.maxlife;
+
+            // reset cam
+            foreach (var cam in virtualCameras)
+            {
+                cam.Priority = defaultPriority;
+            }
+
+            // Set the first camera as the active camera
+            if (virtualCameras.Length > 0)
+            {
+                virtualCameras[0].Priority = defaultPriority + 2;
+            }
+
         }
 
         if (IsGrounded1) { IsGrounded = true; }
