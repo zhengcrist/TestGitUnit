@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3273886269114182246}
   - component: {fileID: 3010878247852227561}
   - component: {fileID: 4423729375468954877}
+  - component: {fileID: 8696866643567361769}
   - component: {fileID: 4080386115558532227}
   - component: {fileID: 1848082552980747137}
   - component: {fileID: 6611793642231269101}
@@ -39,6 +40,7 @@ Transform:
   m_Children:
   - {fileID: 3208815536797506274}
   - {fileID: 1569460285940665114}
+  - {fileID: 1528479598656263585}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3010878247852227561
@@ -61,7 +63,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,9 +102,9 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384374140099025}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b67aa738022b4834199d1675e44785c7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -125,7 +127,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12139282, y: 0.080693245}
+  m_Offset: {x: -0.14322048, y: 0.16329443}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -136,8 +138,43 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6340253, y: 6.8219166}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.9722611, y: 6.2922354}
+  m_EdgeRadius: 0.11
+--- !u!70 &8696866643567361769
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384374140099025}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 10
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.046961296, y: 0.16706148}
+  m_Size: {x: 2.2215137, y: 7.096358}
+  m_Direction: 0
 --- !u!50 &4080386115558532227
 Rigidbody2D:
   serializedVersion: 4
@@ -154,7 +191,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2.01
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b67aa738022b4834199d1675e44785c7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -181,7 +218,6 @@ MonoBehaviour:
   maxlife: 8
   playerImmuneMax: 3
   playerImmuneTimer: 0
-  inventory: {fileID: 0}
   rigidbody: {fileID: 4080386115558532227}
   Player_animator: {fileID: 1875842146221246012}
   flip: 0
@@ -196,9 +232,9 @@ MonoBehaviour:
   - {fileID: 8968824193169400621, guid: c81cbb1a4ba8a3f41b41c58d2cd243dc, type: 3}
   potion: {fileID: 6414508859303138557, guid: 55a0d341eb800a344a110da6d24b15fb, type: 3}
   currentPotion: 0
-  cooldownThrow: 0.7
-  cooldownDrink: 1.2
-  cooldownNoDrink: 0.5
+  cooldownThrow: 0.6
+  cooldownDrink: 1.5
+  cooldownNoDrink: 0.6
   player: {fileID: 6611793642231269101}
 --- !u!114 &6611793642231269101
 MonoBehaviour:
@@ -213,13 +249,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTransform: {fileID: 1569460285940665114}
-  attackRange: 0.8
+  attackRange: 0.89
   attackableLayer:
     serializedVersion: 2
     m_Bits: 4294967295
   damageAmount: 1
-  cooldown: 1
-  knockbackForceMob: 5
+  cooldown: 0.5
+  knockbackForceMob: 4
   inAction: 0
   Player_animator: {fileID: 0}
 --- !u!114 &6474595091579035375
@@ -272,22 +308,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b8b4247c-3e9f-4c6a-bba1-443d2a0c59a7
     m_ActionName: P1/Interaction[/DualShock4GamepadHID/leftShoulder,/Keyboard/c]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b2d608c6-1322-4fcb-82e7-5c6305b6d638
-    m_ActionName: UI/Options[/DualShock4GamepadHID/start,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a31cbe2d-3ba2-45f1-a1f6-94ba2f2c6ea3
-    m_ActionName: UI/Enter[/DualShock4GamepadHID/buttonEast,/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0fb3aa29-df5e-4aee-b373-4c604781a520
-    m_ActionName: UI/Exit[/DualShock4GamepadHID/buttonSouth,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0662eed1-917e-44fa-b8ab-31b1862a98bc
-    m_ActionName: UI/Select[/Keyboard/downArrow,/Keyboard/anyKey,/Keyboard/s,/Keyboard/w,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/up]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1848082552980747137}
@@ -352,6 +372,30 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6736c600-08a7-48e0-b8d8-10644303126b
     m_ActionName: P1/Ice potion[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d01f9171-bb31-4769-a037-fa9308b20e0a
+    m_ActionName: UI/Move[/Keyboard/upArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2e03e7d6-d7da-4658-b353-f6c1572c9613
+    m_ActionName: UI/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848082552980747137}
+        m_TargetAssemblyTypeName: Player_Script1, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: baa2fa81-f3b8-489c-b105-62a02ded381a
+    m_ActionName: P1/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: P1
@@ -369,6 +413,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2cd27df99b6428aba206f3c151a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virtualCameras:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   player: {fileID: 1848082552980747137}
   p1: {fileID: 3384374140099025}
   LastCheckpoint: {fileID: 0}
@@ -387,6 +435,12 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   m_Rigidbody: {fileID: 4080386115558532227}
+  IsGrounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  groundCheck: {fileID: 1528479598656263585}
+  groundCheckRadius: 0.3
   Player_animator: {fileID: 1875842146221246012}
 --- !u!95 &1875842146221246012
 Animator:
@@ -465,7 +519,38 @@ Transform:
   m_GameObject: {fileID: 5696603495620741459}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.21, y: 0, z: 0}
+  m_LocalPosition: {x: 3.22, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3273886269114182246}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6598253723357890180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1528479598656263585}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1528479598656263585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6598253723357890180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
