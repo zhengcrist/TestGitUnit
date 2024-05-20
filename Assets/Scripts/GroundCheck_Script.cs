@@ -17,9 +17,12 @@ public class GroundCheck_Script : MonoBehaviour
     public ContactFilter2D ContactFilter;
 
     [SerializeField] Rigidbody2D m_Rigidbody;
-    public bool IsGrounded1 => m_Rigidbody.IsTouching(ContactFilter);
-    private bool first = true;
+    /*public bool IsGrounded1 => m_Rigidbody.IsTouching(ContactFilter);
+    private bool first = true;*/
     public bool IsGrounded;
+    public LayerMask groundLayer;
+    public Transform groundCheck;
+    [SerializeField] private float groundCheckRadius = 0.2f;
 
     [SerializeField] Animator Player_animator;
 
@@ -67,7 +70,7 @@ public class GroundCheck_Script : MonoBehaviour
 
         }
 
-        if (IsGrounded1) { IsGrounded = true; }
+        /*if (IsGrounded1) { IsGrounded = true; }
         
         if (!IsGrounded1 && first) // For more forgiving jump
         {
@@ -76,7 +79,9 @@ public class GroundCheck_Script : MonoBehaviour
         else if (IsGrounded1 &&  !first)
         {
             first = true;
-        }
+        }*/
+
+        IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         if (!IsGrounded)
         {
@@ -124,10 +129,10 @@ public class GroundCheck_Script : MonoBehaviour
         p1.transform.position = lastCheckpointPosition;
     }
 
-    IEnumerator GroundDelay()
+    /*IEnumerator GroundDelay()
     {
         first = false;
         yield return new WaitForSeconds(0.3f);
         IsGrounded = false;
-    }
+    }*/
 }

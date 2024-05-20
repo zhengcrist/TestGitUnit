@@ -5,13 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public static bool gamepad;
+
+    // music
+    [SerializeField] AudioSource audioSource;
+    public AudioClip Music_MainMenu;
+    [SerializeField] float duration = 1.0f;
+    [SerializeField] float targetVolume = 0f;
+
+    // RIP
     public bool ShowSettings;
     [SerializeField] private GameObject Settings;
-
     [SerializeField] private GameObject Menu;
 
     void Awake()
     {
+        // music
+        audioSource.clip = Music_MainMenu;
+        audioSource.Play();
+
+        // RIP
         Settings.SetActive(false);
         ShowSettings = false;
         Menu.SetActive(true);
@@ -27,16 +40,21 @@ public class MainMenu : MonoBehaviour
     public void StartKeyboard()
     {
         // pass keyboard info
+        gamepad = false;
+        StartCoroutine(AudioMenu.StartFade(audioSource, duration, targetVolume));
         SceneManager.LoadScene("Proto 1");
     }
 
     public void StartGamepad()
     {
         // pass gamepad info
+        gamepad = true;
+        StartCoroutine(AudioMenu.StartFade(audioSource, duration, targetVolume));
         SceneManager.LoadScene("Proto 1");
     }
 
-    // _______________________________________________
+    
+    // ____________________ RIP _______________________
 
     public void ButtonStart()
     {
@@ -60,6 +78,6 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    // ___________________ !RIP _______________________
 
-    
 }

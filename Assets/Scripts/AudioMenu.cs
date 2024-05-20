@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioMenu : MonoBehaviour
+public static class AudioMenu
 {
-    [SerializeField] AudioSource musicSource;
-    public AudioClip Music_MainMenu;
-
-    // Start is called before the first frame update
-    private void Awake()
+   
+    // Music
+    public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
     {
-        musicSource.clip = Music_MainMenu;
-        musicSource.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        float currentTime = 0;
+        float start = audioSource.volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
         
     }
 }
