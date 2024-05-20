@@ -5,9 +5,9 @@ using UnityEngine;
 public class Inventory_Script : MonoBehaviour
 {
 
-    public int MedNum;
-    public int OilNum;
-    public int ToadNum;
+    public static int MedNum;
+    public static int OilNum;
+    public static int ToadNum;
 
     // Start is called before the first frame update
     void Start()

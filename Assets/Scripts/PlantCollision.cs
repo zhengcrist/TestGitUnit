@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlantCollision : MonoBehaviour
 {
-    [SerializeField] Inventory_Script inventory;
+    // [SerializeField] Inventory_Script inventory;
     [SerializeField] private GameObject Plant;
 
     // TIMER
@@ -14,7 +14,7 @@ public class PlantCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory_Script>();
+        // inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory_Script>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,11 +23,11 @@ public class PlantCollision : MonoBehaviour
         {
             if (Plant.tag == "Green")
             {
-                inventory.MedNum++;
+                Inventory_Script.MedNum++;
             }
             if (Plant.tag == "Red")
             {
-                inventory.OilNum++;
+                Inventory_Script.OilNum++;
             }
             Plant.SetActive(false);
             CurrentTime = StartTime;

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CollectibleDrop : MonoBehaviour
 {
-    [SerializeField] Inventory_Script inventory;
+    // [SerializeField] Inventory_Script inventory;
     [SerializeField] private GameObject Collectible;
 
     void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory_Script>();
+        // inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory_Script>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,7 +18,7 @@ public class CollectibleDrop : MonoBehaviour
         {
             if (Collectible.tag == "Blue")
             {
-                inventory.ToadNum++;
+                Inventory_Script.ToadNum++;
             }
 
             Destroy(this.gameObject);

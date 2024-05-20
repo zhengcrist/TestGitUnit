@@ -7,7 +7,7 @@ public class PotionAvailable : MonoBehaviour
 {
     [SerializeField] private GameObject Potion;
 
-    [SerializeField] Inventory_Script inventory;
+    // [SerializeField] Inventory_Script inventory;
 
     RawImage m_RawImage;
     public Texture m_TextureOrigin;
@@ -17,7 +17,7 @@ public class PotionAvailable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory_Script>();
+        // inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory_Script>();
         //Fetch the RawImage component from the GameObject
         m_RawImage = GetComponent<RawImage>();
         m_TextureOrigin = m_RawImage.texture;
@@ -28,7 +28,7 @@ public class PotionAvailable : MonoBehaviour
     {
         if (Potion.CompareTag("Green"))
         {
-            if (inventory.MedNum >= 1 && inventory.OilNum >= 1 && inventory.ToadNum >= 1)
+            if (Inventory_Script.MedNum >= 1 && Inventory_Script.OilNum >= 1 && Inventory_Script.ToadNum >= 1)
             {
                 //Change the Texture to be the one you define in the Inspector
                 m_RawImage.texture = m_Texture;
@@ -42,7 +42,7 @@ public class PotionAvailable : MonoBehaviour
 
         if (Potion.CompareTag("Red"))
         {
-            if (inventory.OilNum >= 2)
+            if (Inventory_Script.OilNum >= 2)
             {
                 //Change the Texture to be the one you define in the Inspector
                 m_RawImage.texture = m_Texture;
@@ -55,7 +55,7 @@ public class PotionAvailable : MonoBehaviour
 
         if (Potion.CompareTag("Blue"))
         {
-            if (inventory.ToadNum >= 2)
+            if (Inventory_Script.ToadNum >= 2)
             {
                 //Change the Texture to be the one you define in the Inspector
                 m_RawImage.texture = m_Texture;

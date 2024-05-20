@@ -11,7 +11,8 @@ public class GroundCheck_Script : MonoBehaviour
 
     [SerializeField] Player_Script1 player;
     [SerializeField] GameObject p1;
-    [SerializeField] Transform LastCheckpoint;
+    public static Vector3 lastCheckpointPosition = new Vector3(0f, 0f, 0f);
+    [SerializeField] private Transform LastCheckpoint;
 
     public ContactFilter2D ContactFilter;
 
@@ -36,6 +37,13 @@ public class GroundCheck_Script : MonoBehaviour
         {
             virtualCameras[0].Priority = defaultPriority + 2;
         }
+
+        // go to last checkpoint
+        if(lastCheckpointPosition ==  Vector3.zero)
+        {
+            lastCheckpointPosition = LastCheckpoint.position;
+        }
+        p1.transform.position = lastCheckpointPosition;
     }
 
     void Update()
@@ -108,11 +116,12 @@ public class GroundCheck_Script : MonoBehaviour
     private void Checkpoint(Transform checkpointTransform)
     {
         LastCheckpoint = checkpointTransform;
+        lastCheckpointPosition = LastCheckpoint.position;
     }
 
     private void Die()
     {
-        p1.transform.position = LastCheckpoint.position;
+        p1.transform.position = lastCheckpointPosition;
     }
 
     IEnumerator GroundDelay()

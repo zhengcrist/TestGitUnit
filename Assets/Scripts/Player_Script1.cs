@@ -15,7 +15,7 @@ public class Player_Script1 : MonoBehaviour
     public float playerImmuneMax;
     public float playerImmuneTimer;
 
-    [SerializeField] Inventory_Script inventory;
+    // [SerializeField] Inventory_Script inventory;
     [SerializeField] new Rigidbody2D rigidbody;
 
     // [SerializeField] SpriteRenderer sr;
@@ -116,7 +116,7 @@ public class Player_Script1 : MonoBehaviour
     public void Heal(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (player.inAction == false && GroundCheck.IsGrounded && inventory.MedNum >= 1 && inventory.OilNum >= 1 && inventory.ToadNum >= 1 && life < maxlife)
+        if (player.inAction == false && GroundCheck.IsGrounded && Inventory_Script.MedNum >= 1 && Inventory_Script.OilNum >= 1 && Inventory_Script.ToadNum >= 1 && life < maxlife)
         {
             Player_animator.SetBool("Drink", true);
             StartCoroutine(Drink(0.1f));
@@ -126,9 +126,9 @@ public class Player_Script1 : MonoBehaviour
 
             life++;
 
-            inventory.MedNum--;
-            inventory.OilNum--;
-            inventory.ToadNum--;
+            Inventory_Script.MedNum--;
+            Inventory_Script.OilNum--;
+            Inventory_Script.ToadNum--;
         }
         else if (player.inAction == false && GroundCheck.IsGrounded)
         {
@@ -143,12 +143,12 @@ public class Player_Script1 : MonoBehaviour
     public void Fire(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (player.inAction == false && inventory.OilNum >= 2)
+        if (player.inAction == false && Inventory_Script.OilNum >= 2)
         {
             player.inAction = true;
             StartCoroutine(Cooldown(cooldownThrow));
 
-            inventory.OilNum -= 2;
+            Inventory_Script.OilNum -= 2;
 
             Player_animator.SetBool("Throw_red", true);
             StartCoroutine(Throw(1));
@@ -158,12 +158,12 @@ public class Player_Script1 : MonoBehaviour
     public void Ice(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (player.inAction == false && inventory.ToadNum >= 2)
+        if (player.inAction == false && Inventory_Script.ToadNum >= 2)
         {
             player.inAction = true;
             StartCoroutine(Cooldown(cooldownThrow));
 
-            inventory.ToadNum -= 2;
+            Inventory_Script.ToadNum -= 2;
 
             Player_animator.SetBool("Throw_blue", true);
             StartCoroutine(Throw(2));
