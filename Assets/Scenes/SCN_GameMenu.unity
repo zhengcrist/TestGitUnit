@@ -2183,8 +2183,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 705294867}
   Music_MainMenu: {fileID: 8300000, guid: a0a2e3fb187d2c64f82f4e7185dfa9f8, type: 3}
-  duration: 1
-  targetVolume: 0
+  duration: 1.58
+  targetVolume: 0.1
+  Start: {fileID: 2073267224}
+  Press: {fileID: 1376586118}
+  targetOpacity: 0
   ShowSettings: 0
   Settings: {fileID: 1392239676}
   Menu: {fileID: 895723063}

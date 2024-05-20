@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,6 +14,11 @@ public class MainMenu : MonoBehaviour
     public AudioClip Music_MainMenu;
     [SerializeField] float duration = 1.0f;
     [SerializeField] float targetVolume = 0f;
+
+    // menu
+    [SerializeField] TextMeshProUGUI Start;
+    [SerializeField] TextMeshProUGUI Press;
+    [SerializeField] float targetOpacity = 0f;
 
     // RIP
     public bool ShowSettings;
@@ -43,6 +50,8 @@ public class MainMenu : MonoBehaviour
         gamepad = false;
         StartCoroutine(AudioMenu.StartFade(audioSource, duration, targetVolume));
         StartCoroutine(ChangeScene(duration));
+        StartCoroutine(ButtonsFade(Start, duration, targetOpacity));
+        StartCoroutine(ButtonsFade(Press, duration, targetOpacity));
     }
 
     public void StartGamepad()
@@ -51,6 +60,8 @@ public class MainMenu : MonoBehaviour
         gamepad = true;
         StartCoroutine(AudioMenu.StartFade(audioSource, duration, targetVolume));
         StartCoroutine(ChangeScene(duration));
+        StartCoroutine(ButtonsFade(Start, duration, targetOpacity));
+        StartCoroutine(ButtonsFade(Press, duration, targetOpacity));
     }
 
     IEnumerator ChangeScene(float duration)
@@ -59,7 +70,23 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Proto 1");
 
     }
-    
+
+    IEnumerator ButtonsFade(TextMeshProUGUI menu, float duration, float targetOpacity)
+    {
+        float currentTime = 0;
+        Color text = menu.color;
+        float alpha = text.a;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            text.a = Mathf.Lerp(alpha, targetOpacity, currentTime / duration);
+            menu.color = text;
+            yield return null;
+        }
+        yield break;
+
+    }
+
     // ____________________ RIP _______________________
 
     public void ButtonStart()
