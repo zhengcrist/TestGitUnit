@@ -24,6 +24,20 @@ public class MainMenu : MonoBehaviour
         
     }
 
+    public void StartKeyboard()
+    {
+        // pass keyboard info
+        SceneManager.LoadScene("Proto 1");
+    }
+
+    public void StartGamepad()
+    {
+        // pass gamepad info
+        SceneManager.LoadScene("Proto 1");
+    }
+
+    // _______________________________________________
+
     public void ButtonStart()
     {
         SceneManager.LoadScene("Proto 1");

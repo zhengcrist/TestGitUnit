@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player_Script1 : MonoBehaviour
 {
@@ -167,6 +168,12 @@ public class Player_Script1 : MonoBehaviour
             Player_animator.SetBool("Throw_blue", true);
             StartCoroutine(Throw(2));
         }
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        SceneManager.LoadScene("SCN_GameMenu");
     }
 
     IEnumerator Cooldown(float cooldown)
