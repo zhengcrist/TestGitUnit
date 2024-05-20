@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
         // pass keyboard info
         gamepad = false;
         StartCoroutine(AudioMenu.StartFade(audioSource, duration, targetVolume));
-        SceneManager.LoadScene("Proto 1");
+        StartCoroutine(ChangeScene(duration));
     }
 
     public void StartGamepad()
@@ -50,9 +50,15 @@ public class MainMenu : MonoBehaviour
         // pass gamepad info
         gamepad = true;
         StartCoroutine(AudioMenu.StartFade(audioSource, duration, targetVolume));
-        SceneManager.LoadScene("Proto 1");
+        StartCoroutine(ChangeScene(duration));
     }
 
+    IEnumerator ChangeScene(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadScene("Proto 1");
+
+    }
     
     // ____________________ RIP _______________________
 
