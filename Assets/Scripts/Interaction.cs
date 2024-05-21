@@ -61,7 +61,7 @@ public class Interaction : MonoBehaviour
         while (i < text.Length)
         {
             interText.text = text[i];
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.2f);
             i++;
         }
         interText.text = "";

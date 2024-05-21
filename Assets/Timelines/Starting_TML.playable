@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7410266138659927713
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
+  m_Name: Signal Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects:
+    - {fileID: 5265945268221183139}
 --- !u!114 &-6146309796653254150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,6 +101,7 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: 1757726639733308919}
   - {fileID: 4185913866575235527}
+  - {fileID: -7410266138659927713}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -266,11 +291,11 @@ MonoBehaviour:
     m_Recordable: 0
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 1.9499999999999957
+    m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 4.983333333333333
     m_DisplayName: IntroLetter
   - m_Version: 1
-    m_Start: 42.43333333333333
+    m_Start: 40.483333333333334
     m_ClipIn: 0
     m_Asset: {fileID: -6146309796653254150}
     m_Duration: 2.9833333333333334
@@ -358,3 +383,19 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &5265945268221183139
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 43.31666666666667
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 714b97ceb160c7c4383d1d7e8b6a4f89, type: 2}
