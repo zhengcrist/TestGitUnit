@@ -7,7 +7,11 @@ public class CameraTriggerSwitch : MonoBehaviour
 {
     public CinemachineVirtualCamera[] virtualCameras;
     private int defaultPriority = 10;
-    private int activeCameraIndex = 0; // keeps track of wich camera is currently active 
+    // private int activeCameraIndex = 0; // keeps track of wich camera is currently active 
+
+    [SerializeField] int camerain;
+    [SerializeField] int cameraout;
+
 
     private Collider2D _coll;
 
@@ -25,11 +29,17 @@ public class CameraTriggerSwitch : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
-            if (virtualCameras[0].Priority >= virtualCameras[1].Priority)
+            bool switchyes = false;
+            for (int i = 0; i < virtualCameras.Length; i++)
+            {
+                if(i != camerain)
+                {
+                    if (virtualCameras[i].Priority >= virtualCameras[camerain].Priority)
+                        switchyes = true;
+                }
+            }
+            if (switchyes)
                 SwitchCamera();
-
-
         }
     }
 
@@ -67,19 +77,22 @@ public class CameraTriggerSwitch : MonoBehaviour
 
     private void SwitchCamera()
     {
-        /*// Lower the priority of the currently active camera
-        virtualCameras[activeCameraIndex].Priority = defaultPriority;
+        
 
-        // Calculate the next camera index
-        activeCameraIndex = (activeCameraIndex + 1) % virtualCameras.Length;
+       
+        int switchto;
+        if (virtualCameras[camerain].Priority > virtualCameras[cameraout].Priority)
+        {
+            switchto = cameraout;
+        }
+        else switchto = camerain;
 
-        // Increase the priority of the new active camera
-        virtualCameras[activeCameraIndex].Priority = defaultPriority + 1;*/
+        for (int i = 0; i < virtualCameras.Length; i++)
+        {
+            virtualCameras[i].Priority = 10;
+        }
+        virtualCameras[switchto].Priority = 20;
 
-        virtualCameras[activeCameraIndex].Priority -= 10;
-        if(activeCameraIndex == 0) { activeCameraIndex = 1; }
-        else { activeCameraIndex = 0; }
-        virtualCameras[activeCameraIndex].Priority += 10;
 
     }
 
