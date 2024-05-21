@@ -8,6 +8,7 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public static bool gamepad;
+    public static bool firstStart = true;
 
     // music
     [SerializeField] AudioSource audioSource;
