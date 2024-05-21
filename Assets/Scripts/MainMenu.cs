@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI Start;
     [SerializeField] TextMeshProUGUI Press;
     [SerializeField] float targetOpacity = 0f;
+    [SerializeField] GameObject presstostart;
 
     // RIP
     public bool ShowSettings;
@@ -30,6 +31,8 @@ public class MainMenu : MonoBehaviour
         // music
         audioSource.clip = Music_MainMenu;
         audioSource.Play();
+
+        // anim = Press.GetComponent<Animator>();
 
         // RIP
         Settings.SetActive(false);
@@ -51,7 +54,8 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(AudioMenu.StartFade(audioSource, duration, targetVolume));
         StartCoroutine(ChangeScene(duration));
         StartCoroutine(ButtonsFade(Start, duration, targetOpacity));
-        StartCoroutine(ButtonsFade(Press, duration, targetOpacity));
+        presstostart.SetActive(false);
+
     }
 
     public void StartGamepad()
@@ -61,7 +65,7 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(AudioMenu.StartFade(audioSource, duration, targetVolume));
         StartCoroutine(ChangeScene(duration));
         StartCoroutine(ButtonsFade(Start, duration, targetOpacity));
-        StartCoroutine(ButtonsFade(Press, duration, targetOpacity));
+        presstostart.SetActive(false);
     }
 
     IEnumerator ChangeScene(float duration)

@@ -461,7 +461,7 @@ public partial class @Default_Inputs: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""2f819ea6-73ad-4087-ab75-e6dcc911a9b6"",
                     ""path"": ""<Keyboard>/anyKey"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""StartKeyboard"",

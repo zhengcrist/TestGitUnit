@@ -26,7 +26,7 @@ public class CameraTriggerSwitch : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            if (virtualCameras[0].Priority >= defaultPriority + 1)
+            if (virtualCameras[0].Priority >= virtualCameras[1].Priority)
                 SwitchCamera();
 
 
@@ -67,14 +67,20 @@ public class CameraTriggerSwitch : MonoBehaviour
 
     private void SwitchCamera()
     {
-        // Lower the priority of the currently active camera
+        /*// Lower the priority of the currently active camera
         virtualCameras[activeCameraIndex].Priority = defaultPriority;
 
         // Calculate the next camera index
         activeCameraIndex = (activeCameraIndex + 1) % virtualCameras.Length;
 
         // Increase the priority of the new active camera
-        virtualCameras[activeCameraIndex].Priority = defaultPriority + 1;
+        virtualCameras[activeCameraIndex].Priority = defaultPriority + 1;*/
+
+        virtualCameras[activeCameraIndex].Priority -= 10;
+        if(activeCameraIndex == 0) { activeCameraIndex = 1; }
+        else { activeCameraIndex = 0; }
+        virtualCameras[activeCameraIndex].Priority += 10;
+
     }
 
 }
