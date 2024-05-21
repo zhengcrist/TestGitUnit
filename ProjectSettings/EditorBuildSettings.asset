@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Proto 1.unity
     guid: 4417b4b1eec943149a5ddcbfd0fd3609
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/SCN_Game2.unity
+    guid: 8e2b6fab7bb34f345b5dd487ceb3c701
+  - enabled: 1
     path: Assets/Scenes/SCN_GameFinal.unity
     guid: 392b1fd0f8c287d469dbf03902f90282
   - enabled: 1
@@ -29,9 +32,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SCN_GameB1.unity
     guid: 525c95fe252c57f4494bc74f7c944245
-  - enabled: 0
-    path: Assets/Scenes/SCN_GameB2.unity
-    guid: 8e2b6fab7bb34f345b5dd487ceb3c701
   - enabled: 0
     path: Assets/Scenes/SCN_GameTuto.unity
     guid: 2e99046c2a861b94bb8c3f0084342e46
