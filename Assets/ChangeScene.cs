@@ -12,7 +12,7 @@ public class ChangeScene : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            if (scene.name == "Proto1")
+            if (scene.name == "Proto 1")
             {
 
                 SceneManager.LoadScene("SCN_Game2");
