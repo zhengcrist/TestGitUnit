@@ -72,7 +72,14 @@ public class MainMenu : MonoBehaviour
     IEnumerator ChangeScene(float duration)
     {
         yield return new WaitForSeconds(duration);
-        SceneManager.LoadScene("Proto 1");
+        if (GroundCheck_Script.lastCheckpointPosition.x < 252f)
+        {
+            SceneManager.LoadScene("Proto 1");
+        }
+        else
+        {
+            SceneManager.LoadScene("SCN_Game2");
+        }
 
     }
 
