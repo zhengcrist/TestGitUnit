@@ -241,8 +241,8 @@ MonoBehaviour:
   - 4
   - 2
   - 4
-  knockbackForceMob: 4.07
-  knockbackForceP: 5.54
+  knockbackForceMob: 3
+  knockbackForceP: 10
   rb: {fileID: 3641267627100146037}
   isBurnt: 0
   isFrozen: 0

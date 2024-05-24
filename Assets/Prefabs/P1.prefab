@@ -203,13 +203,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTransform: {fileID: 1569460285940665114}
-  attackRange: 0.89
+  attackRange: 0.81
   attackableLayer:
     serializedVersion: 2
     m_Bits: 4294967295
   damageAmount: 1
   cooldown: 0.5
-  knockbackForceMob: 4
+  knockbackForceMob: 5
   inAction: 0
   Player_animator: {fileID: 0}
 --- !u!114 &6474595091579035375

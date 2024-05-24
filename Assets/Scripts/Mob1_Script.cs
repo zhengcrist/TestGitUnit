@@ -93,6 +93,7 @@ public class Mob1_Script : MonoBehaviour
             }
             return; // exit so it doesn't do the rest
         }
+        
 
         // ___________________________________________
 
@@ -174,7 +175,7 @@ public class Mob1_Script : MonoBehaviour
                     // Knockback
                     Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
                     Debug.Log("direction" + direction);
-                    Vector2 knockbackMob = - direction * knockbackForceMob * 10;
+                    Vector2 knockbackMob = direction * knockbackForceMob * 10;
 
                    
 
@@ -223,16 +224,19 @@ public class Mob1_Script : MonoBehaviour
 
         if (knockbackMob.x < 0)
         {
+            isFrozen = true;
             spriteRenderer.flipX = true;
             yield return new WaitForSeconds(0.5f);
         }
         else
         {
+            isFrozen = true;
             spriteRenderer.flipX = false;
             yield return new WaitForSeconds(0.5f);
         }
-
         anim.SetBool("Atk", false);
+
+        isFrozen = false;
 
         // player color
         playerSR.color = new Color(1, 0, 0, 1); // change player to red

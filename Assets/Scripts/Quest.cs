@@ -5,6 +5,7 @@ using TMPro;
 
 public class Quest : MonoBehaviour
 {
+    
     // icon
     [SerializeField] SpriteRenderer triangle;
 
@@ -36,13 +37,22 @@ public class Quest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (triangle.color == new Color(1, 1, 1, 1))
+        if (triangle.color == new Color(1, 1, 1, 1) && triangle.enabled == true)
         {
             if (default_Inputs.P1.Interaction.WasPressedThisFrame())
             {
                 Debug.Log("Pressed");
 
                 StartCoroutine(interCoroutine());
+                
+                /* if (helped[npc] == 0)
+                {
+                    StartCoroutine(interCoroutine());
+                }
+                else
+                {
+                    StartCoroutine(thanksCoroutine());
+                } */
             }
         }
 
@@ -55,6 +65,8 @@ public class Quest : MonoBehaviour
                 if (default_Inputs.P1.Interaction.WasPressedThisFrame())
                 {
                     available = false;
+                    interText.text = "";
+
                     // sub the quest items
                     Inventory_Script.MedNum -= heal;
                     Inventory_Script.OilNum -= fire;
@@ -120,6 +132,8 @@ public class Quest : MonoBehaviour
         }
 
         // QUEST
+        
+
         if (MainMenu.gamepad)
         {
             interText.text = "Press [ L1 ] to help.";
@@ -132,6 +146,7 @@ public class Quest : MonoBehaviour
         available = true;
         yield return new WaitForSeconds(3f);
         available = false;
+        interText.text = "";
 
     }
 
@@ -145,13 +160,24 @@ public class Quest : MonoBehaviour
             yield return new WaitForSeconds(1.2f);
             i++;
         }
+        interText.text = "";
 
         // add the quest rewards
         Inventory_Script.MedNum += healreward;
         Inventory_Script.OilNum += firereward;
         Inventory_Script.ToadNum += icereward;
 
+        yield return new WaitForSeconds(10f);
         triangle.enabled = true;
+
+    }
+
+    IEnumerator thanksCoroutine()
+    {
+       
+        interText.text = "Thank you for your help.";
+        yield return new WaitForSeconds(0.7f);
+        interText.text = "";
 
     }
 }
