@@ -54,6 +54,7 @@ public class Quest : MonoBehaviour
             {
                 if (default_Inputs.P1.Interaction.WasPressedThisFrame())
                 {
+                    available = false;
                     // sub the quest items
                     Inventory_Script.MedNum -= heal;
                     Inventory_Script.OilNum -= fire;
@@ -107,6 +108,8 @@ public class Quest : MonoBehaviour
 
     IEnumerator interCoroutine()
     {
+        triangle.enabled = false;
+
         // first text
         int i = 0;
         while (i < text.Length)
@@ -147,6 +150,8 @@ public class Quest : MonoBehaviour
         Inventory_Script.MedNum += healreward;
         Inventory_Script.OilNum += firereward;
         Inventory_Script.ToadNum += icereward;
+
+        triangle.enabled = true;
 
     }
 }
