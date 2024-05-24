@@ -57,6 +57,7 @@ public class Interaction : MonoBehaviour
 
     IEnumerator interCoroutine()
     {
+        triangle.color = new Color(1, 1, 1, 0);
         int i = 0;
         while (i < text.Length)
         {
@@ -65,5 +66,6 @@ public class Interaction : MonoBehaviour
             i++;
         }
         interText.text = "";
+        
     }
 }

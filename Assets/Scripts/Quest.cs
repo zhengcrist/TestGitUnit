@@ -45,28 +45,23 @@ public class Quest : MonoBehaviour
 
                 StartCoroutine(interCoroutine());
                 
-                /* if (helped[npc] == 0)
-                {
-                    StartCoroutine(interCoroutine());
-                }
-                else
-                {
-                    StartCoroutine(thanksCoroutine());
-                } */
+              
             }
         }
 
         // Quest time
         if (available)
         {
-            // if at least one needed item
-            if ((Inventory_Script.MedNum > 0 || heal == 0) && (Inventory_Script.OilNum > 0 || fire == 0) && (Inventory_Script.ToadNum > 0 || ice == 0))
+            // if accepted
+            if (default_Inputs.P1.Interaction.WasPressedThisFrame())
             {
-                if (default_Inputs.P1.Interaction.WasPressedThisFrame())
-                {
-                    available = false;
-                    interText.text = "";
+                available = false;
+                interText.text = "";
 
+                // if at least one needed item
+                if ((Inventory_Script.MedNum > 0 || heal == 0) && (Inventory_Script.OilNum > 0 || fire == 0) && (Inventory_Script.ToadNum > 0 || ice == 0))
+                {
+                    
                     // sub the quest items
                     Inventory_Script.MedNum -= heal;
                     Inventory_Script.OilNum -= fire;
@@ -88,6 +83,10 @@ public class Quest : MonoBehaviour
 
                     // reward coroutine
                     StartCoroutine(questCoroutine());
+                }
+                else
+                {
+                    StartCoroutine(noCoroutine());
                 }
                 
             }
@@ -172,10 +171,11 @@ public class Quest : MonoBehaviour
 
     }
 
-    IEnumerator thanksCoroutine()
+  
+    IEnumerator noCoroutine()
     {
-       
-        interText.text = "Thank you for your help.";
+
+        interText.text = "You don't have enough to help.";
         yield return new WaitForSeconds(0.7f);
         interText.text = "";
 
