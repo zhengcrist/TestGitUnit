@@ -58,7 +58,7 @@ public class Wolf_Light : MonoBehaviour
             // LIGHT ON
             myLight.intensity = intens;
             // color
-            mob.spriteRenderer.color = new Color(1, 0, 0, 1);
+            // mob.spriteRenderer.color = new Color(1, 0, 0, 1);
 
 
         }
@@ -66,7 +66,7 @@ public class Wolf_Light : MonoBehaviour
         {
             // LIGHT OFF
             myLight.intensity = 0;
-            mob.spriteRenderer.color = new Color(1, 1, 1, 1);
+            // mob.spriteRenderer.color = new Color(1, 1, 1, 1);
         }
 
         // COUNT DOWN TIMER

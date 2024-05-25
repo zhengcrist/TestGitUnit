@@ -93,7 +93,7 @@ public class Wolf_Script : MonoBehaviour
         // if collision with iceball, mob gets 1 dmg and freeze
         if (collision.name == "Iceball(Clone)")
         {
-            spriteRenderer.color = new Color(0, 0, 1, 1); // change color
+            // spriteRenderer.color = new Color(0, 0, 1, 1); // change color
             StartCoroutine(Freeze(FreezeTime));
 
             // anim.SetBool("Freeze", true); // freeze anim
