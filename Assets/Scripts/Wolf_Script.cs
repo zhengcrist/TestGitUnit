@@ -59,10 +59,10 @@ public class Wolf_Script : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if(collision.gameObject.tag == "Player")
+        if(collision.tag == "Player")
         {
             if (!isFrozen && (player.playerImmuneTimer >= player.playerImmuneMax))
             {
@@ -83,7 +83,7 @@ public class Wolf_Script : MonoBehaviour
 
         }
         // if collision with fireball, mob gets burnt
-        if (collision.gameObject.name == "Fireball(Clone)")
+        if (collision.name == "Fireball(Clone)")
         {
             isBurnt = true;
             // Burn on light_flicker script
@@ -91,7 +91,7 @@ public class Wolf_Script : MonoBehaviour
         }
 
         // if collision with iceball, mob gets 1 dmg and freeze
-        if (collision.gameObject.name == "Iceball(Clone)")
+        if (collision.name == "Iceball(Clone)")
         {
             spriteRenderer.color = new Color(0, 0, 1, 1); // change color
             StartCoroutine(Freeze(FreezeTime));

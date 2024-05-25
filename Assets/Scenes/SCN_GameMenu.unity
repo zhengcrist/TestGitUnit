@@ -3436,9 +3436,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6404533196329576447, guid: b67e24fffa9253a4b8f6e304d015219b,
         type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404533196329576447, guid: b67e24fffa9253a4b8f6e304d015219b,
+        type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 9023060349582867038, guid: b67e24fffa9253a4b8f6e304d015219b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 9107774276395022417, guid: b67e24fffa9253a4b8f6e304d015219b,
         type: 3}
       propertyPath: m_Name

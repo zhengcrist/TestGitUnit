@@ -126,7 +126,7 @@ public class Quest : MonoBehaviour
         while (i < text.Length)
         {
             interText.text = text[i];
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(1.7f);
             i++;
         }
 
@@ -147,6 +147,9 @@ public class Quest : MonoBehaviour
         available = false;
         interText.text = "";
 
+        yield return new WaitForSeconds(10f);
+        triangle.enabled = true;
+
     }
 
     IEnumerator questCoroutine()
@@ -156,7 +159,7 @@ public class Quest : MonoBehaviour
         while (i < quest.Length)
         {
             interText.text = quest[i];
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(1.7f);
             i++;
         }
         interText.text = "";
@@ -166,9 +169,7 @@ public class Quest : MonoBehaviour
         Inventory_Script.OilNum += firereward;
         Inventory_Script.ToadNum += icereward;
 
-        yield return new WaitForSeconds(10f);
-        triangle.enabled = true;
-
+        
     }
 
   
@@ -176,7 +177,7 @@ public class Quest : MonoBehaviour
     {
 
         interText.text = "You don't have enough to help.";
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1f);
         interText.text = "";
 
     }

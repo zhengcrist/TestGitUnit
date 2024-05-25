@@ -125,6 +125,7 @@ public class Player_Script1 : MonoBehaviour
             StartCoroutine(Cooldown(cooldownDrink));
 
             life++;
+            life++;
 
             Inventory_Script.MedNum--;
             Inventory_Script.OilNum--;
