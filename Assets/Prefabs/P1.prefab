@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 6
   maxlife: 6
-  playerImmuneMax: 3
+  playerImmuneMax: 1.5
   playerImmuneTimer: 0
   rigidbody: {fileID: 4080386115558532227}
   Player_animator: {fileID: 1875842146221246012}
