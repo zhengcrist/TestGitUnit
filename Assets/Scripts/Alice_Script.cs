@@ -109,11 +109,11 @@ public class Alice_Script : MonoBehaviour
             if (difference.x < 0)
             {
                 // if the position hasn't reached the target waypoint yet
-                spriteRenderer.flipX = true;
+                spriteRenderer.flipX = false;
             }
             else if (difference.x > 0)
             {
-                spriteRenderer.flipX = false;
+                spriteRenderer.flipX = true;
             }
         }
     }
