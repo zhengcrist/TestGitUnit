@@ -18,6 +18,7 @@ public class PlayerAttack_Script : MonoBehaviour
     private RaycastHit2D[] hits;
 
     [SerializeField] Animator Player_animator;
+    [SerializeField] Player_Script1 player;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class PlayerAttack_Script : MonoBehaviour
         if (!inAction) 
         {
             inAction = true;
+            player.playerImmuneTimer = 0.8f;
             StartCoroutine(Atk(0.1f));
             StartCoroutine(Cooldown(cooldown));
 

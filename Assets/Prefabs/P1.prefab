@@ -212,6 +212,7 @@ MonoBehaviour:
   knockbackForceMob: 5
   inAction: 0
   Player_animator: {fileID: 0}
+  player: {fileID: 1848082552980747137}
 --- !u!114 &6474595091579035375
 MonoBehaviour:
   m_ObjectHideFlags: 0

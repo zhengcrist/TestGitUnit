@@ -11,6 +11,7 @@ public class Interaction : MonoBehaviour
     [SerializeField] TextMeshProUGUI interText;
 
     [SerializeField] string[] text;
+    [SerializeField] string[] text2;
 
     // Start is called before the first frame update
     void Awake()
@@ -59,11 +60,25 @@ public class Interaction : MonoBehaviour
     {
         triangle.color = new Color(1, 1, 1, 0);
         int i = 0;
-        while (i < text.Length)
+        
+        if (!ChangeScene.gamend || text2.Length == 0) // if the player didn't finish the game or there's no text 2
         {
-            interText.text = text[i];
-            yield return new WaitForSeconds(1.5f);
-            i++;
+            while (i < text.Length)
+            {
+                interText.text = text[i];
+                yield return new WaitForSeconds(1.5f);
+                i++;
+            }
+
+        }
+        else if (text2.Length > 0) // text after finishing the game
+        {
+            while (i < text2.Length)
+            {
+                interText.text = text2[i];
+                yield return new WaitForSeconds(1.5f);
+                i++;
+            }
         }
         interText.text = "";
         

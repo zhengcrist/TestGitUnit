@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player_Script1 : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Player_Script1 : MonoBehaviour
     public bool flip = false;
     [SerializeField] private Vector2 _moveInput;
     [SerializeField] private float speed;
+    [SerializeField] Canvas canvas;
+    private bool canvasfirstime = true;
 
     [SerializeField] GroundCheck_Script GroundCheck;
     [SerializeField] private float jump;
@@ -67,8 +70,26 @@ public class Player_Script1 : MonoBehaviour
 
     void FixedUpdate()
     {
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Proto 1")
+        {
+
+            if (canvas.enabled == true)
+            {
+                player.inAction = true;
+            }
+            else if (canvasfirstime)
+            {
+                player.inAction = false;
+                canvasfirstime = false;
+            }
+
+        }
+
+
+
         // immunity
-        if(playerImmuneTimer < playerImmuneMax)
+        if (playerImmuneTimer < playerImmuneMax)
         {
             // Player immunity timer set
             playerImmuneTimer += Time.deltaTime;

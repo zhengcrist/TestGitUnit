@@ -22,27 +22,31 @@ public class Trigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if collision with player, player gets damage
-        if (collision.gameObject.tag == "Player")
+        if (!ChangeScene.gamend)
         {
-            times++;
-            if(times == requiredtime)
+            // if collision with player, player gets damage
+            if (collision.gameObject.tag == "Player")
             {
-                if(MainMenu.gamepad)
+                times++;
+                if (times == requiredtime)
                 {
-                    StartCoroutine(triggerCoroutine(textgp));
+                    if (MainMenu.gamepad)
+                    {
+                        StartCoroutine(triggerCoroutine(textgp));
+                    }
+                    else if (Application.systemLanguage == SystemLanguage.French)
+                    {
+                        StartCoroutine(triggerCoroutine(textfr));
+                    }
+                    else
+                    {
+                        StartCoroutine(triggerCoroutine(texten));
+                    }
                 }
-                else if(Application.systemLanguage == SystemLanguage.French)
-                {
-                    StartCoroutine(triggerCoroutine(textfr));
-                }
-                else
-                {
-                    StartCoroutine(triggerCoroutine(texten));
-                }
+
             }
-            
         }
+        
     }
 
     IEnumerator triggerCoroutine(string[] text)
