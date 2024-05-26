@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class Timeline : MonoBehaviour
 {
-    
-    [SerializeField] GameObject canvas;
+
+    [SerializeField] Canvas canvas;
     [SerializeField] PlayableDirector Cinematic;
 
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class Timeline : MonoBehaviour
         }
         else
         {
-            canvas.SetActive(false);
+            canvas.enabled = false;
             Destroy(this.gameObject);
         }
     }
