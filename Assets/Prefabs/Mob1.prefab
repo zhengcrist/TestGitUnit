@@ -313,8 +313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58edeecb3ae6b794da006ee944d18dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobLife: 5
-  mobMaxLife: 5
+  mobLife: 4
+  mobMaxLife: 4
   SR: {fileID: 2753210981959258326}
 --- !u!95 &7059738633833093802
 Animator:
