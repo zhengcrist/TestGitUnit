@@ -29,7 +29,7 @@ public class ChangeScene : MonoBehaviour
             {
                 if(returnscn) {
                     GroundCheck_Script.lastCheckpointPosition = LastCheckpoint.position;
-                    SceneManager.LoadScene("SCN_Proto 1");
+                    SceneManager.LoadScene("Proto 1");
                 }
                 else
                 {
