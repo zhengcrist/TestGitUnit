@@ -192,7 +192,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -598,19 +598,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'I clutched the vial of healing potion tightly, refusing to hand it over.
     Vincent lunged at me, driven by a desperate need to save the daughter he believed
-    still existed within the chimera''s body. We struggled, but Vincent''s desperation
-    gave him strength. He wrested the potion from my grip and hurried to Alice''s
-    side.
+    still existed within the chimera''s body. We struggled, but Vincent''s wrested
+    the potion from my grip and hurried to Alice''s side.
 
 
-    "Alice, my sweet girl," he murmured, uncorking the vial and pouring
-    the liquid down her throat.
+    "Alice, my sweet
+    girl," he murmured, uncorking the vial and pouring the liquid down her throat.
 
 
-    For a moment, there was silence. Then, Alice''s
-    body convulsed violently, rejecting the potion. Her twisted limbs flailed, and
-    a high pitch scream erupted from her throat. The room filled with the sound of
-    shattering glass and splintering wood as she thrashed about.'
+    For
+    a moment, there was silence. Then, Alice''s body convulsed violently, rejecting
+    the potion. Her twisted limbs flailed, and a high pitch scream erupted from her
+    throat. The room filled with the sound of shattering glass and splintering wood
+    as she thrashed about.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fca057732a414764684a0642a35b05c5, type: 2}
   m_sharedMaterial: {fileID: -3649629883972920301, guid: fca057732a414764684a0642a35b05c5,
@@ -1247,10 +1247,7 @@ MonoBehaviour:
     was gone as quickly as it came, replaced by a feral madness. She roared and turned
     away, fleeing into the night.
 
-
-    Vincent collapsed, tears streaming down his
-    face. My own heart broke for the man and the daughter he had tried to save, but
-    I couldn''t act weak in a moment like this.'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fca057732a414764684a0642a35b05c5, type: 2}
   m_sharedMaterial: {fileID: -3649629883972920301, guid: fca057732a414764684a0642a35b05c5,
@@ -2583,6 +2580,8 @@ PlayableDirector:
     value: {fileID: 301893174}
   - key: {fileID: -6454793603379403937, guid: 628eb842ae4a9fe46bc24f730d9ed0e4, type: 2}
     value: {fileID: 1465073701}
+  - key: {fileID: 1975335227494662432, guid: 628eb842ae4a9fe46bc24f730d9ed0e4, type: 2}
+    value: {fileID: 1465073701}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1481488535
@@ -2659,13 +2658,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'I clutched the vial of healing potion tightly, refusing to hand it over.
     Vincent lunged at me, driven by a desperate need to save the daughter he believed
-    still existed within the chimera''s body. We struggled, but Vincent''s desperation
-    gave him strength. He wrested the potion from my grip and hurried to Alice''s
-    side.
+    still existed within the chimera''s body. We struggled, but Vincent''s wrested
+    the potion from my grip and hurried to Alice''s side.
 
 
-    "Alice, my sweet girl," he murmured, uncorking the vial and pouring
-    the liquid down her throat.
+    "Alice, my sweet
+    girl," he murmured, uncorking the vial and pouring the liquid down her throat.
 
 
 '
@@ -2949,9 +2947,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: I clutched the vial of healing potion tightly, refusing to hand it over.
     Vincent lunged at me, driven by a desperate need to save the daughter he believed
-    still existed within the chimera's body. We struggled, but Vincent's desperation
-    gave him strength. He wrested the potion from my grip and hurried to Alice's
-    side.
+    still existed within the chimera's body. We struggled, but Vincent's wrested
+    the potion from my grip and hurried to Alice's side.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fca057732a414764684a0642a35b05c5, type: 2}
   m_sharedMaterial: {fileID: -3649629883972920301, guid: fca057732a414764684a0642a35b05c5,
@@ -3094,11 +3091,6 @@ MonoBehaviour:
     For a brief moment, a flicker of humanity seemed to return to her eyes. But it
     was gone as quickly as it came, replaced by a feral madness. She roared and turned
     away, fleeing into the night.
-
-
-    Vincent collapsed, tears streaming down his
-    face. My own heart broke for the man and the daughter he had tried to save, but
-    I couldn''t act weak in a moment like this.
 
 
     "We need to stop her," I said.'
