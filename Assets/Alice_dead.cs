@@ -34,7 +34,7 @@ public class Alice_dead : MonoBehaviour
     void Update()
     {
         // INTERACTION
-        if (triangle.color == new Color(1, 1, 1, 1))
+        if (triangle.color == new Color(1, 1, 1, 1) && triangle.enabled == true)
         {
             if (default_Inputs.P1.Interaction.WasPressedThisFrame())
             {
@@ -83,7 +83,7 @@ public class Alice_dead : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             
-             triangle.color = new Color(1, 1, 1, 0);
+               triangle.color = new Color(1, 1, 1, 0);
             
         }
     }
@@ -101,7 +101,7 @@ public class Alice_dead : MonoBehaviour
         {
             interText.text = "Press [ F ] to give the final blow.";
         }
-
+        yield return new WaitForSeconds(0.2f);
         available = true;
         yield return new WaitForSeconds(6f);
         available = false;
