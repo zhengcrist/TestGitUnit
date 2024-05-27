@@ -121,6 +121,7 @@ public class Player_Script1 : MonoBehaviour
         {
             Player_animator.SetBool("Run", false);
         }
+
     }
 
     public void Jump(InputAction.CallbackContext context)
