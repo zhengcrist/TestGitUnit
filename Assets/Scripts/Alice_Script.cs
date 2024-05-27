@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Alice_Script : MonoBehaviour
 {
@@ -25,10 +26,11 @@ public class Alice_Script : MonoBehaviour
     // DEAD
     [SerializeField] public bool isDead = false;
     [SerializeField] private float PauseTime;
+    bool falling;
 
     private float timer = 0; // disabled timer
     public SpriteRenderer spriteRenderer; // mob sprite renderer
-    // [SerializeField] Animator anim;
+    [SerializeField] Animator anim;
     [SerializeField] MobLife_Script Mob_1; // for mob life
 
     // ______________ For player ______________
@@ -41,6 +43,7 @@ public class Alice_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        falling = true;
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
 
@@ -57,7 +60,7 @@ public class Alice_Script : MonoBehaviour
 
             // load next scene
             // SceneManager.LoadScene("SCN_GameMenu");
-            return;
+            // return;
         }
 
         if (isFrozen) // freeze movement if frozen
@@ -69,7 +72,7 @@ public class Alice_Script : MonoBehaviour
             if (timer > FreezeTime)
             {
                 isFrozen = false;
-                // anim.SetBool("Freeze", false); // reset anim
+                anim.SetBool("frozen", false); // reset anim
                 timer = 0;
                 spriteRenderer.color = new Color(1, 1, 1, 1); // change color
             }
@@ -78,8 +81,19 @@ public class Alice_Script : MonoBehaviour
 
         // ___________________________________________
 
+        if (isDead)
+        {
+            // DIE
 
-        MovingFonct();
+            anim.SetBool("dead", true);
+            StartCoroutine(deadcoroutine());
+        }
+        else
+        {
+
+            MovingFonct();
+
+        }
     }
 
     // ________________________________________________________________________________
@@ -90,9 +104,10 @@ public class Alice_Script : MonoBehaviour
         // dead condition
         if (Mob_1.mobLife <= 0)
         {
-            spriteRenderer.color = new Color(1, 0, 0, 1); // change color
-            // anim.SetBool("KO", true);
+            // spriteRenderer.color = new Color(1, 0, 0, 1); // change color
+            
             isDead = true; // to freeze movement
+            // StartCoroutine(deadcoroutine());
         }
         else
         {
@@ -179,21 +194,39 @@ public class Alice_Script : MonoBehaviour
                 Mob_1.mobLife--; // dmg received by mob
                 spriteRenderer.color = new Color(0, 0, 1, 1); // change color
                 isFrozen = true;
-                // anim.SetBool("Freeze", true); // freeze anim
+                anim.SetBool("frozen", true); ; // freeze anim
                 Debug.Log("OnCollision ice");
             }
         }
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            falling = false;
+        }
 
     }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            falling = true;
+        }
+    }
 
-    // ________________________________ !COLLISIONS ___________________________________
-    // ________________________________________________________________________________
+        // ________________________________ !COLLISIONS ___________________________________
+        // ________________________________________________________________________________
 
-    IEnumerator playerDMG()
+        IEnumerator playerDMG()
     {
         // player color
         playerSR.color = new Color(1, 0, 0, 1); // change player to red
         yield return new WaitForSeconds(0.5f);
         playerSR.color = new Color(1, 1, 1, 1); // reset color
+    }
+
+    IEnumerator deadcoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        // load next scene
+        SceneManager.LoadScene("SCN_Boss2");
     }
 }
