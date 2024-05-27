@@ -177,6 +177,7 @@ MonoBehaviour:
   flip: 0
   _moveInput: {x: 0, y: 0}
   speed: 6.1
+  canvas: {fileID: 0}
   GroundCheck: {fileID: 3806088390509902175}
   jump: 58
   FireballSpawnPoint: {fileID: 3208815536797506274}
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTransform: {fileID: 1569460285940665114}
-  attackRange: 0.81
+  attackRange: 1.09
   attackableLayer:
     serializedVersion: 2
     m_Bits: 4294967295
