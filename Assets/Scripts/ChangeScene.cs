@@ -42,14 +42,25 @@ public class ChangeScene : MonoBehaviour
                         else
                         {
                             tmptext.text = "I should gather enough ingredients before.";
+                            StartCoroutine(afterend());
                         }
                     }
-                    else { tmptext.text = "Unfortunately, I don't think I can do anything for Vincent..."; }
+                    else { 
+                        tmptext.text = "Unfortunately, I don't think I can do anything for Vincent...";
+                        StartCoroutine(afterend());
+                    }
                     
                 }
                 
             }
             
         }
+    }
+
+    IEnumerator afterend()
+    {
+        
+        yield return new WaitForSeconds(2f);
+        tmptext.text = "";
     }
 }
