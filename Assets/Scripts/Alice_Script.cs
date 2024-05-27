@@ -28,7 +28,7 @@ public class Alice_Script : MonoBehaviour
 
     private float timer = 0; // disabled timer
     public SpriteRenderer spriteRenderer; // mob sprite renderer
-    // [SerializeField] Animator anim;
+    [SerializeField] Animator anim;
     [SerializeField] MobLife_Script Mob_1; // for mob life
 
     // ______________ For player ______________
@@ -198,7 +198,7 @@ public class Alice_Script : MonoBehaviour
 
     IEnumerator deadco()
     {
-        
+        anim.SetBool("dead", true);
         yield return new WaitForSeconds(0.5f);
         // load next scene
         SceneManager.LoadScene("SCN_Boss 1");
