@@ -12,6 +12,7 @@ TagManager:
   - Ice
   - Fire
   - Checkpoint
+  - Music
   layers:
   - Default
   - TransparentFX

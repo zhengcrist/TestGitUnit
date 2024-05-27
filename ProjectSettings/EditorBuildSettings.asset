@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SCN_Boss.unity
     guid: e0c9df41b3fe2e54bb8b339b5e5096ae
   - enabled: 1
+    path: Assets/Scenes/SCN_Boss 1.unity
+    guid: 7a98c0e7cfc0b2d42a3edda46f71412c
+  - enabled: 1
     path: Assets/Scenes/SCN_GameEnd.unity
     guid: ce32a2dd642faff49ba34e04f44e6263
   - enabled: 0

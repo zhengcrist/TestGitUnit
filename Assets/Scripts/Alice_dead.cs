@@ -17,7 +17,8 @@ public class Alice_dead : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-         default_Inputs = new Default_Inputs();
+ 
+        default_Inputs = new Default_Inputs();
     }
     public void OnEnable()
     {
