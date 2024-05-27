@@ -51,14 +51,12 @@ public class Alice_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead) // freeze movement if dead
+        /*if (isDead) // freeze movement if dead
         {
             Debug.Log("deadead");
-
-            // load next scene
-            // SceneManager.LoadScene("SCN_GameMenu");
+            
             return;
-        }
+        }*/
 
         if (isFrozen) // freeze movement if frozen
         {
@@ -92,6 +90,7 @@ public class Alice_Script : MonoBehaviour
         {
             spriteRenderer.color = new Color(1, 0, 0, 1); // change color
             // anim.SetBool("KO", true);
+            StartCoroutine(deadco());
             isDead = true; // to freeze movement
         }
         else
@@ -195,5 +194,13 @@ public class Alice_Script : MonoBehaviour
         playerSR.color = new Color(1, 0, 0, 1); // change player to red
         yield return new WaitForSeconds(0.5f);
         playerSR.color = new Color(1, 1, 1, 1); // reset color
+    }
+
+    IEnumerator deadco()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        // load next scene
+        SceneManager.LoadScene("SCN_Boss 1");
     }
 }
