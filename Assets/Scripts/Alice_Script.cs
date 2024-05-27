@@ -54,14 +54,7 @@ public class Alice_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead) // freeze movement if dead
-        {
-            Debug.Log("deadead");
-
-            // load next scene
-            // SceneManager.LoadScene("SCN_GameMenu");
-            // return;
-        }
+        
 
         if (isFrozen) // freeze movement if frozen
         {
@@ -84,7 +77,6 @@ public class Alice_Script : MonoBehaviour
         if (isDead)
         {
             // DIE
-
             anim.SetBool("dead", true);
             StartCoroutine(deadcoroutine());
         }
