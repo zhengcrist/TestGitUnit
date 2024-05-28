@@ -35,7 +35,8 @@ public class GroundCheck_Script : MonoBehaviour
     // public bool isGrounded;
     void Awake()
     {
-        
+        IsGrounded1 = IsGrounded;
+
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         // reset cam
