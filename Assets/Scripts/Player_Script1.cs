@@ -43,8 +43,13 @@ public class Player_Script1 : MonoBehaviour
 
     public PlayerAttack_Script player; // for the inaction bool
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
     void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         playerImmuneTimer = playerImmuneMax;
 
         default_Inputs = new Default_Inputs();
@@ -103,6 +108,9 @@ public class Player_Script1 : MonoBehaviour
         if (player.inAction == false)
         {
             Player_animator.SetBool("Run", true);
+
+            audioManager.PlayRun();
+
             transform.Translate(_moveInput * speed * Time.deltaTime); // move
             
 
@@ -120,6 +128,7 @@ public class Player_Script1 : MonoBehaviour
         if (_moveInput.x == 0)
         {
             Player_animator.SetBool("Run", false);
+            audioManager.StopRun();
         }
 
     }
@@ -140,6 +149,8 @@ public class Player_Script1 : MonoBehaviour
         if (!context.performed) return;
         if (player.inAction == false && GroundCheck.IsGrounded && Inventory_Script.MedNum >= 1 && Inventory_Script.OilNum >= 1 && Inventory_Script.ToadNum >= 1 && life < maxlife)
         {
+            audioManager.PlaySFX(audioManager.SFX_Drink);
+
             Player_animator.SetBool("Drink", true);
             StartCoroutine(Drink(0.1f));
 
@@ -168,6 +179,8 @@ public class Player_Script1 : MonoBehaviour
         if (!context.performed) return;
         if (player.inAction == false && Inventory_Script.OilNum >= 2)
         {
+            audioManager.PlaySFX(audioManager.SFX_Throw);
+
             player.inAction = true;
             StartCoroutine(Cooldown(cooldownThrow));
 
@@ -183,6 +196,8 @@ public class Player_Script1 : MonoBehaviour
         if (!context.performed) return;
         if (player.inAction == false && Inventory_Script.ToadNum >= 2)
         {
+            audioManager.PlaySFX(audioManager.SFX_Throw);
+
             player.inAction = true;
             StartCoroutine(Cooldown(cooldownThrow));
 

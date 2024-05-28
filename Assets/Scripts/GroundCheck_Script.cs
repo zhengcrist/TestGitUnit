@@ -19,6 +19,7 @@ public class GroundCheck_Script : MonoBehaviour
     [SerializeField] Rigidbody2D m_Rigidbody;
     /*public bool IsGrounded1 => m_Rigidbody.IsTouching(ContactFilter);
     private bool first = true;*/
+    bool IsGrounded1;
     public bool IsGrounded;
     public LayerMask groundLayer;
     public Transform groundCheck;
@@ -26,9 +27,14 @@ public class GroundCheck_Script : MonoBehaviour
 
     [SerializeField] Animator Player_animator;
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
     // public bool isGrounded;
     void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         // reset cam
         foreach (var cam in virtualCameras)
         {
@@ -70,18 +76,10 @@ public class GroundCheck_Script : MonoBehaviour
 
         }
 
-        /*if (IsGrounded1) { IsGrounded = true; }
-        
-        if (!IsGrounded1 && first) // For more forgiving jump
-        {
-            StartCoroutine(GroundDelay());
-        }
-        else if (IsGrounded1 &&  !first)
-        {
-            first = true;
-        }*/
-
+       
+       // Groundcheck
         IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
 
         if (!IsGrounded)
         {
@@ -90,6 +88,17 @@ public class GroundCheck_Script : MonoBehaviour
         else
         {
             Player_animator.SetBool("Falling", false);
+        }
+
+        // landing sound
+        if (!IsGrounded1 && IsGrounded)
+        {
+            audioManager.PlaySFX(audioManager.SFX_Drink);
+            IsGrounded1 = true;
+        }
+        if (IsGrounded1 && (!IsGrounded))
+        {
+            IsGrounded1 = false;
         }
     }
 

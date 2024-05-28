@@ -20,8 +20,12 @@ public class PlayerAttack_Script : MonoBehaviour
     [SerializeField] Animator Player_animator;
     [SerializeField] Player_Script1 player;
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
     private void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         inAction = false;
         Player_animator = GetComponent<Animator>();
     }
@@ -71,6 +75,7 @@ public class PlayerAttack_Script : MonoBehaviour
 
     IEnumerator Atk(float cooldown)
     {
+        audioManager.PlaySFX(audioManager.SFX_Attack);
         Player_animator.SetBool("Atk", true);
         yield return new WaitForSeconds(cooldown);
         Player_animator.SetBool("Atk", false);

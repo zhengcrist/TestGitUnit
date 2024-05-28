@@ -17,9 +17,15 @@ public class Potion_Script : MonoBehaviour
 
     [SerializeField] Player_Script1 player;
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
 
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+
         rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
 
@@ -50,6 +56,7 @@ public class Potion_Script : MonoBehaviour
     {
         if (col.gameObject.tag != "Player" && col.gameObject.tag != "Green" && col.gameObject.tag != "Red" && col.gameObject.tag != "Blue")
         {
+            audioManager.PlaySFX(audioManager.SFX_Glass);
             Destroy(this.gameObject);
         }
         Debug.Log("OnCollisionEnter2D");
