@@ -7,6 +7,7 @@ public class Frog_Sound : MonoBehaviour
     [SerializeField] AudioSource Source;
 
     [SerializeField] AudioClip Frog;
+    bool first = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,10 @@ public class Frog_Sound : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag("Player") && first)
         {
             Source.Play();
+            first = false;
         }
     }
 
@@ -33,6 +35,7 @@ public class Frog_Sound : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             Source.Stop();
+            first = true;
         }
     }
 }
