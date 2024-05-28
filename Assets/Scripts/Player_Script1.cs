@@ -21,6 +21,8 @@ public class Player_Script1 : MonoBehaviour
 
     // [SerializeField] SpriteRenderer sr;
     [SerializeField] Animator Player_animator;
+    // particles
+    [SerializeField] private ParticleSystem RunVFX;
     // private bool Player_Run;
     public bool flip = false;
     [SerializeField] private Vector2 _moveInput;
@@ -117,12 +119,20 @@ public class Player_Script1 : MonoBehaviour
         if (player.inAction == false)
         {
             Player_animator.SetBool("Run", true);
+          
 
-            // audio
-            if(firstRun && GroundCheck.IsGrounded)
+            // vfx
+            if (GroundCheck.IsGrounded)
             {
-                firstRun = false;
-                audioManager.PlayRun();
+                RunVFX.Play();
+
+                // audio
+                if (firstRun)
+                {
+                    firstRun = false;
+                    audioManager.PlayRun();
+                }
+               
             }
 
             transform.Translate(_moveInput * speed * Time.deltaTime); // move
@@ -142,6 +152,7 @@ public class Player_Script1 : MonoBehaviour
         if (_moveInput.x == 0)
         {
             Player_animator.SetBool("Run", false);
+            RunVFX.Stop();
 
             // audio
             audioManager.StopRun();
@@ -239,6 +250,7 @@ public class Player_Script1 : MonoBehaviour
 
     IEnumerator Jump(float time)
     {
+        RunVFX.Play();
         yield return new WaitForSeconds(time);
         Player_animator.SetBool("Jump", false);
     }

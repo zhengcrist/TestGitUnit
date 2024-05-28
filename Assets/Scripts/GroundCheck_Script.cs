@@ -9,6 +9,8 @@ public class GroundCheck_Script : MonoBehaviour
     private int defaultPriority = 10;
     private int activeCameraIndex = 0; // keeps track of wich camera is currently active 
 
+    // particles
+    [SerializeField] private ParticleSystem RunVFX;
     [SerializeField] Player_Script1 player;
     [SerializeField] GameObject p1;
     public static Vector3 lastCheckpointPosition = new Vector3(0f, 0f, 0f);
@@ -85,6 +87,7 @@ public class GroundCheck_Script : MonoBehaviour
         if (!IsGrounded)
         {
             Player_animator.SetBool("Falling", true);
+            RunVFX.Stop();
         }
         else
         {
@@ -95,6 +98,9 @@ public class GroundCheck_Script : MonoBehaviour
         if (!IsGrounded1 && IsGrounded)
         {
             audioManager.PlaySFX(audioManager.SFX_Land);
+            // particles
+            RunVFX.Play();
+
             IsGrounded1 = true;
         }
         if (IsGrounded1 && (!IsGrounded))
