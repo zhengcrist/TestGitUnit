@@ -24,6 +24,7 @@ public class Player_Script1 : MonoBehaviour
     // private bool Player_Run;
     public bool flip = false;
     [SerializeField] private Vector2 _moveInput;
+    bool firstRun = true;
     [SerializeField] private float speed;
     [SerializeField] Canvas canvas;
     private bool canvasfirstime = true;
@@ -75,6 +76,14 @@ public class Player_Script1 : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        // audio
+        if (!GroundCheck.IsGrounded)
+        {
+            audioManager.StopRun();
+            firstRun = true;
+        }
+
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Proto 1")
         {
@@ -109,7 +118,12 @@ public class Player_Script1 : MonoBehaviour
         {
             Player_animator.SetBool("Run", true);
 
-            audioManager.PlayRun();
+            // audio
+            if(firstRun && GroundCheck.IsGrounded)
+            {
+                firstRun = false;
+                audioManager.PlayRun();
+            }
 
             transform.Translate(_moveInput * speed * Time.deltaTime); // move
             
@@ -128,7 +142,10 @@ public class Player_Script1 : MonoBehaviour
         if (_moveInput.x == 0)
         {
             Player_animator.SetBool("Run", false);
+
+            // audio
             audioManager.StopRun();
+            firstRun = true;
         }
 
     }

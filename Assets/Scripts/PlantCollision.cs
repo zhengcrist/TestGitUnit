@@ -11,9 +11,13 @@ public class PlantCollision : MonoBehaviour
     [SerializeField] public float StartTime = 4f;
     [SerializeField] public float CurrentTime = 0f;
 
-    // Start is called before the first frame update
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         // inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory_Script>();
     }
 
@@ -29,6 +33,7 @@ public class PlantCollision : MonoBehaviour
             {
                 Inventory_Script.OilNum++;
             }
+            audioManager.PlaySFX(audioManager.SFX_Sparkle);
             Plant.SetActive(false);
             CurrentTime = StartTime;
         }

@@ -14,10 +14,15 @@ public class Wold_Trigger : MonoBehaviour
     [SerializeField] float duration = 3.0f;
     [SerializeField] float targetVolume = 1f;
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
 
     // Update is called once per frame
@@ -30,6 +35,7 @@ public class Wold_Trigger : MonoBehaviour
     {
         if (col.tag == "Player" && wolfTrigger)
         {
+            audioManager.PlaySFX(audioManager.SFX_Wolf);
             StartCoroutine(Vignette(duration, targetVolume));
             StartCoroutine(Cooldown(cooldown));
             Vector3 vectPlayer = col.transform.position;

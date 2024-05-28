@@ -7,8 +7,13 @@ public class CollectibleDrop : MonoBehaviour
     // [SerializeField] Inventory_Script inventory;
     [SerializeField] private GameObject Collectible;
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         // inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory_Script>();
     }
 
@@ -18,6 +23,7 @@ public class CollectibleDrop : MonoBehaviour
         {
             if (Collectible.tag == "Blue")
             {
+                audioManager.PlaySFX(audioManager.SFX_Sparkle);
                 Inventory_Script.ToadNum++;
             }
 

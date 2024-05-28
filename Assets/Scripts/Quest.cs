@@ -28,9 +28,14 @@ public class Quest : MonoBehaviour
 
     private bool available = false;
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
     // Start is called before the first frame update
     void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         default_Inputs = new Default_Inputs();
     }
 
@@ -169,7 +174,8 @@ public class Quest : MonoBehaviour
         Inventory_Script.OilNum += firereward;
         Inventory_Script.ToadNum += icereward;
 
-        
+        audioManager.PlaySFX(audioManager.SFX_Sparkle);
+
     }
 
   
