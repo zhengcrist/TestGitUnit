@@ -124,11 +124,11 @@ public class Player_Script1 : MonoBehaviour
             // vfx
             if (GroundCheck.IsGrounded)
             {
-                RunVFX.Play();
-
+                
                 // audio
                 if (firstRun)
                 {
+                    RunVFX.Play();
                     firstRun = false;
                     audioManager.PlayRun();
                 }
