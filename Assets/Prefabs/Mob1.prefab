@@ -105,9 +105,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7721503816344669966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mob1
-  m_TagString: Untagged
+  m_TagString: Frog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,6 +256,7 @@ MonoBehaviour:
   playerSR: {fileID: 0}
   collectible: {fileID: 1576465973565899918, guid: 2c47ce4ff8a75614a9d07f1c403d0ccb,
     type: 3}
+  audioManager: {fileID: 0}
 --- !u!61 &446522386302093774
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -316,6 +317,7 @@ MonoBehaviour:
   mobLife: 4
   mobMaxLife: 4
   SR: {fileID: 2753210981959258326}
+  audioManager: {fileID: 0}
 --- !u!95 &7059738633833093802
 Animator:
   serializedVersion: 5

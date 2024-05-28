@@ -215,6 +215,7 @@ MonoBehaviour:
   cooldown: 0.5
   knockbackForceMob: 5
   inAction: 0
+  RunVFX: {fileID: 1819321770141634687}
   Player_animator: {fileID: 0}
   player: {fileID: 1848082552980747137}
   audioManager: {fileID: 0}
@@ -373,12 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2cd27df99b6428aba206f3c151a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virtualCameras:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  virtualCameras: []
   RunVFX: {fileID: 1819321770141634687}
   player: {fileID: 1848082552980747137}
   p1: {fileID: 3384374140099025}

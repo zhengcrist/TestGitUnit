@@ -17,6 +17,8 @@ public class PlayerAttack_Script : MonoBehaviour
 
     private RaycastHit2D[] hits;
 
+    // particles
+    [SerializeField] private ParticleSystem RunVFX;
     [SerializeField] Animator Player_animator;
     [SerializeField] Player_Script1 player;
 
@@ -35,7 +37,9 @@ public class PlayerAttack_Script : MonoBehaviour
         if (!context.performed) return;
         if (!inAction) 
         {
+           
             inAction = true;
+            RunVFX.Play();
             player.playerImmuneTimer = 0.8f;
             StartCoroutine(Atk(0.1f));
             StartCoroutine(Cooldown(cooldown));
@@ -78,6 +82,7 @@ public class PlayerAttack_Script : MonoBehaviour
         audioManager.PlaySFX(audioManager.SFX_Attack);
         Player_animator.SetBool("Atk", true);
         yield return new WaitForSeconds(cooldown);
+        RunVFX.Stop();
         Player_animator.SetBool("Atk", false);
     }
 

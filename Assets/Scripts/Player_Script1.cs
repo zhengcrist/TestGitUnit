@@ -129,6 +129,7 @@ public class Player_Script1 : MonoBehaviour
                 if (firstRun)
                 {
                     RunVFX.Play();
+
                     firstRun = false;
                     audioManager.PlayRun();
                 }
@@ -166,6 +167,8 @@ public class Player_Script1 : MonoBehaviour
         if (!context.performed) return;
         if (player.inAction == false && GroundCheck.IsGrounded) // when right arrow
         {
+
+            RunVFX.Play();
             Player_animator.SetBool("Jump", true);
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             StartCoroutine(Jump(0.1f));
@@ -250,7 +253,6 @@ public class Player_Script1 : MonoBehaviour
 
     IEnumerator Jump(float time)
     {
-        RunVFX.Play();
         yield return new WaitForSeconds(time);
         Player_animator.SetBool("Jump", false);
     }

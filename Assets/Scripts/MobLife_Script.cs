@@ -9,10 +9,14 @@ public class MobLife_Script : MonoBehaviour, IDamageable
     [SerializeField] public int mobMaxLife;
     [SerializeField] SpriteRenderer SR; // mob sprite renderer
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         mobLife = mobMaxLife;
     }
 
@@ -20,6 +24,14 @@ public class MobLife_Script : MonoBehaviour, IDamageable
     {
         mobLife -= damageAmount;
         StartCoroutine(mobDMG());
+        if(transform.CompareTag("Frog"))
+        {
+            audioManager.PlaySFX(audioManager.SFX_Frog);
+        }
+        else if(transform.CompareTag("Alice"))
+        {
+            audioManager.PlaySFX(audioManager.SFX_Alice);
+        }
     }
 
     IEnumerator mobDMG()

@@ -102,6 +102,8 @@ public class GroundCheck_Script : MonoBehaviour
             RunVFX.Play();
 
             IsGrounded1 = true;
+
+            StartCoroutine(GroundDelay());
         }
         if (IsGrounded1 && (!IsGrounded))
         {
@@ -145,10 +147,9 @@ public class GroundCheck_Script : MonoBehaviour
         p1.transform.position = lastCheckpointPosition;
     }
 
-    /*IEnumerator GroundDelay()
+    IEnumerator GroundDelay()
     {
-        first = false;
-        yield return new WaitForSeconds(0.3f);
-        IsGrounded = false;
-    }*/
+        yield return new WaitForSeconds(0.2f);
+        RunVFX.Stop();
+    }
 }
