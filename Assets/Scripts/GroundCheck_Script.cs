@@ -149,7 +149,7 @@ public class GroundCheck_Script : MonoBehaviour
 
     IEnumerator GroundDelay()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         RunVFX.Stop();
     }
 }

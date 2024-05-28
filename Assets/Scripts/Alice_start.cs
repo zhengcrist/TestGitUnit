@@ -7,17 +7,21 @@ public class Alice_start : MonoBehaviour
     [SerializeField] MobLife_Script Mob_1; // for mob life
     private int max;
 
+
+    
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        max = minFunct();
-        useMax(max);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Mob_1.mobLife == Mob_1.mobMaxLife)
+        {
+            max = minFunct();
+            useMax(max);
+        }
     }
 
     int minFunct()

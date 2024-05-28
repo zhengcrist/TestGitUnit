@@ -287,7 +287,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Alice_scream
   - m_Version: 1
-    m_Start: 6.801333333333332
+    m_Start: 4.052666666666667
     m_ClipIn: 0
     m_Asset: {fileID: -3560247175829686640}
     m_Duration: 2.832
@@ -356,7 +356,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: DOORHdwr_Verrou de grange verrouillage (ID 1540)_LS
   - m_Version: 1
-    m_Start: 3.4653333333333323
+    m_Start: 0.7166666666666667
     m_ClipIn: 0
     m_Asset: {fileID: 3609571034940593093}
     m_Duration: 3.3360000000000003
@@ -425,10 +425,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: DOORWood_Porte d appartement fermeture 1 (ID 2421)_LS
   - m_Version: 1
-    m_Start: 9.633333333333333
+    m_Start: 8.85
     m_ClipIn: 0
     m_Asset: {fileID: -8767744854583249345}
-    m_Duration: 4.816666666666666
+    m_Duration: 5.983333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6454793603379403937}
     m_EaseInDuration: 0
@@ -722,10 +722,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 9.633333333333333
+    m_Start: 8.85
     m_ClipIn: 0
     m_Asset: {fileID: -789622589192011415}
-    m_Duration: 5.783333333333333
+    m_Duration: 7.7666666666666675
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1975335227494662432}
     m_EaseInDuration: 0

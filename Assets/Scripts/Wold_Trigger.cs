@@ -39,7 +39,7 @@ public class Wold_Trigger : MonoBehaviour
             StartCoroutine(Vignette(duration, targetVolume));
             StartCoroutine(Cooldown(cooldown));
             Vector3 vectPlayer = col.transform.position;
-            Vector3 vectPos = new Vector3(vectPlayer.x + 25f, vectPlayer.y - 0.5f, 0f);
+            Vector3 vectPos = new Vector3(vectPlayer.x + 30f, vectPlayer.y - 0.5f, 0f);
             var wolfSpawn = Instantiate(wolf, vectPos, transform.localRotation);
         }
         Debug.Log("OnTriggerEnter2D");

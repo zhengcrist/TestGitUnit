@@ -39,7 +39,6 @@ public class PlayerAttack_Script : MonoBehaviour
         {
            
             inAction = true;
-            RunVFX.Play();
             player.playerImmuneTimer = 0.8f;
             StartCoroutine(Atk(0.1f));
             StartCoroutine(Cooldown(cooldown));
@@ -82,13 +81,16 @@ public class PlayerAttack_Script : MonoBehaviour
         audioManager.PlaySFX(audioManager.SFX_Attack);
         Player_animator.SetBool("Atk", true);
         yield return new WaitForSeconds(cooldown);
-        RunVFX.Stop();
+
         Player_animator.SetBool("Atk", false);
     }
 
     IEnumerator Cooldown(float cooldown)
     {
+
+        RunVFX.Play();
         yield return new WaitForSeconds(cooldown);
         inAction = false;
+        RunVFX.Stop();
     }
 }
