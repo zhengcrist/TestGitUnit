@@ -42,10 +42,15 @@ public class Mob1_Script : MonoBehaviour
     // ______________ For drop ______________
     [SerializeField] private GameObject collectible; //prefab drop
 
+    // Audio
+    [SerializeField] AudioManager audioManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         _targetWaypoint = _waypoints[0];
         startPosition = transform.position;
 
@@ -187,6 +192,8 @@ public class Mob1_Script : MonoBehaviour
                     player.playerImmuneTimer = 0;
                     // Player dmg
                     player.life--;
+                    // audio
+                    audioManager.PlaySFX(audioManager.SFX_Hurt);
                     // Change color feedback
                     StartCoroutine(playerDMG(knockbackMob));  
                     

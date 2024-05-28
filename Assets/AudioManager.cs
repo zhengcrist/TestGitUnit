@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     [Header("------------Audio Clip------------")]
     public AudioClip SFX_Run;
     public AudioClip SFX_Land;
+    public AudioClip SFX_Hurt;
     public AudioClip SFX_Attack;
     public AudioClip SFX_Drink;
     public AudioClip SFX_Throw;

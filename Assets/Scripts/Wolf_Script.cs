@@ -27,11 +27,14 @@ public class Wolf_Script : MonoBehaviour
     private float previousX = 0;
     private float positionX;
 
-
+    // Audio
+    [SerializeField] AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Script1>();
         playerSR = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
@@ -76,6 +79,8 @@ public class Wolf_Script : MonoBehaviour
                 player.playerImmuneTimer = 0;
                 // Player dmg
                 player.life--;
+                // audio
+                audioManager.PlaySFX(audioManager.SFX_Hurt);
                 // Change color feedback
                 StartCoroutine(playerDMG());
 

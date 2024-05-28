@@ -176,12 +176,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RunSource: {fileID: 4510034957839646330}
   SFXSource: {fileID: 281411049118236935}
-  SFX_Run: {fileID: 8300000, guid: 5f7f2478b2af21b41a68f7fb0ca3d1c9, type: 3}
+  SFX_Run: {fileID: 8300000, guid: 76d9b211ac5faf646a7c77dcd2ccea7c, type: 3}
   SFX_Land: {fileID: 8300000, guid: 22c81d9b117725c4793817e2718c2dc7, type: 3}
+  SFX_Hurt: {fileID: 8300000, guid: 41c7589034533604ba33a519e5bb1af2, type: 3}
   SFX_Attack: {fileID: 8300000, guid: 268ff63ac64893d458768c90728aa2ed, type: 3}
-  SFX_Drink: {fileID: 8300000, guid: b0c19a19ec4ef854fb26738ec8430a94, type: 3}
+  SFX_Drink: {fileID: 8300000, guid: e32ef4ac1fa62a247b4ae2f822f61b4f, type: 3}
   SFX_Throw: {fileID: 8300000, guid: a57f775e86f668e4a893106d73094ec9, type: 3}
   SFX_Glass: {fileID: 8300000, guid: 72edf066b4193144da1c6eeeaab6a3dd, type: 3}
+  SFX_Sparkle: {fileID: 8300000, guid: 61b56f8e58888b94d95305acc023d774, type: 3}
   SFX_Wolf: {fileID: 8300000, guid: 72537efa30d6b7140833101661e86200, type: 3}
   SFX_Alice: {fileID: 8300000, guid: e4680152a56f0f84abe2113fdc354db6, type: 3}
 --- !u!1 &3681329128697954866
@@ -228,7 +230,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 268ff63ac64893d458768c90728aa2ed, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.646
   m_Pitch: 1
   Loop: 0
   Mute: 0
