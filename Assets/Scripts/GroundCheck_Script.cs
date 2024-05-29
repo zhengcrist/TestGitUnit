@@ -22,6 +22,8 @@ public class GroundCheck_Script : MonoBehaviour
     /*public bool IsGrounded1 => m_Rigidbody.IsTouching(ContactFilter);
     private bool first = true;*/
     bool IsGrounded1;
+    public bool jumping = false;
+
     public bool IsGrounded;
     public LayerMask groundLayer;
     public Transform groundCheck;
@@ -88,7 +90,10 @@ public class GroundCheck_Script : MonoBehaviour
         if (!IsGrounded)
         {
             Player_animator.SetBool("Falling", true);
-            RunVFX.Stop();
+            if(!jumping)
+            {
+                RunVFX.Stop();
+            }
         }
         else
         {
@@ -99,12 +104,13 @@ public class GroundCheck_Script : MonoBehaviour
         if (!IsGrounded1 && IsGrounded)
         {
             audioManager.PlaySFX(audioManager.SFX_Land);
+
             // particles
-            RunVFX.Play();
+            // jumping = true;
+            // RunVFX.Play();
+            StartCoroutine(GroundDelay());
 
             IsGrounded1 = true;
-
-            StartCoroutine(GroundDelay());
         }
         if (IsGrounded1 && (!IsGrounded))
         {
@@ -150,7 +156,8 @@ public class GroundCheck_Script : MonoBehaviour
 
     IEnumerator GroundDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
+        jumping = false;
         RunVFX.Stop();
     }
 }

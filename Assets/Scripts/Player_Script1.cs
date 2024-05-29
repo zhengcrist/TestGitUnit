@@ -153,7 +153,11 @@ public class Player_Script1 : MonoBehaviour
         if (_moveInput.x == 0)
         {
             Player_animator.SetBool("Run", false);
-            RunVFX.Stop();
+
+            if(!GroundCheck.jumping)
+            {
+                RunVFX.Stop();
+            }
 
             // audio
             audioManager.StopRun();
@@ -167,7 +171,7 @@ public class Player_Script1 : MonoBehaviour
         if (!context.performed) return;
         if (player.inAction == false && GroundCheck.IsGrounded) // when right arrow
         {
-
+            GroundCheck.jumping = true;
             RunVFX.Play();
             Player_animator.SetBool("Jump", true);
             rigidbody.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);

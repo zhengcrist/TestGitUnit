@@ -127,8 +127,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.046961296, y: 0.16706148}
-  m_Size: {x: 2.2215137, y: 7.096358}
+  m_Offset: {x: -0.046961296, y: 0.2977608}
+  m_Size: {x: 2.2215137, y: 6.834959}
   m_Direction: 0
 --- !u!50 &4080386115558532227
 Rigidbody2D:
@@ -374,7 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2cd27df99b6428aba206f3c151a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virtualCameras: []
+  virtualCameras:
+  - {fileID: 0}
   RunVFX: {fileID: 1819321770141634687}
   player: {fileID: 1848082552980747137}
   p1: {fileID: 3384374140099025}
@@ -394,6 +395,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   m_Rigidbody: {fileID: 4080386115558532227}
+  jumping: 0
   IsGrounded: 0
   groundLayer:
     serializedVersion: 2
@@ -432,7 +434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3208815536797506274}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fireball_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -463,7 +465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1569460285940665114}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttackTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528479598656263585}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -1386,7 +1388,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 6
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5313,7 +5315,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
