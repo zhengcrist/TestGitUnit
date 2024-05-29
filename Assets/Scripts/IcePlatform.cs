@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IcePlatform : MonoBehaviour
 {
@@ -10,12 +11,23 @@ public class IcePlatform : MonoBehaviour
     [SerializeField] SpriteRenderer sr;
     [SerializeField] Color m_NewColor;
 
+    RawImage m_RawImage;
+    [SerializeField] Sprite newSprite;
+    [SerializeField] Sprite originSprite;
+    //Select a Texture in the Inspector to change to
+    // public Texture m_Texture;
+
     // Start is called before the first frame update
     void Awake()
     {
         rigidbody.isKinematic = true;
         rigidbody.simulated = false;
         // rigidbody.detectCollisions = false;
+
+        //Fetch the RawImage component from the GameObject
+        sr = GetComponentInChildren<SpriteRenderer>();
+        originSprite = sr.GetComponent<Sprite>();
+        // m_TextureOrigin = m_RawImage.texture;
 
         m_NewColor = new Color(0f, 0.5f, 1f, 0.5f);
         sr.color = m_NewColor;
@@ -28,6 +40,8 @@ public class IcePlatform : MonoBehaviour
             rigidbody.isKinematic = false;
             rigidbody.simulated = true;
             sr.color = new Color(1, 1, 1);
+            //Change the Texture to be the one you define in the Inspector
+            sr.sprite = newSprite;
 
             Debug.Log("Simulated");
             // rigidbody.detectCollisions = true;
@@ -46,7 +60,9 @@ public class IcePlatform : MonoBehaviour
         yield return new WaitForSeconds(15);
         rigidbody.isKinematic = true;
         rigidbody.simulated = false;
+        // get back to old
         sr.color = m_NewColor;
+        sr.sprite = originSprite;
         Debug.Log("NOT simulated");
         // rigidbody.detectCollisions = false;
     }

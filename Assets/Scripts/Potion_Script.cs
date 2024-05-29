@@ -54,7 +54,7 @@ public class Potion_Script : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag != "Player" && col.gameObject.tag != "Green" && col.gameObject.tag != "Red" && col.gameObject.tag != "Blue")
+        if (col.gameObject.tag != "Player" && col.gameObject.tag != "Green" && col.gameObject.tag != "Red" && col.gameObject.tag != "Blue" && col.gameObject.tag != "Checkpoint")
         {
             audioManager.PlaySFX(audioManager.SFX_Glass);
             Destroy(this.gameObject);

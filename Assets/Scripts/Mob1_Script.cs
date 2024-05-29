@@ -94,7 +94,7 @@ public class Mob1_Script : MonoBehaviour
                 isFrozen = false;
                 anim.SetBool("Freeze", false); // reset anim
                 timer = 0;
-                spriteRenderer.color = new Color(1, 1, 1, 1); // change color
+                // spriteRenderer.color = new Color(1, 1, 1, 1); // change color
             }
             return; // exit so it doesn't do the rest
         }
@@ -212,7 +212,7 @@ public class Mob1_Script : MonoBehaviour
             if (collision.gameObject.name == "Iceball(Clone)")
             {
                 Mob_1.mobLife--; // dmg received by mob
-                spriteRenderer.color = new Color(0, 0, 1, 1); // change color
+                // spriteRenderer.color = new Color(0, 0, 1, 1); // change color
                 isFrozen = true;
                 anim.SetBool("Freeze", true); // freeze anim
                 Debug.Log("OnCollision ice");
