@@ -63,6 +63,8 @@ public class Alice_Script : MonoBehaviour
             return;
         }*/
 
+        
+
         if (isFrozen) // freeze movement if frozen
         {
             Debug.Log("frozen");

@@ -39,7 +39,7 @@ public class PlayerAttack_Script : MonoBehaviour
         {
            
             inAction = true;
-            player.playerImmuneTimer = 0.8f;
+            // player.playerImmuneTimer = 0.8f;
             StartCoroutine(Atk(0.1f));
             StartCoroutine(Cooldown(cooldown));
 

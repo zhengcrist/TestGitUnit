@@ -65,8 +65,8 @@ public class GroundCheck_Script : MonoBehaviour
     {
         if (player.life <= 0)
         {
-            Die();
-            player.life = player.maxlife;
+            StartCoroutine(Die());
+
 
             // reset cam
             foreach (var cam in virtualCameras)
@@ -149,9 +149,11 @@ public class GroundCheck_Script : MonoBehaviour
         lastCheckpointPosition = LastCheckpoint.position;
     }
 
-    private void Die()
+    IEnumerator Die()
     {
+        yield return new WaitForSeconds(0.2f);
         p1.transform.position = lastCheckpointPosition;
+        player.life = player.maxlife;
     }
 
     IEnumerator GroundDelay()

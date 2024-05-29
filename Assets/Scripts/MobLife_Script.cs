@@ -5,12 +5,14 @@ using UnityEngine;
 public class MobLife_Script : MonoBehaviour, IDamageable
 {
 
-    [SerializeField] public int mobLife;
-    [SerializeField] public int mobMaxLife;
+    public int mobLife;
+    public int mobMaxLife;
     [SerializeField] SpriteRenderer SR; // mob sprite renderer
 
     // ALICE
     [SerializeField] Alice_Script Alice;
+    // PLAYER
+    [SerializeField] Player_Script1 player;
 
     // Audio
     [SerializeField] AudioManager audioManager;
@@ -21,6 +23,14 @@ public class MobLife_Script : MonoBehaviour, IDamageable
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         mobLife = mobMaxLife;
+    }
+
+    void Update()
+    {
+        if (player.life <= 0)
+        {
+            mobLife = mobMaxLife;
+        }
     }
 
     public void Damage(int damageAmount)
