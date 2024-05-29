@@ -26,7 +26,7 @@ public class IcePlatform : MonoBehaviour
 
         //Fetch the RawImage component from the GameObject
         sr = GetComponentInChildren<SpriteRenderer>();
-        originSprite = sr.GetComponent<Sprite>();
+        originSprite = sr.sprite;
         // m_TextureOrigin = m_RawImage.texture;
 
         m_NewColor = new Color(0f, 0.5f, 1f, 0.5f);

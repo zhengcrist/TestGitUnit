@@ -9,6 +9,9 @@ public class MobLife_Script : MonoBehaviour, IDamageable
     [SerializeField] public int mobMaxLife;
     [SerializeField] SpriteRenderer SR; // mob sprite renderer
 
+    // ALICE
+    [SerializeField] Alice_Script Alice;
+
     // Audio
     [SerializeField] AudioManager audioManager;
 
@@ -31,6 +34,14 @@ public class MobLife_Script : MonoBehaviour, IDamageable
         else if(transform.CompareTag("Alice"))
         {
             audioManager.PlaySFX(audioManager.SFX_Alice);
+            if(Alice._currentWaypointIndex < Alice._waypoints.Length-1)
+            {
+                Alice._currentWaypointIndex++;
+            }
+            else
+            {
+                Alice._currentWaypointIndex = 0;
+            }
         }
     }
 

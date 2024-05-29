@@ -71,6 +71,7 @@ public class Light_flicker1 : MonoBehaviour
                 
                 attacked = true;
                 Mob_1.mobLife--;
+                mob._currentWaypointIndex++;
             }
         }
         else

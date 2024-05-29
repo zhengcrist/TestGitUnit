@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class Alice_Script : MonoBehaviour
 {
     // ______________ For mob movement ______________
-    [SerializeField] private Transform[] _waypoints; // start the waypoints array
+    public Transform[] _waypoints; // start the waypoints array
     [SerializeField] private float[] speed; // speed of the mob
     private float _checkDistance = 0.1f; // current distance waypoint-mob
     Vector3 startPosition = Vector3.zero;
     private Transform _targetWaypoint; // which waypoint to move to
-    private int _currentWaypointIndex = 0; // to start the index of the waypoint array
+    public int _currentWaypointIndex = 0; // to start the index of the waypoint array
     // Knockback
     [SerializeField] private float knockbackForceP = 30f;
 
@@ -35,6 +35,7 @@ public class Alice_Script : MonoBehaviour
     [SerializeField] Player_Script1 player;
     [SerializeField] SpriteRenderer playerSR; // player sprite renderer
 
+    bool playerAtked = false;
 
     // Audio
     [SerializeField] AudioManager audioManager;
@@ -104,7 +105,7 @@ public class Alice_Script : MonoBehaviour
             if (Vector2.Distance(transform.position, _targetWaypoint.position) < _checkDistance)
             {
                 // if the position hasn't reached the target waypoint yet
-                _targetWaypoint = GetNextWaypoint();
+                _targetWaypoint.position = GetNextWaypoint();
             }
 
             // flip sr
@@ -121,15 +122,25 @@ public class Alice_Script : MonoBehaviour
         }
     }
 
-    private Transform GetNextWaypoint()
+    private Vector3 GetNextWaypoint()
     {
-        _currentWaypointIndex++; // inc the index
-        if (_currentWaypointIndex >= _waypoints.Length)
+        int rand = Random.Range(1, 10);
+        if (playerAtked == false && rand == 2)
         {
-            // if the index is larger than the last index in the waypoint array
-            _currentWaypointIndex = 0;
+            _currentWaypointIndex = _waypoints.Length - 1;
+            playerAtked = true;
         }
-        return _waypoints[_currentWaypointIndex];
+        else
+        {
+            playerAtked = false;
+            _currentWaypointIndex++; // inc the index
+            if (_currentWaypointIndex >= _waypoints.Length - 1)
+            {
+                // if the index is larger than the last index in the waypoint array
+                _currentWaypointIndex = 0;
+            }
+        }
+        return _waypoints[_currentWaypointIndex].position;
     }
 
     // __________________________________ !MOVEMENT ___________________________________
@@ -142,7 +153,7 @@ public class Alice_Script : MonoBehaviour
     {
         if (!isDead)
         {
-            _targetWaypoint = GetNextWaypoint();
+            _targetWaypoint.position = GetNextWaypoint();
 
             // if collision with player, player gets damage
             if (collision.gameObject.tag == "Player")
