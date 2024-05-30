@@ -199,13 +199,18 @@ public class Player_Script1 : MonoBehaviour
             Inventory_Script.OilNum--;
             Inventory_Script.ToadNum--;
         }
-        else if (player.inAction == false && GroundCheck.IsGrounded)
+        else if (player.inAction == false && GroundCheck.IsGrounded && Inventory_Script.MedNum >= 1 && Inventory_Script.OilNum >= 1 && Inventory_Script.ToadNum >= 1 && life >= maxlife)
         {
+
             Player_animator.SetBool("No_Drink", true);
             StartCoroutine(No_Drink(0.1f));
 
             player.inAction = true;
             StartCoroutine(Cooldown(cooldownNoDrink));
+        }
+        else if (!(Inventory_Script.MedNum >= 1 && Inventory_Script.OilNum >= 1 && Inventory_Script.ToadNum >= 1))
+        {
+            audioManager.PlaySFX(audioManager.SFX_Wrong);
         }
     }
 
@@ -224,6 +229,11 @@ public class Player_Script1 : MonoBehaviour
             Player_animator.SetBool("Throw_red", true);
             StartCoroutine(Throw(1));
         }
+        else if (!(Inventory_Script.OilNum >= 2))
+        {
+            audioManager.PlaySFX(audioManager.SFX_Wrong);
+
+        }
     }
 
     public void Ice(InputAction.CallbackContext context)
@@ -240,6 +250,11 @@ public class Player_Script1 : MonoBehaviour
 
             Player_animator.SetBool("Throw_blue", true);
             StartCoroutine(Throw(2));
+        }
+        else if (!(Inventory_Script.ToadNum >= 2))
+        {
+            audioManager.PlaySFX(audioManager.SFX_Wrong);
+
         }
     }
 

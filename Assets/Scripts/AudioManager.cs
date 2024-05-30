@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip SFX_Throw;
     public AudioClip SFX_Glass;
     public AudioClip SFX_Sparkle;
+    public AudioClip SFX_Wrong;
     // Mobs
     public AudioClip SFX_Frog;
     public AudioClip SFX_Wolf;

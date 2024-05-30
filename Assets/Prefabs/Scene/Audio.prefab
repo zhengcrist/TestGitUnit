@@ -184,6 +184,7 @@ MonoBehaviour:
   SFX_Throw: {fileID: 8300000, guid: a57f775e86f668e4a893106d73094ec9, type: 3}
   SFX_Glass: {fileID: 8300000, guid: 72edf066b4193144da1c6eeeaab6a3dd, type: 3}
   SFX_Sparkle: {fileID: 8300000, guid: 61b56f8e58888b94d95305acc023d774, type: 3}
+  SFX_Wrong: {fileID: 8300000, guid: 2126ca58a80151a4b881944be6b9fd97, type: 3}
   SFX_Frog: {fileID: 8300000, guid: a50036d0971992b449744f6994b8ecaa, type: 3}
   SFX_Wolf: {fileID: 8300000, guid: 72537efa30d6b7140833101661e86200, type: 3}
   SFX_Alice: {fileID: 8300000, guid: e4680152a56f0f84abe2113fdc354db6, type: 3}
